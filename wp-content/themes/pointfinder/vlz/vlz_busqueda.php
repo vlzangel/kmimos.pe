@@ -76,7 +76,7 @@
 		    </a>
 		    <div id="contenido-centro">
 		    	<span id="icono-centro" class="vc_icon_element-icon fa fa-map-marker"></span>
-		    	<div id="ubicacion-actual">Colombia</div>
+		    	<div id="ubicacion-actual"><?php echo get_pais(); ?></div>
 		    </div>
 		    <a id="boton-derecha" href="#filtros">
 		    	<span id="icono-derecha" class="dashicons dashicons-admin-settings"></span><div id="titulo-derecha">Filtros</div>

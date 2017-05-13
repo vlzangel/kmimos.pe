@@ -219,9 +219,9 @@
                                 <div class="icono">
                                     <i class="icon-mapa embebed"></i>
                                 </div>
-                                <sub>Municipio:</sub><br>
+                                <sub>Provincia:</sub><br>
                                 <select id="estado_cuidador" name="estados" data-location="co">
-                                    <option value="">Seleccione un municipio</option>
+                                    <option value="">Seleccione una provincia</option>
                                     <?php echo $str_estados; ?>
                                 </select>
                             </div>
@@ -232,10 +232,11 @@
                                 <div class="icono">
                                     <i class="icon-mapa embebed"></i>
                                 </div>
-                                <sub>Localidad:</sub><br>
+                                <sub>Distrito:</sub><br>
                                 <select id="municipio_cuidador" name="municipios">
-                                    <option value="">Seleccione primero un municipio</option>
+                                    <option value="">Seleccione primero una provincia</option>
                                 </select>
+                                <input type="hidden" id="municipio_cache" name="municipio_cache">
                             </div>
                         </div>
                     </div>
@@ -346,7 +347,7 @@
             function cargar_municipios(CB){
                 var estado_id = jQuery("#estado_cuidador").val();   
                 if( estado_id != "" ){
-                    var html = "<option value=''>Seleccione un municipio</option>";
+                    var html = "<option value=''>Seleccione una provincia</option>";
                     if( estados_municipios[estado_id]['municipios'].length > 0 ){
                         jQuery.each(estados_municipios[estado_id]['municipios'], function(i, val) {
                             html += "<option value="+val.id+" data-id='"+i+"'>"+val.nombre+"</option>";
@@ -365,6 +366,8 @@
                     if( CB != undefined) {
                         CB();
                     }
+                }else{
+                    jQuery("#municipio_cuidador").html("<option value=''>Seleccione una provincia primero</option>");
                 }
             }
 
