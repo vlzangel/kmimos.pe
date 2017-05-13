@@ -12,7 +12,7 @@
 
     global $wpdb;
     
-    $estados = $wpdb->get_results("SELECT * FROM states WHERE country_id = 0 ORDER BY name ASC");
+    $estados = $wpdb->get_results("SELECT * FROM states ORDER BY name ASC");
 
     $str_estados = "";
     foreach($estados as $estado) { 
