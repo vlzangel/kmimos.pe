@@ -102,10 +102,10 @@
 
                     <div class="col-xs-12 jj-xs-offiset-2 col-sm-4 col-md-3 col-lg-3 col-lg-offset-2 left">
                       <h2>Contáctanos</h2>
-                      <p><!-- <strong>Dirección:</strong> Bosques Duraznos 65, int 211, Col. Bosques de las Lomas,
-                        Miguel Hidalgo, Ciudad de México, México.<br> -->
-                        <strong>Tlf: </strong> (+57) 315 849.2186<br>
-                        <strong>Email: </strong>  contactoco@kmimos.la
+                      <p>
+                        <?php $datos = get_kmimos_contacto(); ?>
+                        <strong>Tlf: </strong> <?php echo $datos["telefono"]; ?><br>
+                        <strong>Email: </strong>  <?php echo $datos["email"]; ?>
                     </div>
                     <div class="col-sm-4 jj-xs-offiset-2 col-md-3 center col-lg-3 center">
                       <h2>Navega</h2>
@@ -124,9 +124,9 @@
                     <div class="hidden-xs col-sm-4  col-md-3 col-lg-3 right">
                       <h2>¡B&uacute;scanos en nuestra redes sociales!</h2>
                       <div class="socialBtns">
-                        <a href="https://www.facebook.com/KmimosCo/" target="_blank" class="facebookBtn socialBtn" title="kmimos"></a>
-                        <a href="https://twitter.com/kmimosco" target="_blank"class="twitterBtn socialBtn" title="@kmimosco"></a>
-                        <a href="#" target="_blank" class="instagramBtn socialBtn" title="@kmimosmx"></a>
+                        <a href="https://www.facebook.com/<?php echo $datos["facebook"]; ?>/" target="_blank" class="facebookBtn socialBtn" title="<?php echo $datos["facebook"]; ?>"></a>
+                        <a href="https://twitter.com/<?php echo $datos["twitter"]; ?>" target="_blank"class="twitterBtn socialBtn" title="@<?php echo $datos["twitter"]; ?>"></a>
+                        <a href="#" target="_blank" class="instagramBtn socialBtn" title="@<?php echo $datos["instagram"]; ?>"></a>
                         <img src="<?php bloginfo( 'template_directory' ); ?>/images/dog.png" alt="">
                       </div>
                     </div>
@@ -143,12 +143,6 @@
         <?php wp_footer(); ?>
 
         <style type="text/css">
-/*            .jj-patica-menu{
-                background-color: transparent;
-                position: absolute;
-                z-index: 1;
-
-            }*/
             .wcvendors_sold_by_in_loop{
                 display: none !important;
             }
@@ -213,15 +207,7 @@
                 .socialBtns{
                      padding-left: 6px!important;
                 }
-            }
-/*            @media (max-width: 993px){
-                .jj-patica-menu{
-                    right: 100px;  
-                    width: 30px; 
-                    height: 30px;     
-                    top: 12px; 
-                }
-            }  */      
+            }     
             @media (max-width: 962px){
                 .socialBtns{
                     padding-left: 0px;
@@ -235,30 +221,10 @@
                     margin-left: 20%;
                 }
             }
-/*            @media (max-width: 568px){
-                .jj-patica-menu{
-                    right: 100px;  
-                    width: 30px; 
-                    height: 30px;     
-                    top: 1px; 
-                }
-            }*/
-            /*@media (max-width: 767px) {
-                .wpf-footer{
-                    background-image: url("images/footerBg768.png") !important;
-                    background-position-x: -298px !important;
-                }
-            }*/
             @media (max-width: 520px){
                 .vlz_modal_contenido{
                     height: 300px!important;
-                }/*
-                .jj-patica-menu{
-                    right: 100px;  
-                    width: 30px; 
-                    height: 30px;     
-                    top: 0px; 
-                }*/
+                }
             }           
 
         </style>
