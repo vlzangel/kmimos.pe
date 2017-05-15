@@ -3,145 +3,149 @@
         </div>
 
         <div id="pf-membersystem-dialog"></div>
-        <a title="<?php esc_html_e('Back to Top','pointfindert2d'); ?>" class="pf-up-but"><i class="pfadmicon-glyph-859"></i></a>
+        <a title="<?php esc_html__('Back to Top','pointfindert2d'); ?>" class="pf-up-but"><i class="pfadmicon-glyph-859"></i></a>
     </div>
-
-    <?php $kminfo = kmimos_get_info_kmimos(); ?>
     
+    <?php $datos = get_kmimos_contacto(); ?>
     <footer class="wpf-footer">            
         <div class="container" style="overflow: hidden;">
             <div class="row">
 
                 <div class="col-xs-12 jj-xs-offiset-2 col-sm-4 col-md-3 col-lg-3 col-lg-offset-2 left">
-                  <h2>Contáctanos</h2>
-                  <p>
-                    <strong>Tlf: </strong> <?php echo $kminfo["telefono"]; ?><br>
-                    <strong>Email: </strong>  <?php echo $kminfo["email"]; ?>
+                    <h2>Contáctanos</h2>
+                    <p>
+                        <strong>Tlf: </strong> <?php echo $datos["telefono"]; ?><br>
+                        <strong>Email: </strong>  <?php echo $datos["email"]; ?>
+                    </p>
                 </div>
+
                 <div class="col-sm-4 jj-xs-offiset-2 col-md-3 center col-lg-3 center">
-                  <h2>Navega</h2>
-                  <ul>
-                    <li><a href="#">Nosotros</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Preguntas y Respuestas</a></li>
-                    <li><a href="#">Cobertura Veterinaria</a></li>
-                    <li><a href="#">Comunicados de prensa</a></li>
-                    <li><a href="#">Términos y Condiciones</a></li>
-                    <li><a href="#">Nuestros Aliados</a></li>
-                    <li><a href="<?php echo get_home_url();?>/contacto/">Contáctanos</a></li>
-                  </ul>
+                    <h2>Navega</h2>
+                    <ul>
+                        <li><a href="#">Nosotros</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Preguntas y Respuestas</a></li>
+                        <li><a href="#">Cobertura Veterinaria</a></li>
+                        <li><a href="#">Comunicados de prensa</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Nuestros Aliados</a></li>
+                        <li><a href="<?php echo get_home_url();?>/contacto/">Contáctanos</a></li>
+                    </ul>
                 </div>
-            
+
                 <div class="hidden-xs col-sm-4  col-md-3 col-lg-3 right">
-                  <h2>¡B&uacute;scanos en nuestra redes sociales!</h2>
-                  <div class="socialBtns">
-                    <a href="https://www.facebook.com/<?php echo $kminfo["facebook"]; ?>/" target="_blank" class="facebookBtn socialBtn" title="kmimos"></a>
-                    <a href="https://twitter.com/<?php echo $kminfo["twitter"]; ?>" target="_blank"class="twitterBtn socialBtn" title="@<?php echo $kminfo["twitter"]; ?>"></a>
-                    <a href="#" target="_blank" class="instagramBtn socialBtn" title="@<?php echo $kminfo["instagram"]; ?>"></a>
-                    <img src="<?php bloginfo( 'template_directory' ); ?>/images/dog.png" alt="">
-                  </div>
+                    <h2>¡B&uacute;scanos en nuestra redes sociales!</h2>
+                    <div class="socialBtns">
+                        <a href="https://www.facebook.com/<?php echo $datos["facebook"]; ?>/" target="_blank" class="facebookBtn socialBtn" title="<?php echo $datos["facebook"]; ?>"></a>
+                        <a href="https://twitter.com/<?php echo $datos["twitter"]; ?>" target="_blank"class="twitterBtn socialBtn" title="@<?php echo $datos["twitter"]; ?>"></a>
+                        <a href="#" target="_blank" class="instagramBtn socialBtn" title="@<?php echo $datos["instagram"]; ?>"></a>
+                        <img src="<?php bloginfo( 'template_directory' ); ?>/images/dog.png" alt="">
+                    </div>
                 </div>
+
             </div> 
+
         </div>
         <div class="jj-xs-offiset-2 col-md-offset-1 col-md-offset-3 jj-offset-2">
             <span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=c5u9pjdoyKXQ6dRtmwnDmY0bV6KVBrdZGPEAnPkeSt7ZRCetPjIUzVK0bnHa"></script></span>   
         </div>
-    </footer> 
+    </footer>
 
     <?php wp_footer(); ?>
 
-    <style type="text/css">
-        .wcvendors_sold_by_in_loop{
-            display: none !important;
-        }
-        .wc-bookings-booking-form .wc-bookings-booking-cost{
-            margin: 0px 0px 10px !important;
-        }
-        .wc-bookings-booking-cost{
-            position: relative !important;
-            left: initial;
-            margin-left: 0px !important;
-            top: 0px !important;
-        }
-
-        .product .related{
-            clear: both !important;
-        }
-        
-        .switch-candy span {
-            color: #000000 !important;
-        }
-
-        .woocommerce .cart .button, .woocommerce .cart input.button {
-            float: none;
-            color: #000 !important;
-        }
-        .vc-image-carousel .vc-carousel-slideline-inner .vc-inner img {
-            -webkit-filter: grayscale(0%) !important;
-            filter: grayscale(0%) !important;
-            opacity: 1 !important;
-        }
-
-        .kmi_link{
-            font-size: initial; 
-            color: #54c8a7;
-            text-transform: capitalize;
-            font-weight: bold;
-        }
-
-        a.kmi_link:hover{
-            color:#138675!important;
-        }
-        .kmi_link:hover{
-            color:#138675!important;
-        }
-        .wpmenucartli{
-            display: none !important;
-        }
-
-        @media (min-width: 1200px){
-            .jj-offset-2 {
-                margin-left: 16.66666667%!important;
+        <style type="text/css">
+            .wcvendors_sold_by_in_loop{
+                display: none !important;
             }
-        }
-        @media (min-width: 994px){
-            .jj-patica-menu{
-                display: none;
+            .wc-bookings-booking-form .wc-bookings-booking-cost{
+                margin: 0px 0px 10px !important;
             }
-        }
-        @media (max-width: 120px) and (min-width: 962px){
-            .socialBtns{
-                 padding-left: 6px!important;
+            .wc-bookings-booking-cost{
+                position: relative !important;
+                left: initial;
+                margin-left: 0px !important;
+                top: 0px !important;
             }
-        }
 
-        @media (max-width: 962px){
-            .socialBtns{
-                padding-left: 0px;
+            .product .related{
+                clear: both !important;
             }
-        }
-        @media screen and (max-width: 750px){
-            .vlz_modal_ventana{
-                width: 90% !important;
+            
+            .switch-candy span {
+                color: #000000 !important;
             }
-            .jj-xs-offiset-2{
-                margin-left: 20%;
-            }
-        }
-        @media (max-width: 520px){
-            .vlz_modal_contenido{
-                height: 300px!important;
-            }
-        }           
 
-    </style>
+            .woocommerce .cart .button, .woocommerce .cart input.button {
+                float: none;
+                color: #000 !important;
+            }
+            .vc-image-carousel .vc-carousel-slideline-inner .vc-inner img {
+                -webkit-filter: grayscale(0%) !important;
+                filter: grayscale(0%) !important;
+                opacity: 1 !important;
+            }
+        </style>
 
-    <script>
-        function ocultarModal(){
-            jQuery('#jj_modal_finalizar_compra').fadeOut();
-            jQuery('#jj_modal_finalizar_compra').css('display', 'none');
-        }
-    </script>
+        <style>
+            .kmi_link{
+                font-size: initial; 
+                color: #54c8a7;
+                text-transform: capitalize;
+                font-weight: bold;
+            }
+
+            a.kmi_link:hover{
+                color:#138675!important;
+            }
+            .kmi_link:hover{
+                color:#138675!important;
+            }
+            .wpmenucartli{
+                display: none !important;
+            }
+
+            @media (min-width: 1200px){
+                .jj-offset-2 {
+                    margin-left: 16.66666667%!important;
+                }
+            }
+            @media (min-width: 994px){
+                .jj-patica-menu{
+                    display: none;
+                }
+            }
+            @media (max-width: 120px) and (min-width: 962px){
+                .socialBtns{
+                     padding-left: 6px!important;
+                }
+            }     
+            @media (max-width: 962px){
+                .socialBtns{
+                    padding-left: 0px;
+                }
+            }
+            @media screen and (max-width: 750px){
+                .vlz_modal_ventana{
+                    width: 90% !important;
+                }
+                .jj-xs-offiset-2{
+                    margin-left: 20%;
+                }
+            }
+            @media (max-width: 520px){
+                .vlz_modal_contenido{
+                    height: 300px!important;
+                }
+            }           
+
+        </style>
+
+        <script>
+            function ocultarModal(){
+                jQuery('#jj_modal_finalizar_compra').fadeOut();
+                jQuery('#jj_modal_finalizar_compra').css('display', 'none');
+            }
+        </script>
 
         <?php
 
@@ -192,13 +196,16 @@
                     if( isset( $_GET['home'] ) ){
 
                     }else{
-                        echo "
-                            <script>
-                                setTimeout(function(){
-                                    jQuery('#jj_modal_bienvenida_xxx').css('display', 'table');
-                                }, 100);
-                            </script>
-                        ";
+
+                       // if( is_home() ){
+                            echo "
+                                <script>
+                                    setTimeout(function(){
+                                        jQuery('#jj_modal_bienvenida_xxx').css('display', 'table');
+                                    }, 100);
+                                </script>
+                            ";
+                       // }
                     }
 
                 }

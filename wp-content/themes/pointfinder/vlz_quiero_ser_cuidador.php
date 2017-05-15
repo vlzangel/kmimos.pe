@@ -469,7 +469,8 @@
 									</div>
 							
 									<h2 class="vlz_titulo_interno">Precios de Hospedaje </h2>
-			 
+
+									<!-- Modal "Precios de Hosedajes"-->				 
 									<div id="jj_modal" class="vlz_modal">
 
 										<div class="vlz_modal_interno">
@@ -495,11 +496,11 @@
 																<td>(25 a 50 cm de alto) 25 a 35 soles</td>
 															</tr>
 															<tr>
-																<td>Tallas grandes</td>
+																<td>Tallas grande</td>
 																<td>(50 a 80 cm de alto) 30 a 40 soles</td>
 															</tr>
 															<tr>
-																<td>Tallas gigantes:</td>
+																<td>Talles gigante:</td>
 																<td>(80cm en adelante de alto) 35 a 50 soles</td>
 															</tr>
 														</table>
