@@ -27,6 +27,7 @@ if(!function_exists('get_pais')){
 if(!function_exists('get_kmimos_contacto')){
     function get_kmimos_contacto(){
         return array(
+            "titulo"    => "Kmimos Perú",
             "email"     => "contactope@kmimos.la",
             "telefono"  => "(+51) 982443284",
             "twitter"   => "kmimospe",

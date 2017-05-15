@@ -1,17 +1,16 @@
 <?php
 
-    define('WP_USE_THEMES', false);
-    require('../../../wp-blog-header.php');
+    require('../../../wp-load.php');
 
-    add_filter( 'wp_mail_from_name', function( $name ) {
-		return 'Kmimos México';
+    include("vlz_data_orden.php");
+    include("vlz_order_funciones.php");
+
+	add_filter( 'wp_mail_from_name', function( $name ) {
+		return $info["titulo"];
 	});
 	add_filter( 'wp_mail_from', function( $email ) {
-		return 'kmimos@kmimos.la';
+		return $info["email"]; 
 	});
-
-	include("vlz_data_orden.php");
-	include("vlz_order_funciones.php");
 
 	echo "
 		<style>

@@ -12,7 +12,9 @@
 
     $url = get_home_url();
 
-    $email_admin = "contactomex@kmimos.la";
+	$info = get_kmimos_contacto();
+
+    $email_admin = $info["email"];
 
 	/* Orden y Reserva  */
 
@@ -136,24 +138,12 @@
 		$mascotas = $wpdb->get_results("SELECT * FROM $wpdb->posts WHERE post_author = '".$cliente."' AND post_type='pets'");
 		$detalles_mascotas = "";
 
-		/*
 		$detalles_mascotas .= '
 			<h2 style="color: #557da1; font-size: 16px;">Detalles de las mascotas: </h2>
 			<table style="width:100%" cellspacing=0 cellpadding=0>
 				<tr>
-					<th style="padding: 3px; background: #00d2b7;"> <strong>Nombre</strong> </th>
-					<th style="padding: 3px; background: #00d2b7;"> <strong>Raza</strong> </th>
-					<th style="padding: 3px; background: #00d2b7;"> <strong>Edad</strong> </th>
-					<th style="padding: 3px; background: #00d2b7;"> <strong>Tamaño</strong> </th>
-					<th style="padding: 3px; background: #00d2b7;"> <strong>Comportamiento</strong> </th> 
-				</tr>';
-		*/
-		$detalles_mascotas .= '
-			<h2 style="color: #557da1; font-size: 16px;">Detalles de las mascotas: </h2>
-			<table style="width:100%" cellspacing=0 cellpadding=0>
-				<tr>
-					<th style="padding: 3px; background: #00d2b7;"> <strong>Nombre</strong> </th>
-					<th style="padding: 3px; background: #00d2b7;"> <strong>Detalles</strong> </th>
+					<th style="padding: 3px; background: #00d2b7; text-align: left;"> <strong>Nombre</strong> </th>
+					<th style="padding: 3px; background: #00d2b7; text-align: left;"> <strong>Detalles</strong> </th>
 				</tr>';
 
 
@@ -202,18 +192,7 @@
 				$edad = date("Y")-$anio[0];
 
 				$raza = $wpdb->get_var("SELECT nombre FROM razas WHERE id=".$data_mascota['breed_pet'][0]);
-				/*
-				$detalles_mascotas .= '
-					<tr>
-						<td style="border-bottom: solid 1px #00d2b7; padding: 3px;" valign="top"> '.$data_mascota['name_pet'][0].'</td>
-						<td style="padding: 3px; border-bottom: solid 1px #00d2b7;" valign="top"> '.$raza.'</td>
-						<td style="padding: 3px; border-bottom: solid 1px #00d2b7;" valign="top"> '.$edad.' año(s)</td>
-						<td style="padding: 3px; border-bottom: solid 1px #00d2b7;" valign="top"> '.$tamanos_array[ $data_mascota['size_pet'][0] ].'</td>
-						<td style="padding: 3px; border-bottom: solid 1px #00d2b7;" valign="top"> '.implode("<br>", $temp).'</td>
-					</tr>
-				';
-				*/
-
+				
 				$detalles_mascotas .= '
 					<tr>
 						<td style="border-bottom: solid 1px #00d2b7; padding: 3px;" valign="top"> '.$data_mascota['name_pet'][0].'</td>
@@ -227,13 +206,7 @@
 				';
 			}
 		}else{
-			/*
-			$detalles_mascotas .= '
-				<tr>
-					<td colspan="5">No tiene mascotas registradas.</td>
-				</tr>
-			';
-			*/
+			
 			$detalles_mascotas .= '
 				<tr>
 					<td colspan="2">No tiene mascotas registradas.</td>
@@ -340,8 +313,8 @@
                     Revisa estas recomendaciones y pícale a cualquiera de ellas para ver más detalles sobre su perfil.
                     <div style="overflow: hidden; text-align: center; margin: 0px auto; max-width: 600px;">'.$str_sugeridos_img.'</div>
                 </li>
-                <li align="justify" style="padding-bottom: 10px; font-size: 12px;">En caso de que alguna de estas opciones no se adecúe a tus necesidades, por favor ingresa a <strong><a style="text-decoration: none; color: #3d68b9;" href="'.get_home_url().'/busqueda">Kmimos México</a></strong> en donde podrás encontrar cientos de cuidadores que seguro te encantarán.</li>
-                <li align="justify" style="font-size: 12px;">Para asistencia personalizada por favor márcanos a nuestros números. +52 (55) 1791.4931.</li>
+                <li align="justify" style="padding-bottom: 10px; font-size: 12px;">En caso de que alguna de estas opciones no se adecúe a tus necesidades, por favor ingresa a <strong><a style="text-decoration: none; color: #3d68b9;" href="'.get_home_url().'/busqueda">'.get_pais().'</a></strong> en donde podrás encontrar cientos de cuidadores que seguro te encantarán.</li>
+                <li align="justify" style="font-size: 12px;">Para asistencia personalizada por favor márcanos a nuestros números. '.$info["telefono"].'.</li>
             </ol>
 	    ';
 
