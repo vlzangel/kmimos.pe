@@ -38,7 +38,7 @@
             <ul>
                 <li>Compártenos por Mensaje Directo a nuestro Facebook @KmimosCO tu nombre y apellido completo, email, teléfono de casa y celular.</li>
                 <li>Una vez que nos envíes dichos datos, en menos de 24 horas recibirás en el correo que registraste las Pruebas Psicométricas y Pruebas de Conceptos Veterinarios básicos.  Por favor respóndelas, y nos llegará a nosotros un mensaje de completadas.</li>
-                <li>En menos de 24 horas después de completadas las pruebas recibirás un correo por parte de Certificación Kmimos, notificando tus resultados.  NO TE OLVIDES DE MIRAR SIEMPRE LA BANDEJA DE ENTRADA O EL CORREO NO DESEADO, ya que a veces llegan allí los correos.</li>
+                <li>En menos de 24 horas después de completadas las pruebas recibirás un correo por parte de Certificación Kmimos, notificando tus resultados. NO TE OLVIDES DE MIRAR SIEMPRE LA BANDEJA DE ENTRADA O EL CORREO NO DESEADO, ya que a veces llegan allí los correos.</li>
                 <li>En caso de haber aprobado, lee el archivo adjunto al correo que te muestra las políticas operativas.</li>
                 <li>Por último, recibirás una llamada para entrevista telefónica y notificación para la auditoría a tu hogar.</li>
             </ul>
@@ -98,7 +98,7 @@
             <ul>
                 <li style="text-align: justify;">Compártenos por Mensaje Directo a nuestro Facebook @Kmimosco tu nombre y apellido completo, email, teléfono de casa y celular.</li>
                 <li style="text-align: justify;">Una vez que nos envíes dichos datos, en menos de 24 horas recibirás en el correo que registraste las Pruebas Psicométricas y Pruebas de Conceptos Veterinarios básicos.  Por favor respóndelas, y nos llegará a nosotros un mensaje de completadas.</li>
-                <li style="text-align: justify;">En menos de 24 horas después de completadas las pruebas recibirás un correo por parte de Certificación Kmimos, notificando tus resultados.  NO TE OLVIDES DE REVISAR SIEMPRE LA BANDEJA DE ENTRADA O EL CORREO NO DESEADO, ya que a veces llegan allí los correos.</li>
+                <li style="text-align: justify;">En menos de 24 horas después de completadas las pruebas recibirás un correo por parte de Certificación Kmimos, notificando tus resultados. NO TE OLVIDES DE REVISAR SIEMPRE LA BANDEJA DE ENTRADA O EL CORREO NO DESEADO, ya que a veces llegan allí los correos.</li>
                 <li style="text-align: justify;">En caso de haber aprobado, lee el archivo adjunto al correo que te muestra las políticas operativas.</li>
                 <li style="text-align: justify;">Por último, recibirás una llamada para entrevista telefónica y notificación para la auditoría a tu hogar.</li>
             </ul>
