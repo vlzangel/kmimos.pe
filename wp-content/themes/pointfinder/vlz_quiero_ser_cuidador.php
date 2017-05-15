@@ -469,8 +469,7 @@
 									</div>
 							
 									<h2 class="vlz_titulo_interno">Precios de Hospedaje </h2>
-
-									<!-- Modal "Precios de Hosedajes"-->				 
+			 
 									<div id="jj_modal" class="vlz_modal">
 
 										<div class="vlz_modal_interno">
@@ -488,29 +487,23 @@
 														<br>
 														<table style="border-radius: 2px">
 															<tr>
-																<td>Tamaño pequeño:</td>
-																<td>$20,000 a $30,000 COP Por noche</td>
+																<td>Tallas pequeñas:</td>
+																<td>(0 a 25 cm de alto) 20 a 30 soles</td>
 															</tr>
 															<tr>
-																<td>Tamaño mediano:</td>
-																<td>$25,000 a $35,000 COP Por noche</td>
+																<td>Tallas medianas:</td>
+																<td>(25 a 50 cm de alto) 25 a 35 soles</td>
 															</tr>
 															<tr>
-																<td>Tamaño grande</td>
-																<td>$35,000 a $40,000 COP Por noche</td>
+																<td>Tallas grandes</td>
+																<td>(50 a 80 cm de alto) 30 a 40 soles</td>
 															</tr>
 															<tr>
-																<td>Tamaño gigante:</td>
-																<td>$35,000 a $50,000 COP Por noche</td>
+																<td>Tallas gigantes:</td>
+																<td>(80cm en adelante de alto) 35 a 50 soles</td>
 															</tr>
 														</table>
 														<br>
-														<!-- <ul style="margin-left: -10px;">
-															<li style="font-size: 12px;">Tamaño pequeño: 120 pesos por noche</li>
-															<li style="font-size: 12px;">Tamaño mediano: 180 <span>pesos por noche</span></li>
-															<li style="font-size: 12px;">Tamaño grande: 220 <span>pesos por noche</span></li>
-															<li style="font-size: 12px;">Tamaño gigante: 250 <span>pesos por noche</span></li>
-														</ul> -->
 														<p align="justify">
 															<strong>IMPORTANTE:</strong> recuerda que siempre podrás colocar el precio que a ti mejor se te acomode
 														</p>
