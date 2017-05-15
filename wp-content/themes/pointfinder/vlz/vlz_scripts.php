@@ -138,7 +138,7 @@
 	function cargar_municipios(CB){
 	    var estado_id = jQuery("#estados").val();   
 	    if( estado_id != "" ){
-	        var html = "<option value=''>Seleccione una provincia</option>";
+	        var html = "<option value=''>Seleccione un distrito</option>";
 	        if( estados_municipios[estado_id]['municipios'].length > 0 ){
 	            jQuery.each(estados_municipios[estado_id]['municipios'], function(i, val) {
 	                html += "<option value="+val.id+" data-id='"+i+"'>"+val.nombre+"</option>";
