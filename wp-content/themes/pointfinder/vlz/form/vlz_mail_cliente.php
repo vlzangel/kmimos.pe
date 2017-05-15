@@ -39,11 +39,13 @@
         </p>
     ';
 
+    $info = get_kmimos_contacto();
+
     add_filter( 'wp_mail_from_name', function( $name ) {
-        return 'Kmimos Colombia';
+        return $info["titulo"];
     });
     add_filter( 'wp_mail_from', function( $email ) {
-        return 'contactoco@kmimos.la';
+        return $info["email"]; 
     });
 
     $mail_msg = kmimos_get_email_html("Registro de Nuevo Usuario.", $mensaje_mail, '', true, true);
