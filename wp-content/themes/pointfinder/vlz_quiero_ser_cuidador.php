@@ -158,9 +158,12 @@
 									<div class="vlz_sub_seccion" style="margin: 0 !important;">
 										<div class="vlz_contenedor_listados">
 											<select id="estado" name="estado" class="vlz_input" data-title="Debe seleccionar un Estado" required>
+												<option value=''>Seleccione una provincia</option>
 												<?php
 													global $wpdb;
 
+												    $estados = $wpdb->get_results("SELECT * FROM states ORDER BY name ASC");
+												    $str_estados = "";
 												    foreach($estados as $estado) { 
 												        $str_estados .= "<option value='".$estado->id."'>".$estado->name."</option>";
 												    } 
@@ -170,6 +173,8 @@
 											</select>
 										</div>
 										<div class="vlz_contenedor_listados">
+											<select id="municipio" name="municipio" class="vlz_input" data-title="Debe seleccionar un distrito">
+												<option value="">Seleccione primero una provincia</option>
 											</select>
 										</div>
 										<div class="vlz_contenedor_dir">
