@@ -81,54 +81,32 @@
 
 		$c = 0;
 		foreach ($coordenadas_all_2 as $value) {
-			//if( geo("C", $value) ){
+			$img = kmimos_get_foto_cuidador($id);
 
-				if( $value->portada != '0' ){
-					$img = get_home_url()."/wp-content/uploads/cuidadores/avatares/{$value['ID']}/0.jpg";
-				}else{
-					$img = get_home_url().'/wp-content/themes/pointfinder/images/default.jpg';
-				}
+			$url = $value['url'];
 
-				$url = $value['url'];
+			$nombre = $value['nombre'];
 
-				$nombre = $value['nombre'];
+			$c = $value['ID'];
 
-				$c = $value['ID'];
+			echo "
+				var point = new google.maps.LatLng('{$value['lat']}', '{$value['lng']}');
+				bounds.extend(point);
+				marker_{$c} = new google.maps.Marker({
+					map: map,
+					draggable: false,
+					animation: google.maps.Animation.DROP,
+					position: new google.maps.LatLng('{$value['lat']}', '{$value['lng']}'),
+					icon: '".get_template_directory_uri()."/vlz/img/pin.png'
+				});
 
-				echo "
-					marker_{$c} = new google.maps.Marker({
-						map: map,
-						draggable: false,
-						animation: google.maps.Animation.DROP,
-						position: new google.maps.LatLng('{$value['lat']}', '{$value['lng']}'),
-						icon: '".get_template_directory_uri()."/vlz/img/pin.png'
-					});
+				infowindow_{$c} = new google.maps.InfoWindow({ content: '<a class=\"mini_map\" href=\"{$url}\" target=\"_blank\"> <img src=\"{$img}\" style=\"max-width: 200px; max-height: 230px;\"> <div>{$nombre}</div> </a>' });
 
-					infowindow_{$c} = new google.maps.InfoWindow({ content: '<a class=\"mini_map\" href=\"{$url}\" target=\"_blank\"> <img src=\"{$img}\" style=\"max-width: 200px; max-height: 230px;\"> <div>{$nombre}</div> </a>' });
-
-					marker_{$c}.addListener('click', function() { infowindow_{$c}.open(map, marker_{$c}); });
-				";
-
-			//}
-					
+				marker_{$c}.addListener('click', function() { infowindow_{$c}.open(map, marker_{$c}); });
+			";
 		}
 
-		echo "
-			bounds.extend(
-				new google.maps.LatLng(
-			        parseFloat( {$N['lat']} ),
-			        parseFloat( {$N['lng']} )
-		        )
-		    );
-
-			bounds.extend(
-				new google.maps.LatLng(
-			        parseFloat( {$S['lat']} ),
-			        parseFloat( {$S['lng']} )
-		        )
-		    );
-
-			map.fitBounds(bounds);"; ?>
+		echo "map.fitBounds(bounds);"; ?>
 	}
 
 	function toRadian(deg) {

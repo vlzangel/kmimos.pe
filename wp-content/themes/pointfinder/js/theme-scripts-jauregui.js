@@ -2072,31 +2072,7 @@ jQuery.validator.addMethod("pattern", function(value, element, param) {
 		return false;
 	});
 	// MANUAL SEARCH BUTTON END --------------------------------------------------------------------------------------------
-	
-	//MODAL PRECIOS SUGERIDOS-----------------------------------------------------------------------------------------------
-		var modalOpend= false;
-		function modalPrecios(){
-			$(window).scroll(function() {
-			    if ($(document).scrollTop() > 1800) {
-				    if (modalOpend != true) {
-				    	$('#jj_modal').fadeIn();
-				       	modalOpend= true;
-				      	//console.log('Modal abre')
-				    }  
-			      
-			     } else {
-			      $('#jj_modal').fadeOut();
-			      //console.log('Modal cierra')
-			     }
-			});
-		}
 
-		function ocultarModal(){
-			$('#jj_modal').fadeOut();
-			jQuery('#jj_modal').css('display', 'none');
-			modalOpend= true;
-		}
-	//MODAL PRECIOS SUGERIDOS END-----------------------------------------------------------------------------------------------
 	$( window ).resize(function() {
 		if ($(window).width() < 550) {
 			console.log('pantalla a 550');
@@ -2136,7 +2112,6 @@ jQuery.validator.addMethod("pattern", function(value, element, param) {
 		}, 1000);
 		$('button.wc-bookings-booking-form-button.single_add_to_cart_button.button.alt').css('text-transform', 'uppercase');
 		$('[data-toggle="tooltip"]').tooltip();
-		modalPrecios();	
 
 		if ($(window).width() < 550) {
 			console.log('pantalla a 550');
