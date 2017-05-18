@@ -14,7 +14,6 @@
  * Version:     1.0.0
  * License:     GPL2
  */
-include_once('includes/class/class_kmimos_map.php');
 include_once('includes/functions/kmimos_functions.php');
 include_once('plugins/woocommerce.php');
 
@@ -376,17 +375,17 @@ if(!function_exists('kmimos_get_foto')){
         global $wpdb;
         $name_photo = get_user_meta($user_id, "name_photo", true);
         if( empty($name_photo)  ){ $name_photo = "0"; }
-        $path_avatar = "avatares";
-        if( file_exists("wp-content/uploads/avatares/".$user_id."/{$name_photo}") ){
-            $img = get_home_url()."/wp-content/uploads/avatares/".$user_id."/{$name_photo}";
+        $ruta = dirname(dirname(dirname(__FILE__)));
+        if( file_exists($ruta."/uploads/avatares/".$user_id."/{$name_photo}") ){
+            $img = $img = get_home_url()."/wp-content/uploads/avatares/".$user_id."/{$name_photo}";
         }else{
-            if( file_exists("wp-content/uploads/avatares/".$user_id."/{$name_photo}.jpg") ){
-                $img = get_home_url()."/wp-content/uploads/avatares/".$user_id."/{$name_photo}.jpg";
+            if( file_exists($ruta."/uploads/avatares/".$user_id."/{$name_photo}.jpg") ){
+                $img = $img = get_home_url()."/wp-content/uploads/avatares/".$user_id."/{$name_photo}.jpg";
             }else{
-                if( file_exists("wp-content/uploads/avatares/".$user_id."/0.jpg") ){
-                    $img = get_home_url()."/wp-content/uploads/avatares/".$user_id."/0.jpg";
+                if( file_exists($ruta."/uploads/avatares/".$user_id."/0.jpg") ){
+                    $img = $img = get_home_url()."/wp-content/uploads/avatares/".$user_id."/0.jpg";
                 }else{
-                    $img = get_home_url().'/wp-content/themes/pointfinder/images/noimg.png';
+                    $img = get_home_url()."/wp-content/themes/pointfinder/images/noimg.png";
                 }
             }
         }
