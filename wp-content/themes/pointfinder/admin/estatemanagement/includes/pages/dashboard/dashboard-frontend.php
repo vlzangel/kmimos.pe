@@ -3563,7 +3563,7 @@ if ( ! class_exists( 'PF_Frontend_Fields' ) ){
 									    $pet_detail = kmimos_get_pet_info($pet);
 
 									    $photo = get_option('siteurl')."/";
-									    $photo .= (!empty($pet_detail['photo']))? $pet_detail['photo'] : 'wp-content/themes/pointfinder/images/default.jpg';
+									    $photo .= (!empty($pet_detail['photo'])) ? $pet_detail['photo'] : 'wp-content/themes/pointfinder/images/default.jpg';
 									    $this->FieldOutput .= '
 										<li class="col-lg-4 col-md-6 col-sm-6 col-xs-12 wpfitemlistdata isotope-item text-center">
 											<div class="pflist-item" style="background-color:#ffffff;">  

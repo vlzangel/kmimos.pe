@@ -17,7 +17,7 @@
         });
     ";
 
-    echo "
+    $styles = "
 		<style>
 			h1{ 
 				margin-top: 5px; 
@@ -107,6 +107,40 @@
 			    font-weight: 600;
 			}
 
+			.alertas{
+				padding: 10px;
+			    margin-bottom: 10px;
+			    margin-top: 10px;
+			    border: 1px solid transparent;
+			 	border-radius: 4px;
+			}
+			.alertas-info{
+				color: #31708f;
+			    background-color: #d9edf7;
+			    border-color: #bce8f1;
+			}
+			.alertas-success{
+				color: #468847;
+			    background-color: #dff0d8;
+			    border-color: #d6e9c6;
+			}
+			.alertas-warning{
+			    color: #c09853;
+			    background-color: #fcf8e3;
+			    border-color: #faebcc;
+			}
+			.alertas-error{
+				color: #b94a48;
+			    background-color: #f2dede;
+			    border-color: #ebccd1;
+			}
+			.error{
+				color: #b94a48;
+			    background-color: #f2dede;
+			    border-color: #ebccd1;
+
+			}
+
 			@media screen and (max-width: 800px) {
 				.vlz_celda_20{
 				    width: 33.3333333%;
@@ -144,7 +178,13 @@
 				}
 			}
     	</style>
-    ";
+    ".kmimos_style( array("form_errores") );
+
+    $styles = str_replace("\t", "", $styles);
+    $styles = str_replace("  ", " ", $styles);
+    $styles = str_replace("\n", " ", $styles);
+
+    echo $styles;
 
     $adicionales_principales = array(
         "guarderia"                 => "Guarder&iacute;a",
@@ -300,48 +340,7 @@
 		$boton = "<input type='button' value='Desactivado' class='vlz_activador vlz_desactivado' id='status_hospedaje' > <input type='hidden' id='oculto_status_hospedaje' name='status_hospedaje' value='0' >";
 	}
 
-	// echo "<pre>";
-	// 	print_r($status_servicios);
-	// echo "</pre>";
-
-	$stylos = kmimos_style( array("form_errores") );
-
 	$this->FieldOutput .= $stylos."
-		<style>
-			.alertas{
-				padding: 10px;
-			    margin-bottom: 10px;
-			    margin-top: 10px;
-			    border: 1px solid transparent;
-			 	border-radius: 4px;
-			}
-			.alertas-info{
-				color: #31708f;
-			    background-color: #d9edf7;
-			    border-color: #bce8f1;
-			}
-			.alertas-success{
-				color: #468847;
-			    background-color: #dff0d8;
-			    border-color: #d6e9c6;
-			}
-			.alertas-warning{
-			    color: #c09853;
-			    background-color: #fcf8e3;
-			    border-color: #faebcc;
-			}
-			.alertas-error{
-				color: #b94a48;
-			    background-color: #f2dede;
-			    border-color: #ebccd1;
-			}
-			.error{
-				color: #b94a48;
-			    background-color: #f2dede;
-			    border-color: #ebccd1;
-
-			}
-    	</style>
     	<input type='hidden' name='user_id' value='{$user_id}'>
     	<div>
     		<div class='vlz_seccion'>

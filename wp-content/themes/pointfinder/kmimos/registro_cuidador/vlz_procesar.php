@@ -340,7 +340,7 @@
                 $conn->query( utf8_decode( $sql ) );
                 $img_id = $conn->insert_id;
 
-                $sql = "INSERT INTO wp_postmeta VALUES (NULL, ".$img_id.", '_wp_attached_file', 'cuidadores/avatares/".$cuidador_id."/0.jpg');";
+                $sql = "INSERT INTO wp_postmeta VALUES (NULL, ".$img_id.", '_wp_attached_file', 'avatares/".$cuidador_id."/".$vlz_img_perfil."');";
                 $conn->query( utf8_decode( $sql ) );
 
                 $sql = "
@@ -350,7 +350,7 @@
                         (NULL, ".$user_id.", 'user_address',        '".$direccion."'),
                         (NULL, ".$user_id.", 'user_phone',          '".$telefono."'),
                         (NULL, ".$user_id.", 'user_mobile',         '".$telefono."'),
-                        (NULL, ".$user_id.", 'user_country',        'México'),
+                        (NULL, ".$user_id.", 'user_country',        'Perú'),
                         (NULL, ".$user_id.", 'nickname',            '".$username."'),
                         (NULL, ".$user_id.", 'first_name',          '".$nombres."'),
                         (NULL, ".$user_id.", 'last_name',           '".$apellidos."'),
@@ -442,7 +442,7 @@
                                     "hoy"           => $hoy,
                                     "titulo"        => $adicionales_principales[$key]." - ".$nom,
                                     "descripcion"   => descripciones($key),
-                                    "slug"          => $key."-".$slug,
+                                    "slug"          => $user_id."-".$key,
                                     "cuidador"      => $id_post,
                                     "status"        => $status
                                 ));
