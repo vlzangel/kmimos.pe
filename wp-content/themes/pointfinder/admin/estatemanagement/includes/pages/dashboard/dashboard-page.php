@@ -100,6 +100,7 @@ if(isset($ua_action)){
                         /*
                         *   Muestra botón para ver las mascotas del usuario
                         */
+                        $pets = kmimos_get_my_pets($current_user->ID);
                         if ($_GET['ua']=='mypets'){
                             $pfmenu_output .= '<li class="selected_option"><a href="#" onclick="return false;"><i class="pfadmicon-glyph-871"></i> '. $setup29_dashboard_contents_pets_list_menuname.'</li>';
                         }
@@ -1069,8 +1070,7 @@ Array
 										if($user_id == 0){
  										    $errorval .= esc_html__('Por favor inicie sesión (Usuario Inválido).', 'pointfindert2d');
                                             break;
-									  	}
-                                        else {
+									  	} else {
                                             if($_POST['delete_pet']==1){
                                                 // Solicita la confirmación del borrado de la mascota
                                                 $output = new PF_Frontend_Fields(
@@ -1095,8 +1095,6 @@ Array
                                         /*
                                         *   Guarda los datos de la mascota
                                         */
-//print_r ($_POST);
-                                        // BEGIN Pets - Photo
                                         $photo_pet = "";
                                         if ( isset($_FILES['portada_pet'])) {   
                                             if ( $_FILES['portada_pet']['size'] >0) { 
@@ -1121,7 +1119,7 @@ Array
 
                                                         $url_pets = 'wp-content/uploads/mypet/'.$tmp_user_id.'/';
 														if(!file_exists($url_pets)){	
-                                                        	mkdir($url_pets, 0777, true);
+                                                        	mkdir($url_pets);
                                                         }
                                                     	$photo_name_pet = "pet_".md5($_FILES['portada_pet']['name']);
                             							$photo = kmimos_upload_photo(

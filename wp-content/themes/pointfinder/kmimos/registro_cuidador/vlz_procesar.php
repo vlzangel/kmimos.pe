@@ -1,11 +1,12 @@
 <?php
 
-    include("../../../../../wp-config.php");
+    include("../../../../../wp-load.php");
+    include("../../../../../vlz_config.php");
 	include("../funciones/vlz_funciones_globales.php");
 
-    date_default_timezone_set('America/Bogota');
+    date_default_timezone_set('America/Mexico_City');
 
-	$conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+	$conn = new mysqli($host, $user, $pass, $db);
 
 	$errores = array();
 
@@ -22,7 +23,7 @@
         extract($_POST);
 
         $foto = "0";
-        if( $vlz_img_perfil != "0" ){
+        if( $vlz_img_perfil != "" ){
         	$foto = "1";
         }
         $experiencia = date("Y")-$cuidando_desde;
@@ -109,8 +110,7 @@
 	        "guarderia",
 	        "adiestramiento_basico",
 	        "adiestramiento_intermedio",	        
-            "adiestramiento_avanzado",
-	        "paseos"
+	        "adiestramiento_avanzado"
 	    );
 
         $adicionales = array();
@@ -165,8 +165,13 @@
         		NULL,
         		'0',
         		'0',
+        		'$nombres',
+        		'$apellidos',
         		'$ife',
         		'$email',
+        		'$telefono',
+        		'$descripcion',
+        		'$foto',
         		'$experiencia',
         		'0',
         		'$latitud',
@@ -189,18 +194,17 @@
         	);
         ";
 
-        $existen = $conn->query( "SELECT * FROM wp_users WHERE  user_nicename = '{$username}' OR user_email = '{$email}'" );
+        $existen = $conn->query( "SELECT * FROM wp_users WHERE  user_login = '{$username}' OR user_email = '{$email}'" );
         if( $existen->num_rows > 0 ){
-            $datos = $existen->fetch_assoc();
-
             $msg = "Se encontraron los siguientes errores:\n\n";
+            while($datos = $existen->fetch_assoc()){
+                if( strtolower($datos['user_email']) == strtolower($email) ){
+                    $msg .= "Este E-mail [{$email}] ya esta en uso\n";
+                }
 
-            if( $datos['user_email'] == $email ){
-                $msg .= "Este E-mail [{$email}] ya esta en uso\n";
-            }
-
-            if( $datos['user_nicename'] == $username ){
-                $msg .= "Este nombre de Usuario [{$username}] ya esta en uso\n";
+                if( strtolower($datos['user_login']) == strtolower($username) ){
+                    $msg .= "Este nombre de Usuario [{$username}] ya esta en uso\n";
+                }
             }
 
             $error = array(
@@ -211,17 +215,16 @@
             echo "(".json_encode( $error ).")";
 
             exit;
-
         }else{
 
-            $temp = array( "token" => $token );
+            /*$temp = array( "token" => $token );
 
-            /*include('Requests.php');
+            include('Requests.php');
 
             Requests::register_autoloader();
 
             $options = array(
-                'wstoken'               =>  "496e2def61883d009a258ef2ee03aed6",
+                'wstoken'               =>  "61331bc52bfb74f944fd84b8b6458c14",
                 'wsfunction'            =>  "kmimos_user_create_users",
                 'moodlewsrestformat'    =>  "json",
                 'users' => array(
@@ -247,33 +250,15 @@
                 )
             );
 
-            $request = Requests::post('http://kmimos.ilernus.com/webservice/rest/server.php', array(), $options );
+            $request = Requests::post('http://kmimos.ilernus.com/webservice/rest/server.php', array(), $options );*/
 
-            $respuesta = json_decode($request->body);
-            if( isset($respuesta->exception)){
-                $error = array(
-                    "error" => "SI",
-                    "msg" => "No se pudo crear el registro en la plataforma de certificación"
-                );
-                echo "(".json_encode( $error ).")";
-                exit;
-            }else{
-                $error = array(
-                    "error" => "NO",
-                    "msg" => ""
-                );
-                echo "(".json_encode( $error ).")";
-            }*/
-
-            $error = array(
-                "error" => "NO",
-                "msg" => ""
-            );
-            echo "(".json_encode( $error ).")";
-            
             if( $conn->query( utf8_decode( $sql ) ) ){
 
                 $cuidador_id = $conn->insert_id;
+
+                $sql = "INSERT INTO ubicaciones VALUES (NULL, '{$cuidador_id}', '={$estado}=', '={$municipio}=')";
+
+                $conn->query( utf8_decode( $sql ) );
 
                 $hoy = date("Y-m-d H:i:s");
 
@@ -295,68 +280,83 @@
                 $conn->query( utf8_decode( $new_user ) );
                 $user_id = $conn->insert_id;
 
+
+                //WHITE_LABEL
+                if (!isset($_SESSION)) {
+                    session_start();
+                }
+
+                if(array_key_exists('wlabel',$_SESSION)){
+                    $wlabel=$_SESSION['wlabel'];
+                    if ($wlabel!=''){
+                        $query_wlabel = "INSERT INTO wp_usermeta VALUES (NULL, '".$user_id."', '_wlabel', '".$wlabel."');";
+                        $conn->query( utf8_decode( $query_wlabel ) );
+                    }
+                }
+
                 $conn->query( "UPDATE cuidadores SET user_id = '".$user_id."' WHERE id = ".$cuidador_id);
 
-                $sql = "INSERT INTO ubicaciones VALUES (NULL, '{$cuidador_id}', '={$estado}=', '={$municipio}=')";
-                $conn->query( utf8_decode( $sql ) );
-
-                if($foto == 1){
-                    $img = end(explode(',', $vlz_img_perfil));
-                    $sImagen = base64_decode($img);
+                if($vlz_img_perfil != ""){
                     $dir = "../../../../uploads/avatares/".$user_id."/";
+
                     @mkdir($dir);
 
-                    file_put_contents($dir.'temp.jpg', $sImagen);
-                    $sExt = mime_content_type( $dir.'temp.jpg' );
-                    switch( $sExt ) {
-                        case 'image/jpeg':
-                            $aImage = @imageCreateFromJpeg( $dir.'temp.jpg' );
-                        break;
-                        case 'image/gif':
-                            $aImage = @imageCreateFromGif( $dir.'temp.jpg' );
-                        break;
-                        case 'image/png':
-                            $aImage = @imageCreateFromPng( $dir.'temp.jpg' );
-                        break;
-                        case 'image/wbmp':
-                            $aImage = @imageCreateFromWbmp( $dir.'temp.jpg' );
-                        break;
+                    $path_origen = "../../../../../imgs/Temp/".$vlz_img_perfil;
+                    $path_destino = $dir.$vlz_img_perfil;
+
+                    if( file_exists($path_origen) ){
+                        copy($path_origen, $path_destino);
+                        unlink($path_origen);
                     }
-
-                    $nWidth  = 800;
-                    $nHeight = 600;
-
-                    $aSize = getImageSize( $dir.'temp.jpg' );
-                    if( $aSize[0] > $aSize[1] ){
-                        $nHeight = round( ( $aSize[1] * $nWidth ) / $aSize[0] );
-                    }else{
-                        $nWidth = round( ( $aSize[0] * $nHeight ) / $aSize[1] );
-                    }
-
-                    $aThumb = imageCreateTrueColor( $nWidth, $nHeight );
-                    imageCopyResampled( $aThumb, $aImage, 0, 0, 0, 0, $nWidth, $nHeight, $aSize[0], $aSize[1] );
-
-                    $name_photo = time();
-
-                    imagejpeg( $aThumb, $dir."{$name_photo}.jpg" );
-                    imageDestroy( $aImage );
-                    imageDestroy( $aThumb );
-
-                    unlink($dir."temp.jpg");
                 }
+                
+                $sql = ("
+                    INSERT INTO wp_posts VALUES (
+                        NULL,
+                        '".$user_id."',
+                        '".$hoy."',
+                        '".$hoy."',
+                        '',
+                        '',
+                        '',
+                        'inherit',
+                        'closed',
+                        'closed',
+                        '',
+                        '',
+                        '',
+                        '',
+                        '".$hoy."',
+                        '".$hoy."',
+                        '',
+                        '0',
+                        'http://kmimos.pe/wp-content/uploads/avatares/".$user_id."/0.jpg',
+                        '0',
+                        'attachment',
+                        'image/jpeg',
+                        '0'
+                    );
+                ");
+                $conn->query( utf8_decode( $sql ) );
+                $img_id = $conn->insert_id;
+
+                $sql = "INSERT INTO wp_postmeta VALUES (NULL, ".$img_id.", '_wp_attached_file', 'avatares/".$cuidador_id."/".$vlz_img_perfil."');";
+                $conn->query( utf8_decode( $sql ) );
 
                 $sql = "
                     INSERT INTO wp_usermeta VALUES
                         (NULL, ".$user_id.", 'user_favorites',      ''),
-                        (NULL, ".$user_id.", 'name_photo',          '".$name_photo."'),
+                        (NULL, ".$user_id.", 'user_photo',          '".$img_id."'),
                         (NULL, ".$user_id.", 'user_address',        '".$direccion."'),
+                        (NULL, ".$user_id.", 'user_phone',          '".$telefono."'),
                         (NULL, ".$user_id.", 'user_mobile',         '".$telefono."'),
-                        (NULL, ".$user_id.", 'user_country',        'Colombia'),
+                        (NULL, ".$user_id.", 'user_country',        'Perú'),
                         (NULL, ".$user_id.", 'nickname',            '".$username."'),
                         (NULL, ".$user_id.", 'first_name',          '".$nombres."'),
                         (NULL, ".$user_id.", 'last_name',           '".$apellidos."'),
                         (NULL, ".$user_id.", 'user_referred',       '".$referido."'),
-                        (NULL, ".$user_id.", 'description',         ''),
+                        (NULL, ".$user_id.", 'description',         '".$descripcion."'),
+                        (NULL, ".$user_id.", 'name_photo',          '".$vlz_img_perfil."'),
                         (NULL, ".$user_id.", 'rich_editing',        'true'),
                         (NULL, ".$user_id.", 'comment_shortcuts',   'false'),
                         (NULL, ".$user_id.", 'admin_color',         'fresh'),
@@ -398,7 +398,7 @@
                         '".$hoy."', 
                         '', 
                         0, 
-                        '/petsitters/".$slug."/', 
+                        'http://qa.kmimos.la/kmimos/petsitters/".$slug."/', 
                         0, 
                         'petsitters', 
                         '', 
@@ -492,7 +492,7 @@
                                         "hoy"       => $hoy,
                                         "titulo"    => $value,
                                         "precio"    => $precio,
-                                        "slug"      => $user_id."-".$key."-".$tam,
+                                        "slug"      => $id_post."-".$key."-".$tam,
                                         "servicio"  => $id,
                                         "menu"      => $order_menu[$tam],
                                         "status"    => $status                
@@ -532,10 +532,110 @@
                     $user_signon = wp_signon( $info, true );
                     wp_set_auth_cookie($user_signon->ID);
 
+                    $mensaje_mail = '
+                        <style>
+                            p{
+                                text-align: justify;
+                            }
+                            a:hover{
+                                background: #038063;
+                            }
+                        </style>
+                        <h1>¡Gracias por unirte a nuestra familia Kmimos!</h1>
+                        <p>Hola <strong>'.$nombres.' '.$apellidos.'</strong>,</p>
+                        <p style="text-align: justify;">
+                            Estimado Kmiamigo, tu perfil ha sido creado con éxito.  El mismo permanecerá inactivo en la página hasta que completes los siguientes pasos listados abajo"
+                        </p>
+                        <p style="text-align: justify;">
+                            "Dichos pasos han sido diseñados para cumplir con un estricto perfil de seguridad, que garantice que cualquier persona que se convierta en Cuidador asociado Kmimos presente un perfil apto para cuidar y apapachar a nuestros peludos amigos"
+                        </p>
+                        <p style="text-align: justify;">
+                            <strong>Siguientes Pasos para activar tu perfil</strong>
+                        </p>
+                        <p style="text-align: justify;">
+                            <ul>
+                                <li>Compártenos por Mensaje Directo a nuestro Facebook @Kmimosmx tu nombre y apellido completo, email, teléfono de casa y celular</li>
+                                <li>Una vez que nos envíes dichos datos, en menos de 24 horas recibirás en el correo que registraste las Pruebas Psicométricas y Pruebas de Conceptos Veterinarios básicos.  Por favor respóndelas, y nos llegará a nosotros un mensaje de completadas.</li>
+                                <li>En menos de 24 horas después de completadas las pruebas recibirás un correo por parte de Certificación Kmimos, notificando tus resultados.  NO TE OLVIDES DE CHECAR SIEMPRE LA BANDEJA DE ENTRADA O EL CORREO NO DESEADO, ya que a veces llegan allí los correos.</li>
+                                <li>En caso de haber aprobado, lee el archivo adjunto al correo que te muestra las políticas operativas.</li>
+                                <li>Por último, recibirás una llamada para entrevista telefónica y notificación para la auditoría a tu hogar.</li>
+                            </ul>
+                        </p>
+                        <p style="text-align: justify;">
+                            <strong>Abajo encontrarás tus credenciales para que tengas acceso como cuidador a Kmimos, estos mismos los deberás usar en la plataforma de certificación.</strong>
+                        </p>
+                        <p>
+                            <table>
+                                <tr> <td> <strong>Usuario:</strong> </td><td>'.$username.'</td> </tr>
+                                <tr> <td> <strong>Contraseña:</strong> </td><td>La clave que ingresaste</td> </tr>
+                            </table>
+                        </p>
+                        <p style="text-align: center;">
+                            <a 
+                                href="'.get_home_url().'/?a=inicio"
+                                style="
+                                    padding: 10px;
+                                    background: #59c9a8;
+                                    color: #fff;
+                                    font-weight: 400;
+                                    font-size: 17px;
+                                    font-family: Roboto;
+                                    border-radius: 3px;
+                                    border: solid 1px #1f906e;
+                                    display: block;
+                                    max-width: 300px;
+                                    margin: 0px auto;
+                                    text-align: center;
+                                    text-decoration: none;
+                                "
+                            >Iniciar Sesión</a>
+                        </p>
+                    ';
+
+                    $mensaje_web = '
+                        <style>
+                            p{
+                                text-align: justify;
+                            }
+                            a:hover{
+                                background: #038063;
+                            }
+                        </style>
+                        <h1>¡Gracias por unirte a nuestra familia Kmimos!</h1>
+                        <p>Hola <strong>'.$nombres.' '.$apellidos.'</strong>,</p>
+                        <p style="text-align: justify;">
+                            Estimado Kmiamigo, tu perfil ha sido creado con éxito.  El mismo permanecerá inactivo en la página hasta que completes los siguientes pasos listados abajo"
+                        </p>
+                        <p style="text-align: justify;">
+                            "Dichos pasos han sido diseñados para cumplir con un estricto perfil de seguridad, que garantice que cualquier persona que se convierta en Cuidador asociado Kmimos presente un perfil apto para cuidar y apapachar a nuestros peludos amigos"
+                        </p>
+                        <p style="text-align: justify;">
+                            <strong>Siguientes Pasos para activar tu perfil</strong>
+                        </p>
+                        <p style="text-align: justify;">
+                            <ul>
+                                <li style="text-align: justify;">Compártenos por Mensaje Directo a nuestro Facebook @Kmimosmx tu nombre y apellido completo, email, teléfono de casa y celular</li>
+                                <li style="text-align: justify;">Una vez que nos envíes dichos datos, en menos de 24 horas recibirás en el correo que registraste las Pruebas Psicométricas y Pruebas de Conceptos Veterinarios básicos.  Por favor respóndelas, y nos llegará a nosotros un mensaje de completadas.</li>
+                                <li style="text-align: justify;">En menos de 24 horas después de completadas las pruebas recibirás un correo por parte de Certificación Kmimos, notificando tus resultados.  NO TE OLVIDES DE CHECAR SIEMPRE LA BANDEJA DE ENTRADA O EL CORREO NO DESEADO, ya que a veces llegan allí los correos.</li>
+                                <li style="text-align: justify;">En caso de haber aprobado, lee el archivo adjunto al correo que te muestra las políticas operativas.</li>
+                                <li style="text-align: justify;">Por último, recibirás una llamada para entrevista telefónica y notificación para la auditoría a tu hogar.</li>
+                            </ul>
+                        </p>
+                    ';
+
+                    $mail_msg = kmimos_get_email_html("Gracias por registrarte como cuidador.", $mensaje_mail, 'Registro de Nuevo Cuidador.', true, true);
+                    wp_mail( $email, "Kmimos México – Gracias por registrarte como cuidador! Kmimos la NUEVA forma de cuidar a tu perro!", $mail_msg);
+
+                    $error = array(
+                        "error" => "NO",
+                        "msg" => $mensaje_web
+                    );
+                    echo "(".json_encode( $error ).")";
+
             }else{
                 $error = array(
                     "error" => "SI",
-                    "msg" => "No se ha podido crear el cuidador"
+                    "msg" => "No se ha podido completar el registro."
                 );
                 echo "(".json_encode( $error ).")";
             }
