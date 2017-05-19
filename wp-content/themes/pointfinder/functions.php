@@ -1,18 +1,28 @@
 <?php
 
 /**********************************************************************************************************************************
-
 *
-
 * PointFinder Functions
-
 * 
-
 * Author: Webbu Design
-
 *
-
 ***********************************************************************************************************************************/
+
+
+add_filter( 'woocommerce_currencies', 'add_my_currency' );
+function add_my_currency( $currencies ) {
+     $currencies['PEX'] = __( 'Perú Nuevo Sol', 'woocommerce' );
+     return $currencies;
+}
+
+add_filter('woocommerce_currency_symbol', 'add_my_currency_symbol', 10, 2);
+
+function add_my_currency_symbol( $currency_symbol, $currency ) {
+     switch( $currency ) {
+          case 'PEX': $currency_symbol = 'S/.'; break;
+     }
+     return $currency_symbol;
+}
 
 add_filter( 'woocommerce_checkout_fields' , 'set_input_attrs' );
 function set_input_attrs( $fields ) {
