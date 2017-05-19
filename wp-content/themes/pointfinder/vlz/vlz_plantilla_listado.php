@@ -106,7 +106,7 @@ if (is_user_logged_in() && count($user_favorites_arr)>0) {
 							<div class="pflist-pricecontainer">
 								
 								<div class="pflistingitem-subelement pf-price"> 
-									<sub style="bottom: 0px;">Hospedaje desde</sub><br>'.$cuidador->hospedaje_desde.' Soles
+									<sub style="bottom: 0px;">Hospedaje desde</sub><br>'.$info["mon_izq"].''.$cuidador->hospedaje_desde.' '.$info["mon_der"].'
 								</div>
 							</div>
 						</div>
