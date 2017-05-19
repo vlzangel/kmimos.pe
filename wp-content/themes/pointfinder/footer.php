@@ -6,7 +6,7 @@
         <a title="<?php esc_html__('Back to Top','pointfindert2d'); ?>" class="pf-up-but"><i class="pfadmicon-glyph-859"></i></a>
     </div>
     
-    <?php $datos = get_kmimos_contacto(); ?>
+    <?php $datos = kmimos_get_info_syte(); ?>
     <footer class="wpf-footer">            
         <div class="container" style="overflow: hidden;">
             <div class="row">

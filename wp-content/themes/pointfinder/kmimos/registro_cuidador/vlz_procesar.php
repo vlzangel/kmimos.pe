@@ -623,6 +623,15 @@
                         </p>
                     ';
 
+                    $info = kmimos_get_info_syte();
+
+                    add_filter( 'wp_mail_from_name', function( $name ) {
+                        return $info["titulo"];
+                    });
+                    add_filter( 'wp_mail_from', function( $email ) {
+                        return $info["email"]; 
+                    });
+
                     $mail_msg = kmimos_get_email_html("Gracias por registrarte como cuidador.", $mensaje_mail, 'Registro de Nuevo Cuidador.', true, true);
                     wp_mail( $email, "Kmimos México – Gracias por registrarte como cuidador! Kmimos la NUEVA forma de cuidar a tu perro!", $mail_msg);
 

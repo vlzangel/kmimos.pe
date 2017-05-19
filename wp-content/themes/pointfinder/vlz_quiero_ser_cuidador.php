@@ -72,11 +72,11 @@
 
 										<div class="vlz_sub_seccion">
 											<div class="vlz_cell50">
-												<input data-title="El DNI debe ser de 10" data-help="Ingresar el DNI" type='number' id='ife' name='ife' class='vlz_input' placeholder='DNI' min=10 pattern="^\d{10}$" >
+												<input data-title="El DNI debe ser de al menos 7" data-help="Ingresar el DNI" type='number' id='ife' name='ife' class='vlz_input' placeholder='DNI' min=7 pattern="[0-9]" >
 											</div>
 											
 											<div class="vlz_cell50">
-												<input data-title="Debes ingresar tu número telefónico<br>Este debe tener al menos 10 dígitos." type='number' id='telefono' name='telefono' min="7" class='vlz_input' placeholder='Tel&eacute;fono' required pattern="[0-9]">
+												<input data-title="Debes ingresar tu número telefónico<br>Este debe tener al menos 8 dígitos." type='number' id='telefono' name='telefono' min="8" class='vlz_input' placeholder='Tel&eacute;fono' required pattern="[0-9]">
 											</div>
 										</div>
 
