@@ -41,9 +41,11 @@
     $info = kmimos_get_info_syte();
 
     add_filter( 'wp_mail_from_name', function( $name ) {
+        global $info;
         return $info["titulo"];
     });
     add_filter( 'wp_mail_from', function( $email ) {
+        global $info;
         return $info["email"]; 
     });
 
