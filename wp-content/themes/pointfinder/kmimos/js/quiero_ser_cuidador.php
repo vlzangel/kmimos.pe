@@ -120,43 +120,6 @@
 		  	verificar_cache_form();
 		});
 
-		/*jQuery( document ).ready(function() {
-		  	cambiar_img();
-
-		  	verificar_cache_form();
-		});
-
-		jQuery( window ).resize(function() {
-	  		cambiar_img();
-		});
-
-		function cambiar_img(){
-		  	var w = jQuery( window ).width();
-	  		if( w < 992 ){
-	  			var img = jQuery("#cargar_imagen_1").html();
-	  			if( img != "" ){
-		  			jQuery("#cargar_imagen_1").html("");
-		  			jQuery("#cargar_imagen_2").html(img);
-		  			document.getElementById("portada").addEventListener("change", vista_previa, false);
-		  			jQuery("#cargar_imagen_2").css("display", "block");
-		  			jQuery("#kmimos_datos_personales").removeClass("vlz_cell50");
-	  			}else{
-		  			jQuery("#cargar_imagen_1").css("display", "none");
-	  			}
-	  		}else{
-	  			var img = jQuery("#cargar_imagen_2").html();
-	  			jQuery("#cargar_imagen_1").css("display", "inline-block");
-	  			if( img != "" ){
-		  			jQuery("#cargar_imagen_2").html("");
-		  			jQuery("#cargar_imagen_1").html(img);
-		  			document.getElementById("portada").addEventListener("change", vista_previa, false);
-		  			jQuery("#kmimos_datos_personales").addClass("vlz_cell50");
-	  			}else{
-		  			jQuery("#cargar_imagen_2").css("display", "none");
-	  			}
-	  		}
-		}*/
-
 		function vista_previa(evt) {
 		  	var files = evt.target.files;
 		  	for (var i = 0, f; f = files[i]; i++) {  
@@ -195,7 +158,7 @@
 			switch(id){
 				case "ife":
 		      		var ife = jQuery( "#ife" ).val();
-		      		if( ife.length >= 10 ){
+		      		if( ife.length >= 7 ){
 		      			return true;
 		      		}else{
 		      			ver_error(id);
@@ -204,7 +167,7 @@
 				break;
 				case "telefono":
 		      		var telefono = jQuery( "#telefono" ).val();
-		      		if( telefono.length >= 7 ){
+		      		if( telefono.length >= 8 ){
 		      			return true;
 		      		}else{
 		      			ver_error(id);

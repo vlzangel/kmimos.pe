@@ -238,13 +238,13 @@
     if(!function_exists('kmimos_desglose_reserva')){
 
         function kmimos_borrar_formato_numerico($valor){
-            /*$valor = str_replace(",", "", $valor);
-            $valor = str_replace(".", ",", $valor);*/
+            $valor = str_replace(",", "", $valor);
+            $valor = str_replace(".", ",", $valor);
             return $valor+0;
         }
 
         function kmimos_format_adicionales($valor, $txt){
-            preg_match_all("#;(.*?)\)#", $valor, $matches);
+            preg_match_all("#\.(.*?)\)#", $valor, $matches);
             return array(
                 $txt,
                 kmimos_borrar_formato_numerico( $matches[1][0] )
