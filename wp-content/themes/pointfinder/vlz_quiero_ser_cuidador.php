@@ -18,7 +18,7 @@
 		'1.0.0',
 		true
 	); 
-	echo get_estados_municipios(); echo "<!-- Hola -->"; ?>
+	echo get_estados_municipios(); ?>
 
 	<?php include("vlz/form/vlz_styles.php"); ?>
 
