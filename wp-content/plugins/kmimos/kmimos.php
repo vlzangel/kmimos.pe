@@ -784,12 +784,22 @@ if(!function_exists('kmimos_admin_menu')){
                 'icon'=>plugins_url('/assets/images/icon.png', __FILE__),
             ),
             array(
-                'title'=>'Listado de Usuarios',
-                'short-title'=>'Listado de Usuarios',
+                'title'=>'Listado de Clientes',
+                'short-title'=>'Listado de Clientes',
                 'parent'=>'kmimos',
-                'slug'=>'bp_usuarios',
+                'slug'=>'bp_clientes',
                 'access'=>'manage_options',
-                'page'=>'backpanel_usuarios',
+                'page'=>'backpanel_clientes',
+                'icon'=>plugins_url('/assets/images/icon.png', __FILE__),
+            ),
+
+            array(
+                'title'=>'Listado de Cuidadores',
+                'short-title'=>'Listado de Cuidadores',
+                'parent'=>'kmimos',
+                'slug'=>'bp_cuidadores',
+                'access'=>'manage_options',
+                'page'=>'backpanel_cuidadores',
                 'icon'=>plugins_url('/assets/images/icon.png', __FILE__),
             ),
 
