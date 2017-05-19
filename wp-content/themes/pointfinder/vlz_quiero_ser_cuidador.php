@@ -400,11 +400,11 @@
 															<td>(25 a 50 cm de alto) 25 a 35 soles</td>
 														</tr>
 														<tr>
-															<td>Tallas grande</td>
+															<td>Tallas grandes</td>
 															<td>(50 a 80 cm de alto) 30 a 40 soles</td>
 														</tr>
 														<tr>
-															<td>Talles gigante:</td>
+															<td>Tallas gigantes:</td>
 															<td>(80cm en adelante de alto) 35 a 50 soles</td>
 														</tr>
 													</tbody></table>
