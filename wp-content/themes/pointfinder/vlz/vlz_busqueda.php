@@ -26,9 +26,9 @@
 
 	$xpagina = $pagina*15;
 
-	include("vlz_style.php");
-
 	get_header();
+
+	include("vlz_style.php");
 
 	$info = kmimos_get_info_syte();
 	
