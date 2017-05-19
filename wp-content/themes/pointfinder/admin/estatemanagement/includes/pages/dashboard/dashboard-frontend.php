@@ -1,26 +1,3 @@
-<script type="text/javascript">
-    function jau_ver_municipios(CB){
-
-		var id =  jQuery("#estados").val();
-		var txt = jQuery("#estados option:selected").text();
-
-        jQuery.ajax( {
-            method: "POST",
-                data: { estado: id },
-            url: "<?php echo get_template_directory_uri(); ?>/vlz/ajax_municipios.php",
-            beforeSend: function( xhr ) {
-		    	jQuery("#municipios").html("<option value=''>Cargando Localidades</option>");
-		    	console.log(jQuery('#municipios'))
-            }
-        }).done(function(data){
-			jQuery("#municipios").html("<option value=''>Seleccione una Localidad</option>"+data);
-            if( CB != undefined) {
-                CB();
-            }
-        });
-    }
-</script>
-
 <?php
 /**********************************************************************************************************************************
 *
@@ -46,7 +23,6 @@ if ( ! class_exists( 'PF_Frontend_Fields' ) ){
 
 
 /************************************************************************************************************************************/
-
 
 		function __construct($params = array()){	
 

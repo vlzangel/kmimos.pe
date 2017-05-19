@@ -56,8 +56,8 @@
         $imagen = '<img id="img_portada" src="'.get_home_url().'/wp-content/uploads/cuidadores/avatares/'.$petsitter_id.'/0.jpg">';
         $imagen = get_home_url().'/wp-content/uploads/cuidadores/avatares/'.$petsitter_id.'/0.jpg';
     }else{
-      $imagen = '<img id="img_portada" src="'.get_template_directory_uri().'/images/noimg.png">';
-        $imagen = get_template_directory_uri().'/images/noimg.png';
+      $imagen = '<img id="img_portada" src="'.get_home_url()."/wp-content/themes/pointfinder".'/images/noimg.png">';
+        $imagen = get_home_url()."/wp-content/themes/pointfinder".'/images/noimg.png';
     }
 
     if( $atributos['video_youtube'] != '' ){
@@ -73,44 +73,10 @@
 
     $ubicaciones = $wpdb->get_row("SELECT * FROM ubicaciones WHERE cuidador = ".$cuidador->id);
 
-    $mis_estados = str_replace("==", "=", $ubicaciones->estado);
-    $mis_estados = explode("=", $mis_estados);
+    $mi_estado = str_replace("=", "", $ubicaciones->estado);
+    $mi_delegacion = str_replace("=", "", $ubicaciones->municipios);
 
-    $estados_ids = array();
-    $estados_names = array();
-    foreach ($mis_estados as $key => $value) {
-      if( trim($value) != "" ){
-        $estado = $wpdb->get_row("SELECT * FROM states WHERE id = ".$value);
-        $estados_ids[]   = $estado->id;
-        $estados_names[] = $estado->name;
-      }
-    }
-
-    if( count($estados_ids) > 0 ){
-      $mi_estado = $estados_ids[0];
-    }else{
-      $mi_estado = "";
-    }
-
-    $mis_delegaciones = str_replace("==", "=", $ubicaciones->municipios);
-    $mis_delegaciones = explode("=", $mis_delegaciones);
-
-    $delegaciones_estado = array(); 
-
-    $delegaciones_ids = array();
-    $delegaciones_names = array(); $z = true; 
-    foreach ($mis_delegaciones as $key => $value) {
-      if( trim($value) != "" ){
-        $delegacion = $wpdb->get_row("SELECT * FROM locations WHERE id = ".$value);
-        $delegaciones_ids[]   = $delegacion->id;
-        $delegaciones_names[] = $delegacion->name;
-        if( $z ){
-          $mi_delegacion = $value; $z = false;
-        }
-      }
-    }
-
-    $estados_array = $wpdb->get_results("SELECT * FROM states WHERE country_id = 1 ORDER BY name ASC");
+    $estados_array = $wpdb->get_results("SELECT * FROM states ORDER BY name ASC");
     $estados = "<option value=''>Seleccione un municipio</option>";
     foreach($estados_array as $estado) { 
       if( $mi_estado == $estado->id ){ 
@@ -196,7 +162,7 @@
             background-size: 11px;
             background-repeat: no-repeat;
             background-position: 1px 1px;
-            background-image: url('.get_template_directory_uri().'/vlz/img/iconos/new_check.png);
+            background-image: url('.get_home_url()."/wp-content/themes/pointfinder".'/vlz/img/iconos/new_check.png);
         }
         .golden-forms section {
             margin-bottom: 8px;
@@ -237,9 +203,9 @@
 
     </style>
   ';
-?>
 
-<?php
+  $this->FieldOutput .= get_estados_municipios();
+
   $this->FieldOutput .= '
     <h1 style="margin: 0px; padding: 0px;">Mi informaci&oacute;n como Cuidador</h1><hr style="margin: 5px 0px 10px;">
     <div class="tienda_cuidador">
@@ -348,16 +314,16 @@
             <section>
                 <div class="cell50">     
                    <section> 
-                      <label for="estado" class="lbl-text">'.esc_html__('Municipio','pointfindert2d').':</label>
-                        <select id="estado" name="estado" class="input" onchange="vlz_ver_municipios()">
+                      <label for="estado" class="lbl-text">'.esc_html__('Provincia','pointfindert2d').':</label>
+                        <select id="estado" name="estado" class="input">
                             '.$estados.'
                         </select>
                    </section>                          
                 </div>
             <div class="cell50">     
                     <section>
-                        <label for="delegacion" class="lbl-text">'.esc_html__('Localidad','pointfindert2d').':</label>
-                        <select id="delegacion" name="delegacion" class="input" onchange="vlz_coordenadas()">
+                        <label for="delegacion" class="lbl-text">'.esc_html__('Distrito','pointfindert2d').':</label>
+                        <select id="delegacion" name="delegacion" class="input">
                             '.$muni.'
                         </select>
                     </section>                          
@@ -400,7 +366,9 @@
                             "sociables" => "Sociables",
                             "no_sociables" => "No Sociables",
                             "agresivos_personas" => "Agresivos con Humanos",
-                            "agresivos_perros" => "Agresivos con Mascotas"
+                            "agresivos_perros" => "Agresivos con Mascotas",
+                            "agresivos_humanos" => "Agresivos con Humanos",
+                            "agresivos_mascotas" => "Agresivos con Mascotas"
                         );
                         foreach ($comportamientos_aceptados as $key => $value) {
                             if($comportamientos_aceptados[$key] == 1){
@@ -414,6 +382,7 @@
                                 </span>
                             ';
                         }
+
                         $this->FieldOutput .= '
                     </section>    
                 </div>
@@ -429,7 +398,7 @@
                           $this->FieldOutput .= '
                             <span class="goption col12">
                                   <div class="vlz_input vlz_no_check vlz_pin_check '.$check.'" style="padding: 8px 39px 8px 8px;"><input type="hidden" id="acepta_'.$key.'" name="acepta_'.$key.'" value="'.$value.'">'.$tamano[$key].'</div>
-                </span>';
+                            </span>';
                         }
                         $this->FieldOutput .= '
                     </section>                          
@@ -457,11 +426,11 @@
             </section>
 
             <section>
-        <input type="hidden" class="geolocation" id="latitude_petsitter" name="latitude_petsitter" placeholder="Latitud" step="any" value="'. $lat_def .'" />
-        <input type="hidden" class="geolocation" id="longitude_petsitter" name="longitude_petsitter" placeholder="Longitud" step="any" value="'. $lng_def .'" />
+                <input type="hidden" class="geolocation" id="latitude_petsitter" name="latitude_petsitter" placeholder="Latitud" step="any" value="'. $lat_def .'" />
+                <input type="hidden" class="geolocation" id="longitude_petsitter" name="longitude_petsitter" placeholder="Longitud" step="any" value="'. $lng_def .'" />
             </section>
 
-            <script>
+        <script>
             jQuery(".vlz_pin_check").on("click", function(){
                 if( jQuery("input", this).attr("value") == "0" ){
                     jQuery("input", this).attr("value", "1");
@@ -473,65 +442,60 @@
                     jQuery(this).addClass("vlz_no_check");
                 }
             });
-            function vlz_ver_municipios(){
 
-          var id =  jQuery("#estado").val();
-          var txt = jQuery("#estado option:selected").text();
-
-          jQuery.ajax( {
-            method: "POST",
-              data: { estado: id },
-            url: "'.get_template_directory_uri().'/vlz/ajax_municipios_2.php",
-              beforeSend: function( xhr ) {
-                jQuery("#delegacion").html("<option value=\'\'>Cargando Localidades</option>");
-              }
-          }).done(function(data){
-            jQuery("#delegacion").html("<option value=\'\'>Seleccione una localidad</option>"+data);
-            vlz_coordenadas();
-          });
-        }
-
-        function vlz_coordenadas(){
-          var estado = jQuery("#estado option:selected").text();
-          var municipio_val = jQuery("#delegacion option:selected").val();
-          var municipio = jQuery("#delegacion option:selected").text();
-
-          var adress = "colombia";
-          if( estado != "" ){ 
-            adress+="+"+estado; 
-          }
-          if( municipio_val != "" ){ 
-            adress+="+"+municipio; 
-          }
-
-          var dir = "https://maps.googleapis.com/maps/api/geocode/json?address="+adress+"&key=AIzaSyD-xrN3-wUMmJ6u2pY_QEQtpMYquGc70F8";
-            jQuery.ajax({ 
-                url: dir
-            }).done(function(data){
-                var location = data.results[0].geometry.location;
-                var norte = data.results[0].geometry.viewport.northeast;
-                var sur   = data.results[0].geometry.viewport.southwest;
-                jQuery("#latitude_petsitter").attr("value", location.lat);
-                jQuery("#longitude_petsitter").attr("value", location.lng);
-                var direccion = "";
-                for(var i=0; i<data.results[0].address_components.length; i++){
-                    if( i == 0 ){
-                        direccion += data.results[0].address_components[i].long_name;
+            function cargar_municipios(CB){
+                var estado_id = jQuery("#estado").val();   
+                if( estado_id != "" ){
+                    var html = "<option value=\'\'>Seleccione un distrito</option>";
+                    if( estados_municipios[estado_id]["municipios"].length > 0 ){
+                        jQuery.each(estados_municipios[estado_id]["municipios"], function(i, val) {
+                            html += "<option value="+val.id+" data-id="+i+">"+val.nombre+"</option>";
+                        });
                     }else{
-                        direccion += ", "+data.results[0].address_components[i].long_name;
+                        html += "<option value=\'\'>"+jQuery("#estado option:selected").text()+"</option>";
                     }
+                    jQuery("#delegacion").html(html);
+                    var location    = estados_municipios[estado_id]["coordenadas"]["referencia"];
+                    var norte       = estados_municipios[estado_id]["coordenadas"]["norte"];
+                    var sur         = estados_municipios[estado_id]["coordenadas"]["sur"];
+
+                    jQuery("#latitude_petsitter").attr("value", location.lat);
+                    jQuery("#longitude_petsitter").attr("value", location.lng);
+                    if( CB != undefined) {
+                        CB();
+                    }
+                }else{
+                    jQuery("#delegacion").html("<option value=\'\'>Seleccione una provincia primero</option>");
                 }
-                jQuery("#direccion").attr("value", direccion);
+            }
+
+            jQuery("#estado").on("change", function(e){
+                cargar_municipios();
             });
-        } 
 
-          </script> 
-        </div>
-  ';
 
-  /*
-    <label for="shop_zip" class="lbl-text">'.esc_html__('Indique su ubicación en el Mapa','pointfindert2d').':</label>
-    <div id="map-canvas" data-latitude="latitude_petsitter" data-longitude="longitude_petsitter"></div>
-  */
+            jQuery("#delegacion").on("change", function(e){
+                vlz_coordenadas();
+            });
+
+            function vlz_coordenadas(){
+                var estado_id = jQuery("#estado").val();            
+                var municipio_id = jQuery("#delegacion > option[value=\'"+jQuery("#delegacion").val()+"\']").attr("data-id");      
+                
+                if( estado_id != "" && municipio_id != undefined ){
+
+                    var location    = estados_municipios[estado_id]["municipios"][municipio_id]["coordenadas"]["referencia"];
+                    var norte       = estados_municipios[estado_id]["municipios"][municipio_id]["coordenadas"]["norte"];
+                    var sur         = estados_municipios[estado_id]["municipios"][municipio_id]["coordenadas"]["sur"];
+
+                    jQuery("#latitude_petsitter").attr("value", location.lat);
+                    jQuery("#longitude_petsitter").attr("value", location.lng);
+
+                }
+            }
+
+        </script> 
+    </div>';
+
 ?>
 
