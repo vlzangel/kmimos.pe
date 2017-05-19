@@ -2,7 +2,7 @@
 
     require('../../../wp-load.php');
 
-	$info = get_kmimos_contacto();
+	$info = kmimos_get_info_syte();
 
 	add_filter( 'wp_mail_from_name', function( $name ) {
 		return $info["titulo"];
