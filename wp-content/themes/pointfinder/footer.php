@@ -37,7 +37,7 @@
                     <h2>¡B&uacute;scanos en nuestra redes sociales!</h2>
                     <div class="socialBtns">
                         <a href="https://www.facebook.com/<?php echo $datos["facebook"]; ?>/" target="_blank" class="facebookBtn socialBtn" title="<?php echo $datos["facebook"]; ?>"></a>
-                        <a href="https://twitter.com/<?php echo $datos["twitter"]; ?>" target="_blank"class="twitterBtn socialBtn" title="@<?php echo $datos["twitter"]; ?>"></a>
+                        <a href="https://twitter.com/<?php echo $datos["twitter"]; ?>" target="_blank" class="twitterBtn socialBtn" title="@<?php echo $datos["twitter"]; ?>"></a>
                         <a href="#" target="_blank" class="instagramBtn socialBtn" title="@<?php echo $datos["instagram"]; ?>"></a>
                         <img src="<?php bloginfo( 'template_directory' ); ?>/images/dog.png" alt="">
                     </div>

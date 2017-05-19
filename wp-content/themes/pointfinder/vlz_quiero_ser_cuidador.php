@@ -430,10 +430,10 @@
 								<div class="vlz_seccion">
 									<?php
 										$txts = array(
-											"pequenos" => "Te sugerimos un precio entre $100 a $200 pesos.",
-											"medianos" => "Te sugerimos un precio entre $180 a $250 Pesos.",
-											"grandes"  => "Te sugerimos un precio entre $220 a $300 pesos.",
-											"gigantes" => "Te sugerimos un precio entre $250 a $350 pesos"
+											"pequenos" => "Te sugerimos un precio entre 20 a 30 soles.",
+											"medianos" => "Te sugerimos un precio entre 25 a 35 soles.",
+											"grandes"  => "Te sugerimos un precio entre 30 a 40 soles.",
+											"gigantes" => "Te sugerimos un precio entre 35 a 50 soles."
 										);
 										foreach ($tam as $key => $value) {
 											echo '
