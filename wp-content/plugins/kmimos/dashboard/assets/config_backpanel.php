@@ -5,8 +5,11 @@
 $array_backpanel = [
 	'bp_reservas', 
 	'bp_conocer_cuidador', 
-	'bp_usuarios', 
-	'bp_suscriptores'
+	'bp_clientes', 
+	'bp_cuidadores', 
+	'bp_suscriptores',
+	'bp_estados_cuidadores',
+	'bp_wlabel',
 ];
 if( in_array($_GET['page'], $array_backpanel) ){ 
 
