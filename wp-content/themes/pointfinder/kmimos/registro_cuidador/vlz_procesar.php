@@ -626,10 +626,12 @@
                     ';
 
                     add_filter( 'wp_mail_from_name', function( $name ) {
-                        return $info_syte["titulo"];
+                        global $info;
+                        return $info["titulo"];
                     });
                     add_filter( 'wp_mail_from', function( $email ) {
-                        return $info_syte["email"]; 
+                        global $info;
+                        return $info["email"]; 
                     });
 
                     $mail_msg = kmimos_get_email_html("Gracias por registrarte como cuidador.", $mensaje_mail, 'Registro de Nuevo Cuidador.', true, true);
