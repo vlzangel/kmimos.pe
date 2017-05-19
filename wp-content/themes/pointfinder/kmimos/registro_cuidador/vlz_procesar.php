@@ -547,16 +547,16 @@
                             Estimado Kmiamigo, tu perfil ha sido creado con éxito.  El mismo permanecerá inactivo en la página hasta que completes los siguientes pasos listados abajo"
                         </p>
                         <p style="text-align: justify;">
-                            "Dichos pasos han sido diseñados para cumplir con un estricto perfil de seguridad, que garantice que cualquier persona que se convierta en Cuidador asociado Kmimos presente un perfil apto para cuidar y apapachar a nuestros peludos amigos"
+                            "Dichos pasos han sido diseñados para cumplir con un estricto perfil de seguridad, que garantice que cualquier persona que se convierta en Cuidador asociado Kmimos presente un perfil apto para cuidar y engreir a nuestros peludos amigos"
                         </p>
                         <p style="text-align: justify;">
                             <strong>Siguientes Pasos para activar tu perfil</strong>
                         </p>
                         <p style="text-align: justify;">
                             <ul>
-                                <li>Compártenos por Mensaje Directo a nuestro Facebook @Kmimosmx tu nombre y apellido completo, email, teléfono de casa y celular</li>
+                                <li>Compártenos por Mensaje Directo a nuestro Facebook @'.$info_syte["facebook"].' tu nombre y apellido completo, email, teléfono de casa y celular</li>
                                 <li>Una vez que nos envíes dichos datos, en menos de 24 horas recibirás en el correo que registraste las Pruebas Psicométricas y Pruebas de Conceptos Veterinarios básicos.  Por favor respóndelas, y nos llegará a nosotros un mensaje de completadas.</li>
-                                <li>En menos de 24 horas después de completadas las pruebas recibirás un correo por parte de Certificación Kmimos, notificando tus resultados.  NO TE OLVIDES DE CHECAR SIEMPRE LA BANDEJA DE ENTRADA O EL CORREO NO DESEADO, ya que a veces llegan allí los correos.</li>
+                                <li>En menos de 24 horas después de completadas las pruebas recibirás un correo por parte de Certificación Kmimos, notificando tus resultados.  NO TE OLVIDES DE REVISAR SIEMPRE LA BANDEJA DE ENTRADA O EL CORREO NO DESEADO, ya que a veces llegan allí los correos.</li>
                                 <li>En caso de haber aprobado, lee el archivo adjunto al correo que te muestra las políticas operativas.</li>
                                 <li>Por último, recibirás una llamada para entrevista telefónica y notificación para la auditoría a tu hogar.</li>
                             </ul>
@@ -592,6 +592,8 @@
                         </p>
                     ';
 
+                    $info_syte = kmimos_get_info_syte();
+
                     $mensaje_web = '
                         <style>
                             p{
@@ -607,33 +609,31 @@
                             Estimado Kmiamigo, tu perfil ha sido creado con éxito.  El mismo permanecerá inactivo en la página hasta que completes los siguientes pasos listados abajo"
                         </p>
                         <p style="text-align: justify;">
-                            "Dichos pasos han sido diseñados para cumplir con un estricto perfil de seguridad, que garantice que cualquier persona que se convierta en Cuidador asociado Kmimos presente un perfil apto para cuidar y apapachar a nuestros peludos amigos"
+                            "Dichos pasos han sido diseñados para cumplir con un estricto perfil de seguridad, que garantice que cualquier persona que se convierta en Cuidador asociado Kmimos presente un perfil apto para cuidar y engreir a nuestros peludos amigos"
                         </p>
                         <p style="text-align: justify;">
                             <strong>Siguientes Pasos para activar tu perfil</strong>
                         </p>
                         <p style="text-align: justify;">
                             <ul>
-                                <li style="text-align: justify;">Compártenos por Mensaje Directo a nuestro Facebook @Kmimosmx tu nombre y apellido completo, email, teléfono de casa y celular</li>
+                                <li style="text-align: justify;">Compártenos por Mensaje Directo a nuestro Facebook @'.$info_syte["facebook"].' tu nombre y apellido completo, email, teléfono de casa y celular</li>
                                 <li style="text-align: justify;">Una vez que nos envíes dichos datos, en menos de 24 horas recibirás en el correo que registraste las Pruebas Psicométricas y Pruebas de Conceptos Veterinarios básicos.  Por favor respóndelas, y nos llegará a nosotros un mensaje de completadas.</li>
-                                <li style="text-align: justify;">En menos de 24 horas después de completadas las pruebas recibirás un correo por parte de Certificación Kmimos, notificando tus resultados.  NO TE OLVIDES DE CHECAR SIEMPRE LA BANDEJA DE ENTRADA O EL CORREO NO DESEADO, ya que a veces llegan allí los correos.</li>
+                                <li style="text-align: justify;">En menos de 24 horas después de completadas las pruebas recibirás un correo por parte de Certificación Kmimos, notificando tus resultados.  NO TE OLVIDES DE REVISAR SIEMPRE LA BANDEJA DE ENTRADA O EL CORREO NO DESEADO, ya que a veces llegan allí los correos.</li>
                                 <li style="text-align: justify;">En caso de haber aprobado, lee el archivo adjunto al correo que te muestra las políticas operativas.</li>
                                 <li style="text-align: justify;">Por último, recibirás una llamada para entrevista telefónica y notificación para la auditoría a tu hogar.</li>
                             </ul>
                         </p>
                     ';
 
-                    $info = kmimos_get_info_syte();
-
                     add_filter( 'wp_mail_from_name', function( $name ) {
-                        return $info["titulo"];
+                        return $info_syte["titulo"];
                     });
                     add_filter( 'wp_mail_from', function( $email ) {
-                        return $info["email"]; 
+                        return $info_syte["email"]; 
                     });
 
                     $mail_msg = kmimos_get_email_html("Gracias por registrarte como cuidador.", $mensaje_mail, 'Registro de Nuevo Cuidador.', true, true);
-                    wp_mail( $email, "Kmimos México – Gracias por registrarte como cuidador! Kmimos la NUEVA forma de cuidar a tu perro!", $mail_msg);
+                    wp_mail( $email, "Kmimos ".$info["pais"]." – Gracias por registrarte como cuidador! Kmimos la NUEVA forma de cuidar a tu perro!", $mail_msg);
 
                     $error = array(
                         "error" => "NO",
