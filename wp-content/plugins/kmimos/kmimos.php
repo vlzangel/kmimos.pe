@@ -17,21 +17,20 @@
 include_once('includes/functions/kmimos_functions.php');
 include_once('plugins/woocommerce.php');
 
-if(!function_exists('get_pais')){
-    function get_pais(){
-        return "Perú";
-    }
-}
+include_once('includes/functions/vlz_functions.php');
 
-if(!function_exists('get_kmimos_contacto')){
-    function get_kmimos_contacto(){
+if(!function_exists('kmimos_get_info_syte')){
+    function kmimos_get_info_syte(){
         return array(
+            "pais"      => "Perú",
             "titulo"    => "Kmimos Perú",
             "email"     => "contactope@kmimos.la",
             "telefono"  => "(+51) 982443284",
             "twitter"   => "kmimospe",
             "facebook"  => "KmimosPe",
-            "instagram" => "kmimospe"
+            "instagram" => "kmimospe",
+            "mon_izq" => "S/.",
+            "mon_der" => ""
         );
     }
 }

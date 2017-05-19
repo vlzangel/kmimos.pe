@@ -1,16 +1,17 @@
 <?php
-
     require('../../../wp-load.php');
 
-    include("vlz_data_orden.php");
-    include("vlz_order_funciones.php");
+    $info = kmimos_get_info_syte();
 
-	add_filter( 'wp_mail_from_name', function( $name ) {
+    add_filter( 'wp_mail_from_name', function( $name ) {
 		return $info["titulo"];
 	});
 	add_filter( 'wp_mail_from', function( $email ) {
-		return $info["email"]; 
+		return $info["email"];
 	});
+
+	include("vlz_data_orden.php");
+	include("vlz_order_funciones.php");
 
 	echo "
 		<style>
@@ -23,7 +24,7 @@
 	if($booking->get_status() == "cancelled" ){
 
 		$msg_a_mostrar = $styles.'
-			<p>Hola <strong>'.$nom.',</strong></p>
+			<p>Hola <strong>'.$nom_cliente.',</strong></p>
 			<p align="justify">La reserva N° <strong>'.$reserva_id.'</strong> ya ha sido cancelada previamente.</p>
 			<p style="text-align: center;">
 	            <a 
@@ -65,7 +66,7 @@
 
 		$msg_cliente = $styles.'
 	    	<p><strong>Cancelación de Reserva (N°. '.$reserva_id.')</strong></p>
-			<p>Hola <strong>'.$nom.',</strong></p>
+			<p>Hola <strong>'.$nom_cliente.',</strong></p>
 			<p align="justify">Te notificamos que la reserva N° <strong>'.$reserva_id.'</strong> ha sido cancelada exitosamente de acuerdo a tu petición.</p>
 			<p align="justify">Si tienes alguna duda o comentario de la cancelación con todo gusto puedes contactarnos.</p>'
 			.$detalles_cuidador
@@ -99,19 +100,19 @@
 		$msg = $styles.'
 	    	<p><strong>Cancelación de Reserva (N°. '.$reserva_id.')</strong></p>
 			<p>Hola <strong>Administrador</strong>,</p>
-			<p align="justify">Te notificamos que el cliente <strong>'.$nom.'</strong> ha cancelado la reserva N° <strong>'.$reserva_id.'</strong>.</p>'
+			<p align="justify">Te notificamos que el cliente <strong>'.$nom_cliente.'</strong> ha cancelado la reserva N° <strong>'.$reserva_id.'</strong>.</p>'
 			.$detalles_cliente
 			.$detalles_cuidador
 			.$detalles_mascotas
 			.$detalles_servicio;
 	    
-   		$msg_admin = kmimos_get_email_html("Reserva Cancelada por Cliente - ".$cuidador_post->post_title, $msg, "", true, true);
+   		$msg_admin = kmimos_get_email_html("Reserva Cancelada por Cliente - ".$nom_cliente_cuidador, $msg, "", true, true);
 		wp_mail( $email_admin, "Cancelación de Reserva", $msg_admin, kmimos_mails_administradores());
 
    		$msg_cuidador = $styles.'
 	    	<p><strong>Cancelación de Reserva (N°. '.$reserva_id.')</strong></p>
-			<p>Hola <strong>'.$cuidador_post->post_title.'</strong>,</p>
-			<p align="justify">Te notificamos que el cliente <strong>'.$nom.'</strong> ha cancelado la reserva N° <strong>'.$reserva_id.'</strong>.</p>'
+			<p>Hola <strong>'.$nom_cliente_cuidador.'</strong>,</p>
+			<p align="justify">Te notificamos que el cliente <strong>'.$nom_cliente.'</strong> ha cancelado la reserva N° <strong>'.$reserva_id.'</strong>.</p>'
 			.$detalles_cliente
 			.$detalles_mascotas
 			.$detalles_servicio;
@@ -130,7 +131,7 @@
 
 	    $msg_a_mostrar = $styles.'
 	    	<p><strong>Cancelación de Reserva (N°. '.$reserva_id.')</strong></p>
-			<p>Hola <strong>'.$nom.',</strong></p>
+			<p>Hola <strong>'.$nom_cliente.',</strong></p>
 			<p align="justify">Te notificamos que la reserva N° <strong>'.$reserva_id.'</strong> ha sido cancelada exitosamente de acuerdo a tu petición.</p>
 			<p align="justify">Si tienes alguna duda o comentario de la cancelación con todo gusto puedes contactarnos.</p>'
 			.$detalles_cuidador
