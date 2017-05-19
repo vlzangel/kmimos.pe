@@ -161,8 +161,6 @@
 
 	        var distancia = calcular_rango_de_busqueda(norte, sur);
 
-	        console.log(sur);
-
 	        jQuery("#otra_latitud").attr("value", location.lat);
 	        jQuery("#otra_longitud").attr("value", location.lng);
 	        jQuery("#otra_distancia").attr("value", distancia);
