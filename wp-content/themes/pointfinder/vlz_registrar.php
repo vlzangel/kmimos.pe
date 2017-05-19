@@ -13,146 +13,152 @@
 		?>
 
 		<style type="text/css">
-			.vlz_titulo_interno span {
-			    color: #d80606;
-			    font-size: 11px;
-			    vertical-align: middle;
-			    float: none;
-			    display: block;
-			    line-height: 1.2;
-			    margin-top: 0px;
-			}
-			label{
-			    display: block;
-			}
-			.no_error{
-				display: none;
-			}
-			.error{
-				display: block;
-			    font-size: 10px;
-			    border: solid 1px #CCC;
-			    padding: 3px;
-			    border-radius: 0px 0px 3px 3px;
-			    background: #ffdcdc;
-			    line-height: 1.2;
-			    font-weight: 600;
-			}
-			.vlz_input_error{
-			    border-radius: 3px 3px 0px 0px !important;
-    			border-bottom: 0px !important;
-			}
-			.vlz_contenedor_listados {
-			    width: calc( 50% - 2px );
-			    display: inline-block;
-			    margin-bottom: 5px;
-			}
-			.vlz_img_portada{
-			    position: relative;
-			    height: 250px;
-			    overflow: hidden;
-			    border: solid 1px #ccc;
-			    background: #EEE;
-			    margin: 27px 6px 0px 3px;
-			    border-radius: 5px;
-			}
-			.vlz_seccion {
-			    margin-bottom: 0 !important;
-			}
-			#vlz_contenedor_selector_img .error{
-			    z-index: 200;
-			    position: absolute;
-			    width: 100%;
-			    border-radius: 5px 5px 0px 0px;
-			    top: 0px;
-			    font-size: 11px;
-			}
-			textarea.vlz_input {
-			    resize: none;
-			    height: 155px;
-			}
-			@media screen and (max-width: 750px){
-				.vlz_modal_ventana{
-					width: 90% !important;
+			<?php $estilos = "
+				.vlz_titulo_interno span {
+				    color: #d80606;
+				    font-size: 11px;
+				    vertical-align: middle;
+				    float: none;
+				    display: block;
+				    line-height: 1.2;
+				    margin-top: 0px;
 				}
-			}
-			@media screen and (max-width: 568px){
-				.vlz_seccion{
+				label{
+				    display: block;
+				}
+				.no_error{
+					display: none;
+				}
+				.error{
+					display: block;
+				    font-size: 10px;
+				    border: solid 1px #CCC;
+				    padding: 3px;
+				    border-radius: 0px 0px 3px 3px;
+				    background: #ffdcdc;
+				    line-height: 1.2;
+				    font-weight: 600;
+				}
+				.vlz_input_error{
+				    border-radius: 3px 3px 0px 0px !important;
+	    			border-bottom: 0px !important;
+				}
+				.vlz_contenedor_listados {
+				    width: calc( 50% - 2px );
+				    display: inline-block;
 				    margin-bottom: 5px;
 				}
-				.vlz_sub_seccion {
-				    margin-bottom: 0px;
-				}
-				.vlz_cell50{
-			        width: calc( 100% - 9px ) !important;
-				    margin-bottom: 5px;
-				}
-				.vlz_img_portada {
-				    margin: 0px 6px 0px 3px;
-				}
-
-				.vlz_img_portada {
+				.vlz_img_portada{
 				    position: relative;
-				    height: 200px;
+				    height: 250px;
 				    overflow: hidden;
 				    border: solid 1px #ccc;
 				    background: #EEE;
-				    margin: 0px 6px 0px 3px;
+				    margin: 27px 6px 0px 3px;
 				    border-radius: 5px;
 				}
-
-				.vlz_img_portada_fondo {
+				.vlz_seccion {
+				    margin-bottom: 0 !important;
+				}
+				#vlz_contenedor_selector_img .error{
+				    z-index: 200;
 				    position: absolute;
-				    top: 0px;
-				    left: 0px;
 				    width: 100%;
-				    height: 100%;
-				    z-index: 50;
-				    background-size: cover;
-				    background-position: center;
-				    background-repeat: no-repeat;
-				    background-color: transparent;
-				    filter: blur(2px);
-				    transition: all .5s ease;
-				}
-
-				.vlz_img_portada_normal {
-				    position: absolute;
+				    border-radius: 5px 5px 0px 0px;
 				    top: 0px;
-				    left: 10px;
-				    width: calc( 100% - 20px );
-				    height: 180px;
-				    z-index: 100;
-				    background-size: contain;
-				    background-position: center;
-				    background-repeat: no-repeat;
-				    background-color: transparent;
-				    margin: 10px 0px;
-				    transition: all .5s ease;
+				    font-size: 11px;
 				}
+				textarea.vlz_input {
+				    resize: none;
+				    height: 155px;
+				}
+				@media screen and (max-width: 750px){
+					.vlz_modal_ventana{
+						width: 90% !important;
+					}
+				}
+				@media screen and (max-width: 568px){
+					.vlz_seccion{
+					    margin-bottom: 5px;
+					}
+					.vlz_sub_seccion {
+					    margin-bottom: 0px;
+					}
+					.vlz_cell50{
+				        width: calc( 100% - 9px ) !important;
+					    margin-bottom: 5px;
+					}
+					.vlz_img_portada {
+					    margin: 0px 6px 0px 3px;
+					}
 
-				#check_term{
-				    display: block;
-				    padding-right: 30px;
-				    font-size: 12px !important;
-				    height: auto !important;
-				}
-				#boton_registrar_modal{
-			        display: inline-block;
-				    font-size: 13px;
-				    margin-top: 5px;
-				}
-				.vlz_modal_contenido {
-				    height: 320px !important;
-				}
+					.vlz_img_portada {
+					    position: relative;
+					    height: 200px;
+					    overflow: hidden;
+					    border: solid 1px #ccc;
+					    background: #EEE;
+					    margin: 0px 6px 0px 3px;
+					    border-radius: 5px;
+					}
 
-				.vlz_contenedor_listados, .vlz_contenedor_dir{
-			        width: calc( 100% - 9px ) !important;
-    				margin-bottom: 5px;
-				}
+					.vlz_img_portada_fondo {
+					    position: absolute;
+					    top: 0px;
+					    left: 0px;
+					    width: 100%;
+					    height: 100%;
+					    z-index: 50;
+					    background-size: cover;
+					    background-position: center;
+					    background-repeat: no-repeat;
+					    background-color: transparent;
+					    filter: blur(2px);
+					    transition: all .5s ease;
+					}
 
-			}	
-		</style>
+					.vlz_img_portada_normal {
+					    position: absolute;
+					    top: 0px;
+					    left: 10px;
+					    width: calc( 100% - 20px );
+					    height: 180px;
+					    z-index: 100;
+					    background-size: contain;
+					    background-position: center;
+					    background-repeat: no-repeat;
+					    background-color: transparent;
+					    margin: 10px 0px;
+					    transition: all .5s ease;
+					}
+
+					#check_term{
+					    display: block;
+					    padding-right: 30px;
+					    font-size: 12px !important;
+					    height: auto !important;
+					}
+					#boton_registrar_modal{
+				        display: inline-block;
+					    font-size: 13px;
+					    margin-top: 5px;
+					}
+					.vlz_modal_contenido {
+					    height: 320px !important;
+					}
+
+					.vlz_contenedor_listados, .vlz_contenedor_dir{
+				        width: calc( 100% - 9px ) !important;
+	    				margin-bottom: 5px;
+					}
+				}";
+
+			    $estilos = str_replace("\t", "", $estilos);
+			    $estilos = str_replace("  ", " ", $estilos);
+			    $estilos = str_replace("\n", " ", $estilos);
+
+				echo $estilos; ?>	
+			</style>
 
 		<div class="pf-blogpage-spacing pfb-top"></div>
 		<section role="main" class="blog-full-width">
@@ -209,12 +215,10 @@
 
 											<div class="vlz_sub_seccion">
 												<div class="vlz_cell50">
-													<!-- <input data-title="Formato Invalido<br>Ej: xxxx@mail.com" onpaste="return false;" autocomplete="off" type='text' id='email_1' name='email_1' class='vlz_input' placeholder='Ingresa tu e-mail' required pattern="^[\w._%-]+@[\w.-]+\.[a-zA-Z]{2,4}$" title="Ej. xxxx@xxxxx.xx"> -->
 													<input data-title="Formato Invalido<br>Ej: xxxx@mail.com" autocomplete="off" type='text' id='email_1' name='email_1' class='vlz_input' placeholder='Ingresa tu e-mail' required pattern="^[\w._%-]+@[\w.-]+\.[a-zA-Z]{2,4}$" title="Ej. xxxx@xxxxx.xx">
 												</div>
 
 												<div class="vlz_cell50">
-													<!-- <input data-title="Formato Invalido<br>Ej: xxxx@mail.com" onpaste="return false;" autocomplete="off" type='text' id='email_2' name='email_2' class='vlz_input' placeholder='Vuelve a ingresa tu e-mail' required pattern="^[\w._%-]+@[\w.-]+\.[a-zA-Z]{2,4}$" title="Ej. xxxx@xxxxx.xx"> -->
 													<input data-title="Formato Invalido<br>Ej: xxxx@mail.com" autocomplete="off" type='text' id='email_2' name='email_2' class='vlz_input' placeholder='Vuelve a ingresa tu e-mail' required pattern="^[\w._%-]+@[\w.-]+\.[a-zA-Z]{2,4}$" title="Ej. xxxx@xxxxx.xx">
 												</div>
 											</div>
@@ -300,7 +304,7 @@
 									switch(id){
 										case "movil":
 								      		var telefono = jQuery( "#movil" ).val();
-								      		if( telefono.length >= 7 && telefono.length <= 11 ){
+								      		if( telefono.length >= 7 ){
 								      			return true;
 								      		}else{
 								      			return false;
@@ -308,7 +312,7 @@
 										break;
 										case "telefono":
 								      		var telefono = jQuery( "#telefono" ).val();
-								      		if( telefono.length >= 7 && telefono.length <= 11 ){
+								      		if( telefono.length >= 7 ){
 								      			return true;
 								      		}else{
 								      			return false;
