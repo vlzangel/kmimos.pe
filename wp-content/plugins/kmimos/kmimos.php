@@ -27,7 +27,7 @@ if(!function_exists('kmimos_get_info_syte')){
             "email"     => "contactope@kmimos.la",
             "telefono"  => "(+51) 982443284",
             "twitter"   => "kmimospe",
-            "facebook"  => "KmimosPe",
+            "facebook"  => "Kmimospe",
             "instagram" => "kmimospe",
             "mon_izq" => "S/.",
             "mon_der" => ""
