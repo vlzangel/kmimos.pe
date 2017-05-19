@@ -189,11 +189,11 @@
 
 											<div class="vlz_sub_seccion">
 												<div class="vlz_cell50">
-													<input data-title="Debes ingresar tu número móvil<br>Este debe tener entre 7 y 11 dígitos." type='number' id='movil' maxlength="11" name='movil' class='vlz_input' placeholder='M&oacute;vil' required>
+													<input data-title="Debes ingresar tu número móvil<br>Este debe tener al menos 7 dígitos." type='number' id='movil' name='movil' class='vlz_input' placeholder='M&oacute;vil' required>
 												</div>
 												
 												<div class="vlz_cell50">
-													<input data-title="Debes ingresar tu número telefónico<br>Este debe tener entre 7 y 11 dígitos." type='number' id='telefono' maxlength="11" name='telefono' class='vlz_input' placeholder='Tel&eacute;fono' required>
+													<input data-title="Debes ingresar tu número telefónico<br>Este debe tener al menos 7 dígitos." type='number' id='telefono'  name='telefono' class='vlz_input' placeholder='Tel&eacute;fono' required>
 												</div>
 											</div>
 
