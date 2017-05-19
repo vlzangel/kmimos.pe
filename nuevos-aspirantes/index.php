@@ -366,7 +366,7 @@
 					Ponte en contacto con nosotros. Mándanos un email a 
 					<span class="resaltar"> s.cedeno@kmimos.la </span> 
 					o por Teléfono o Whatsapp al 
-					<span class="resaltar"> (51) 982 443 284 </span>
+					<span class="resaltar"> (+51) 963 585 100  </span>
 				</p>
 				<span class="help-title font-gris">La familia Kmimos te espera!!</span>
 			</article>
@@ -388,7 +388,7 @@
 					Ponte en contacto con nosotros. 
 					<span class="resaltar"> s.cedeno@kmimos.la </span> 
 					ó   
-					<span class="resaltar"> (51) 982 443 284  </span>
+					<span class="resaltar"> (+51) 963 585 100   </span>
 				</p>
 			</article>
 		</div>
