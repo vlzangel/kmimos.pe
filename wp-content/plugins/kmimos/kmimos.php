@@ -877,11 +877,30 @@ if(!function_exists('backpanel_subscribe')){
     }
 }
 
-if(!function_exists('backpanel_usuarios')){
-    function backpanel_usuarios(){
-        include_once('dashboard/backpanel_usuarios.php');
+if(!function_exists('backpanel_clientes')){
+    function backpanel_clientes(){
+        include_once('dashboard/backpanel_clientes.php');
     }
 }
+
+if(!function_exists('backpanel_cuidadores')){
+    function backpanel_cuidadores(){
+        include_once('dashboard/backpanel_cuidadores.php');
+    }
+}
+
+if(!function_exists('backpanel_estados_cuidadores')){
+    function backpanel_estados_cuidadores(){
+        include_once('dashboard/backpanel_estados_cuidadores.php');
+    }
+}
+
+if(!function_exists('backpanel_wlabel')){
+    function backpanel_wlabel(){
+        include_once('wlabel/admin/backpanel.php');
+    }
+}
+
 
 /**
  *  Inicializa el Panel Principal del menú en el área administrativa de Wordpress
