@@ -25,7 +25,7 @@ if(!function_exists('kmimos_get_info_syte')){
             "pais"      => "Perú",
             "titulo"    => "Kmimos Perú",
             "email"     => "contactope@kmimos.la",
-            "telefono"  => "(+51) 982443284",
+            "telefono"  => "(+51) 963 585 100",
             "twitter"   => "kmimospe",
             "facebook"  => "Kmimospe",
             "instagram" => "kmimospe",
