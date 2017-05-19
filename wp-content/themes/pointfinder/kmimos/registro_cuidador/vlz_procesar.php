@@ -532,6 +532,8 @@
                     $user_signon = wp_signon( $info, true );
                     wp_set_auth_cookie($user_signon->ID);
 
+                    $info_syte = kmimos_get_info_syte();
+
                     $mensaje_mail = '
                         <style>
                             p{
@@ -592,8 +594,6 @@
                         </p>
                     ';
 
-                    $info_syte = kmimos_get_info_syte();
-
                     $mensaje_web = '
                         <style>
                             p{
@@ -626,16 +626,16 @@
                     ';
 
                     add_filter( 'wp_mail_from_name', function( $name ) {
-                        global $info;
-                        return $info["titulo"];
+                        global $info_syte;
+                        return $info_syte["titulo"];
                     });
                     add_filter( 'wp_mail_from', function( $email ) {
-                        global $info;
-                        return $info["email"]; 
+                        global $info_syte;
+                        return $info_syte["email"]; 
                     });
 
                     $mail_msg = kmimos_get_email_html("Gracias por registrarte como cuidador.", $mensaje_mail, 'Registro de Nuevo Cuidador.', true, true);
-                    wp_mail( $email, "Kmimos ".$info["pais"]." – Gracias por registrarte como cuidador! Kmimos la NUEVA forma de cuidar a tu perro!", $mail_msg);
+                    wp_mail( $email, "Kmimos ".$info_syte["pais"]." – Gracias por registrarte como cuidador! Kmimos la NUEVA forma de cuidar a tu perro!", $mail_msg);
 
                     $error = array(
                         "error" => "NO",
