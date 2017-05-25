@@ -387,7 +387,7 @@
 
 											<div class="vlz_modal_contenido" style="height: auto;">
 													<p align="justify">
-														Kmimos no te obliga a fijar un precio, sin embargo quisiéramos sugerir que sigas la siguiente tabla, la cual está creada en base a las tendencias de mercado actuales
+														Kmimos no te obliga a fijar un precio, sin embargo quisiéramos sugerir que sigas la siguiente tabla, la cual está creada en base a las tendencias de mercado actuales.
 													</p>
 													<br>
 													<table style="border-radius: 2px">
@@ -410,11 +410,11 @@
 													</tbody></table>
 													<br>
 													<p align="justify">
-														<strong>IMPORTANTE:</strong> recuerda que siempre podrás colocar el precio que a ti mejor se te acomode
+														<strong>IMPORTANTE:</strong> Recuerda que siempre podrás colocar el precio que más te convenga.
 													</p>
 													
 													<p align="justify">
-														<strong>NOTA</strong>: en esta sección deberás colocar el precio que deseas percibir como ingreso. sobre dicho precio, el sistema le incrementará un 20% de manera automática. Cuando un cliente haga una búsqueda y se le despliegue los diferentes cuidadores disponibles para él, el precio que le mostrará la página será tu costo mas dicho 20%.
+														<strong>NOTA</strong>: en esta sección deberás colocar el precio que deseas percibir como ingreso. sobre dicho precio, el sistema le incrementará un 20% de manera automática. Cuando un cliente haga una búsqueda y se le despliegue los diferentes cuidadores disponibles para él, el precio que le mostrará la página será tu costo más dicho 20%.
 													</p>
 											</div>
 											<div class="vlz_modal_pie" style="border-radius: 0px 0px 5px 5px!important; height: 70px;">
