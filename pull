@@ -1,6 +1,0 @@
-#! /bin/bash
-
-git checkout -- .
-git pull
-#chown -R www-data:www-data .
-#chmod -R 777 .
