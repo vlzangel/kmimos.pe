@@ -9,156 +9,149 @@
 
 		<?php 
 			include("vlz/form/vlz_styles.php"); 
-			include("vlz/form/vlz_scripts.php"); 
 		?>
 
 		<style type="text/css">
-			<?php $estilos = "
-				.vlz_titulo_interno span {
-				    color: #d80606;
-				    font-size: 11px;
-				    vertical-align: middle;
-				    float: none;
-				    display: block;
-				    line-height: 1.2;
-				    margin-top: 0px;
+			.vlz_titulo_interno span {
+			    color: #d80606;
+			    font-size: 11px;
+			    vertical-align: middle;
+			    float: none;
+			    display: block;
+			    line-height: 1.2;
+			    margin-top: 0px;
+			}
+			label{
+			    display: block;
+			}
+			.no_error{
+				display: none;
+			}
+			.error{
+				display: block;
+			    font-size: 10px;
+			    border: solid 1px #CCC;
+			    padding: 3px;
+			    border-radius: 0px 0px 3px 3px;
+			    background: #ffdcdc;
+			    line-height: 1.2;
+			    font-weight: 600;
+			}
+			.vlz_input_error{
+			    border-radius: 3px 3px 0px 0px !important;
+    			border-bottom: 0px !important;
+			}
+			.vlz_contenedor_listados {
+			    width: calc( 50% - 2px );
+			    display: inline-block;
+			    margin-bottom: 5px;
+			}
+			.vlz_img_portada{
+			    position: relative;
+			    height: 250px;
+			    overflow: hidden;
+			    border: solid 1px #ccc;
+			    background: #EEE;
+			    margin: 27px 6px 0px 3px;
+			    border-radius: 5px;
+			}
+			.vlz_seccion {
+			    margin-bottom: 0 !important;
+			}
+			#vlz_contenedor_selector_img .error{
+			    z-index: 200;
+			    position: absolute;
+			    width: 100%;
+			    border-radius: 5px 5px 0px 0px;
+			    top: 0px;
+			    font-size: 11px;
+			}
+			textarea.vlz_input {
+			    resize: none;
+			    height: 155px;
+			}
+			@media screen and (max-width: 750px){
+				.vlz_modal_ventana{
+					width: 90% !important;
 				}
-				label{
-				    display: block;
-				}
-				.no_error{
-					display: none;
-				}
-				.error{
-					display: block;
-				    font-size: 10px;
-				    border: solid 1px #CCC;
-				    padding: 3px;
-				    border-radius: 0px 0px 3px 3px;
-				    background: #ffdcdc;
-				    line-height: 1.2;
-				    font-weight: 600;
-				}
-				.vlz_input_error{
-				    border-radius: 3px 3px 0px 0px !important;
-	    			border-bottom: 0px !important;
-				}
-				.vlz_contenedor_listados {
-				    width: calc( 50% - 2px );
-				    display: inline-block;
+			}
+			@media screen and (max-width: 568px){
+				.vlz_seccion{
 				    margin-bottom: 5px;
 				}
-				.vlz_img_portada{
+				.vlz_sub_seccion {
+				    margin-bottom: 0px;
+				}
+				.vlz_cell50{
+			        width: calc( 100% - 9px ) !important;
+				    margin-bottom: 5px;
+				}
+				.vlz_img_portada {
+				    margin: 0px 6px 0px 3px;
+				}
+
+				.vlz_img_portada {
 				    position: relative;
-				    height: 250px;
+				    height: 200px;
 				    overflow: hidden;
 				    border: solid 1px #ccc;
 				    background: #EEE;
-				    margin: 27px 6px 0px 3px;
+				    margin: 0px 6px 0px 3px;
 				    border-radius: 5px;
 				}
-				.vlz_seccion {
-				    margin-bottom: 0 !important;
-				}
-				#vlz_contenedor_selector_img .error{
-				    z-index: 200;
+
+				.vlz_img_portada_fondo {
 				    position: absolute;
-				    width: 100%;
-				    border-radius: 5px 5px 0px 0px;
 				    top: 0px;
-				    font-size: 11px;
+				    left: 0px;
+				    width: 100%;
+				    height: 100%;
+				    z-index: 50;
+				    background-size: cover;
+				    background-position: center;
+				    background-repeat: no-repeat;
+				    background-color: transparent;
+				    filter: blur(2px);
+				    transition: all .5s ease;
 				}
-				textarea.vlz_input {
-				    resize: none;
-				    height: 155px;
+
+				.vlz_img_portada_normal {
+				    position: absolute;
+				    top: 0px;
+				    left: 10px;
+				    width: calc( 100% - 20px );
+				    height: 180px;
+				    z-index: 100;
+				    background-size: contain;
+				    background-position: center;
+				    background-repeat: no-repeat;
+				    background-color: transparent;
+				    margin: 10px 0px;
+				    transition: all .5s ease;
 				}
-				@media screen and (max-width: 750px){
-					.vlz_modal_ventana{
-						width: 90% !important;
-					}
+
+				#check_term{
+				    display: block;
+				    padding-right: 30px;
+				    font-size: 12px !important;
+				    height: auto !important;
 				}
-				@media screen and (max-width: 568px){
-					.vlz_seccion{
-					    margin-bottom: 5px;
-					}
-					.vlz_sub_seccion {
-					    margin-bottom: 0px;
-					}
-					.vlz_cell50{
-				        width: calc( 100% - 9px ) !important;
-					    margin-bottom: 5px;
-					}
-					.vlz_img_portada {
-					    margin: 0px 6px 0px 3px;
-					}
+				#boton_registrar_modal{
+			        display: inline-block;
+				    font-size: 13px;
+				    margin-top: 5px;
+				}
+				.vlz_modal_contenido {
+				    height: 320px !important;
+				}
 
-					.vlz_img_portada {
-					    position: relative;
-					    height: 200px;
-					    overflow: hidden;
-					    border: solid 1px #ccc;
-					    background: #EEE;
-					    margin: 0px 6px 0px 3px;
-					    border-radius: 5px;
-					}
+				.vlz_contenedor_listados, .vlz_contenedor_dir{
+			        width: calc( 100% - 9px ) !important;
+    				margin-bottom: 5px;
+				}
 
-					.vlz_img_portada_fondo {
-					    position: absolute;
-					    top: 0px;
-					    left: 0px;
-					    width: 100%;
-					    height: 100%;
-					    z-index: 50;
-					    background-size: cover;
-					    background-position: center;
-					    background-repeat: no-repeat;
-					    background-color: transparent;
-					    filter: blur(2px);
-					    transition: all .5s ease;
-					}
-
-					.vlz_img_portada_normal {
-					    position: absolute;
-					    top: 0px;
-					    left: 10px;
-					    width: calc( 100% - 20px );
-					    height: 180px;
-					    z-index: 100;
-					    background-size: contain;
-					    background-position: center;
-					    background-repeat: no-repeat;
-					    background-color: transparent;
-					    margin: 10px 0px;
-					    transition: all .5s ease;
-					}
-
-					#check_term{
-					    display: block;
-					    padding-right: 30px;
-					    font-size: 12px !important;
-					    height: auto !important;
-					}
-					#boton_registrar_modal{
-				        display: inline-block;
-					    font-size: 13px;
-					    margin-top: 5px;
-					}
-					.vlz_modal_contenido {
-					    height: 320px !important;
-					}
-
-					.vlz_contenedor_listados, .vlz_contenedor_dir{
-				        width: calc( 100% - 9px ) !important;
-	    				margin-bottom: 5px;
-					}
-				}";
-
-			    $estilos = str_replace("\t", "", $estilos);
-			    $estilos = str_replace("  ", " ", $estilos);
-			    $estilos = str_replace("\n", " ", $estilos);
-
-				echo $estilos; ?>	
-			</style>
+			}	
+		</style>
 
 		<div class="pf-blogpage-spacing pfb-top"></div>
 		<section role="main" class="blog-full-width">
@@ -183,17 +176,17 @@
 												</div>
 												
 												<div class="vlz_cell50">
-													<input data-title="Debes ingresar tu apellido<br>Este debe tener mínimo 3 caracteres." type='text' id='apellidos' name='apellidos' class='vlz_input' placeholder='Apellidos' required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,25}" >
+													<input data-title="Debes ingresar tu apellido<br>Este debe tener mínimo 2 caracteres." type='text' id='apellidos' name='apellidos' class='vlz_input' placeholder='Apellidos' required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,25}" >
 												</div>
 											</div>
 
 											<div class="vlz_sub_seccion">
 												<div class="vlz_cell50">
-													<input data-title="Debes ingresar tu número móvil<br>Este debe tener al menos 7 dígitos." type='number' id='movil' name='movil' class='vlz_input' placeholder='M&oacute;vil' required>
+													<input data-title="Debes ingresar tu número móvil<br>Este debe tener entre 10 y 11 dígitos." type='number' id='movil' maxlength="11" name='movil' class='vlz_input' placeholder='M&oacute;vil' required pattern="[0-9]{11}">
 												</div>
 												
 												<div class="vlz_cell50">
-													<input data-title="Debes ingresar tu número telefónico<br>Este debe tener al menos 7 dígitos." type='number' id='telefono'  name='telefono' class='vlz_input' placeholder='Tel&eacute;fono' required>
+													<input data-title="Debes ingresar tu número telefónico<br>Este debe tener entre 10 y 11 dígitos." type='number' id='telefono' maxlength="11" name='telefono' class='vlz_input' placeholder='Tel&eacute;fono' required pattern="[0-9]{11}">
 												</div>
 											</div>
 
@@ -205,7 +198,19 @@
 													<?php
 														$referidos = get_referred_list_options();
 														foreach ($referidos as $key => $value) {
-															echo "<option value='{$key}'>{$value}</option>";
+															$selected='';
+															if(array_key_exists('wlabel',$_SESSION)){
+																$wlabel=$_SESSION['wlabel'];
+
+																if($key=='Volaris' && $wlabel=='volaris'){
+																	$selected='selected';
+
+																}else if($key=='Vintermex' && $wlabel=='viajesintermex'){
+																	$selected='selected';
+																}
+															}
+
+															echo "<option value='{$key}' $selected>{$value}</option>";
 														}
 													?>
                                                 </select>
@@ -215,11 +220,11 @@
 
 											<div class="vlz_sub_seccion">
 												<div class="vlz_cell50">
-													<input data-title="Formato Invalido<br>Ej: xxxx@mail.com" autocomplete="off" type='text' id='email_1' name='email_1' class='vlz_input' placeholder='Ingresa tu e-mail' required pattern="^[\w._%-]+@[\w.-]+\.[a-zA-Z]{2,4}$" title="Ej. xxxx@xxxxx.xx">
+													<input data-title="Formato Invalido<br>Ej: xxxx@mail.com" onpaste="return false;" autocomplete="off" type='text' id='email_1' name='email_1' class='vlz_input' placeholder='Ingresa tu e-mail' required pattern="^[\w._%-]+@[\w.-]+\.[a-zA-Z]{2,4}$" title="Ej. xxxx@xxxxx.xx">
 												</div>
 
 												<div class="vlz_cell50">
-													<input data-title="Formato Invalido<br>Ej: xxxx@mail.com" autocomplete="off" type='text' id='email_2' name='email_2' class='vlz_input' placeholder='Vuelve a ingresa tu e-mail' required pattern="^[\w._%-]+@[\w.-]+\.[a-zA-Z]{2,4}$" title="Ej. xxxx@xxxxx.xx">
+													<input data-title="Formato Invalido<br>Ej: xxxx@mail.com" onpaste="return false;" autocomplete="off" type='text' id='email_2' name='email_2' class='vlz_input' placeholder='Vuelve a ingresa tu e-mail' required pattern="^[\w._%-]+@[\w.-]+\.[a-zA-Z]{2,4}$" title="Ej. xxxx@xxxxx.xx">
 												</div>
 											</div>
 														
@@ -244,7 +249,7 @@
 														name='clave2' 
 														data-title="<strong>Las contraseñas son requeridas y deben ser iguales</strong>" 
 														class='vlz_input'
-														placeholder='Repetir Contraseña' 
+														placeholder='Contraseña' 
 														required 
 														autocomplete="off"
 													>
@@ -256,8 +261,8 @@
 
 											<div class="vlz_seccion">
 												<div class="vlz_img_portada">
-					                                <div class="vlz_img_portada_fondo" style="background-image: url(<?php echo get_template_directory_uri()."/images/noimg.png"; ?>);"></div>
-					                                <div class="vlz_img_portada_normal" style="background-image: url(<?php echo get_template_directory_uri()."/images/noimg.png"; ?>);"></div>
+					                                <div class="vlz_img_portada_fondo" style="background-image: url(<?php echo get_home_url()."/wp-content/themes/pointfinder"."/images/noimg.png"; ?>);"></div>
+					                                <div class="vlz_img_portada_normal" style="background-image: url(<?php echo get_home_url()."/wp-content/themes/pointfinder"."/images/noimg.png"; ?>);"></div>
 					                                <div class="vlz_cambiar_portada">
 					                                	Subir Foto
 					                                	<input type="file" id="portada" name="portada" accept="image/*" />
@@ -295,6 +300,7 @@
 								form.addEventListener( 'invalid', function(event){
 							        event.preventDefault();
 							        jQuery("#error_"+event.target.id).html( jQuery("#error_"+event.target.id).attr("data-title") );
+
 							        jQuery("#error_"+event.target.id).removeClass("no_error");
 							        jQuery("#error_"+event.target.id).addClass("error");
 							        jQuery("#"+event.target.id).addClass("vlz_input_error");
@@ -304,7 +310,8 @@
 									switch(id){
 										case "movil":
 								      		var telefono = jQuery( "#movil" ).val();
-								      		if( telefono.length >= 7 ){
+
+								      		if( telefono.length >= 10 && telefono.length <= 11 ){
 								      			return true;
 								      		}else{
 								      			return false;
@@ -312,7 +319,8 @@
 										break;
 										case "telefono":
 								      		var telefono = jQuery( "#telefono" ).val();
-								      		if( telefono.length >= 7 ){
+
+								      		if( telefono.length >= 10 && telefono.length <= 11 ){
 								      			return true;
 								      		}else{
 								      			return false;
@@ -341,7 +349,7 @@
 									}
 								}
 
-								form.addEventListener( 'keyup', function(event){
+								form.addEventListener( 'keypress', function(event){
 							        if ( event.target.validity.valid && especiales(event.target.id) ) {
 							        	if( jQuery("#error_"+event.target.id).hasClass( "error" ) ){
 							        		jQuery("#error_"+event.target.id).removeClass("error");
@@ -421,8 +429,10 @@
 						      		jQuery(".vlz_modal_contenido").css("display", "none");
 						      		jQuery("#vlz_cargando").css("display", "block");
 
+						      		// jQuery("#vlz_cargando").html("<h2>Enviando Informaci&oacute;n al correo...</h2>");
+
 						      		jQuery.ajax({
-									    url: '<?php echo get_template_directory_uri()."/vlz/form/vlz_mail_cliente.php"; ?>',
+									    url: '<?php echo get_home_url()."/wp-content/themes/pointfinder"."/vlz/form/vlz_mail_cliente.php"; ?>',
 									    type: "post",
 									    data: {
 											nombre: jQuery("#nombres").attr("value")+" "+jQuery("#apellidos").attr("value"),
@@ -451,7 +461,7 @@
 							            var terminos = jQuery("#terminos").attr("value");
 							      		if( terminos == 1){
 
-							      			var a = "<?php echo get_template_directory_uri()."/vlz/form/vlz_registrar.php"; ?>";
+							      			var a = "<?php echo get_home_url()."/wp-content/themes/pointfinder"."/vlz/form/vlz_registrar.php"; ?>";
 
 								      		jQuery("#vlz_contenedor_botones").css("display", "none");
 								      		jQuery(".vlz_modal_contenido").css("display", "none");
@@ -462,6 +472,7 @@
 								      		jQuery("#vlz_titulo_registro").html("Registrando, por favor espere...");
 							             	
 								      		jQuery.post( a, jQuery("#vlz_form_nuevo_cliente").serialize(), function( data ) {
+								      			// console.log(data);
 									      		mail_ext_temp(data);
 											});
 
@@ -473,6 +484,8 @@
 						      		}
 
 						      	});
+
+						      	
 
 						      	function mails_iguales(e){
 						      		if( e.currentTarget.name == 'email_1' || e.currentTarget.name == 'email_2' ){
@@ -524,9 +537,8 @@
 						      	jQuery( "#clave" ).keyup(clvs_iguales);
 						      	jQuery( "#clave2" ).keyup(clvs_iguales);
 
-
 						      	jQuery( "#email_1" ).blur(function(){
-						      		var a = "<?php echo get_template_directory_uri()."/vlz/form/vlz_verificar_email.php"; ?>";
+						      		var a = "<?php echo get_home_url()."/wp-content/themes/pointfinder"."/vlz/form/vlz_verificar_email.php"; ?>";
 					      			jQuery.post( a, {email: jQuery("#email_1").attr("value")}, function( data ) {
 							      		data = eval(data);
 							      		if( data.error == "SI" ){
@@ -546,6 +558,7 @@
 						      		var campos = ["movil", "telefono", "email_1", "email_2", "clave", "clave2"];
 						      		campos.forEach(function(item, index){
 						      			if( !especiales(item) ){
+						      				console.log(item);
 						      				error++;
 						      			}
 						      		});
@@ -561,7 +574,7 @@
 										});
 						      			jQuery('html, body').animate({ scrollTop: jQuery(primer_error).offset().top-75 }, 2000);
 						      		}else{
-							      		var a = "<?php echo get_template_directory_uri()."/vlz/form/vlz_verificar_email.php"; ?>";
+							      		var a = "<?php echo get_home_url()."/wp-content/themes/pointfinder"."/vlz/form/vlz_verificar_email.php"; ?>";
 						      			jQuery.post( a, {email: jQuery("#email_1").attr("value")}, function( data ) {
 								      		data = eval(data);
 								      		if( data.error == "SI" ){
