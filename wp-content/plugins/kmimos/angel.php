@@ -212,6 +212,17 @@
         }
     }
 
+    if(!function_exists('kmimos_get_foto')){
+        function kmimos_get_foto($user_id){
+            global $wpdb;
+            $name_photo = $wpdb->get_var("SELECT meta_value FROM wp_usermeta WHERE user_id = {$user_id} AND meta_key = 'name_photo'");
+            if( !empty($name_photo)  ){ 
+                $img = $home."/wp-content/uploads/avatares/{$user_id}/{$name_photo}"; 
+            }
+            return $img;
+        }
+    }
+
     if(!function_exists('kmimos_style')){
         function kmimos_style($styles = array()){
             

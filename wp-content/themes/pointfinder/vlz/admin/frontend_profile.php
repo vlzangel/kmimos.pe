@@ -32,49 +32,18 @@
     }
 
     $this->ScriptOutput = "
-                                $.pfAjaxUserSystemVars4 = {};
-                                $.pfAjaxUserSystemVars4.email_err = '".esc_html__('Por favor, escriba un correo electrónico','pointfindert2d')."';
-                                $.pfAjaxUserSystemVars4.email_err2 = '".esc_html__('Su dirección de correo electrónico debe estar en el formato de nombre@dominio.com','pointfindert2d')."';
-                                $.pfAjaxUserSystemVars4.nickname_err = '".esc_html__('Por favor, escriba apodo','pointfindert2d')."';
-                                $.pfAjaxUserSystemVars4.nickname_err2 = '".esc_html__('Por favor, introduzca al menos 3 caracteres por el apodo.','pointfindert2d')."';
-                                $.pfAjaxUserSystemVars4.passwd_err = '".esc_html__('Introduzca al menos 7 caracteres','pointfindert2d')."';
-                                $.pfAjaxUserSystemVars4.passwd_err2 = '".esc_html__('Introduzca la misma contraseña que el anterior','pointfindert2d')."';
-                            ";
+        $.pfAjaxUserSystemVars4 = {};
+        $.pfAjaxUserSystemVars4.email_err = '".esc_html__('Por favor, escriba un correo electrónico','pointfindert2d')."';
+        $.pfAjaxUserSystemVars4.email_err2 = '".esc_html__('Su dirección de correo electrónico debe estar en el formato de nombre@dominio.com','pointfindert2d')."';
+        $.pfAjaxUserSystemVars4.nickname_err = '".esc_html__('Por favor, escriba apodo','pointfindert2d')."';
+        $.pfAjaxUserSystemVars4.nickname_err2 = '".esc_html__('Por favor, introduzca al menos 3 caracteres por el apodo.','pointfindert2d')."';
+        $.pfAjaxUserSystemVars4.passwd_err = '".esc_html__('Introduzca al menos 7 caracteres','pointfindert2d')."';
+        $.pfAjaxUserSystemVars4.passwd_err2 = '".esc_html__('Introduzca la misma contraseña que el anterior','pointfindert2d')."';
+    ";
 
     $user = new WP_User( $user_id );
 
-    $referred = $usermetaarr['name_photo'][0];
-    if( $referred == "" ){
-        $referred = "0";
-    }
-    if( $user->roles[0] == "vendor" ){
-        global $wpdb;
-        $cuidador = $wpdb->get_row("SELECT id, portada FROM cuidadores WHERE user_id = '$user_id'");
-        $user_id_tipo = $cuidador->id;
-
-        $name_photo = get_user_meta($user_id, "name_photo", true);
-        if( empty($name_photo)  ){ $name_photo = "0.jpg"; }
-
-        if( file_exists("wp-content/uploads/cuidadores/avatares/".$cuidador->id."/{$name_photo}") ){
-            $imagen = get_home_url()."/wp-content/uploads/cuidadores/avatares/".$cuidador->id."/{$name_photo}";
-        }elseif( file_exists("/wp-content/uploads/cuidadores/avatares/".$cuidador->id."/0.jpg") ){
-            $imagen = get_home_url()."/wp-content/uploads/cuidadores/avatares/".$cuidador->id."/0.jpg";
-        }else{
-            $imagen = get_home_url()."/wp-content/themes/pointfinder".'/images/noimg.png';
-        }
-    }else{
-        $user_id_tipo = $user_id;
-        $name_photo = get_user_meta($user_id, "name_photo", true);
-        if( empty($name_photo)  ){ $name_photo = "0"; }
-        if( file_exists("wp-content/uploads/avatares_clientes/".$user_id."/{$name_photo}") ){
-            $imagen = get_home_url()."/wp-content/uploads/avatares_clientes/".$user_id."/{$name_photo}";
-        }elseif( file_exists("wp-content/uploads/avatares_clientes/".$user_id."/0.jpg") ){
-            $imagen = get_home_url()."/wp-content/uploads/avatares_clientes/".$user_id."/0.jpg";
-        }else{
-            $imagen = get_home_url()."/wp-content/themes/pointfinder".'/images/noimg.png';
-        }
-
-    }
+    $imagen = kmimos_get_foto($user_id);
 
     $referred = $usermetaarr['user_referred'][0];
 
