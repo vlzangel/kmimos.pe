@@ -17,17 +17,6 @@ function getRazaDescripcion($id, $razas){
 	return $nombre;
 }
 
-function get_razas(){
-	global $wpdb;
-	$sql = "SELECT * FROM razas ";
-	$result = $wpdb->get_results($sql);
-	$razas = [];
-	foreach ($result as $raza) {
-		$razas[$raza->id] = $raza->nombre;
-	}
-	return $razas;
-}
-
 function getCountReservas( $author_id=0, $interval=12, $desde="", $hasta=""){
 
 	$filtro_adicional = "";
@@ -63,7 +52,7 @@ function getCountReservas( $author_id=0, $interval=12, $desde="", $hasta=""){
 	return $result;
 }
 
-function get_status($sts_reserva, $sts_pedido, $forma_pago=""){
+function get_status($sts_reserva, $sts_pedido, $forma_pago="", $id_reserva){
 	
 	// Cargar a totales
 	$addTotal = 0;
@@ -99,31 +88,27 @@ function get_status($sts_reserva, $sts_pedido, $forma_pago=""){
 			}
 			if( $sts_pedido == 'wc-pending'){
 				$sts_largo = 'Pendiente de pago';
-/*
-				$sts_corto = "Fallida";
-				if( in_array($forma_pago, $payment_method_cards) ){
-					$sts_largo = "Pendiente por confirmar el cuidador"; // metodo de pago es por TDC / TDD ( parcial )
-				}elseif( in_array($forma_pago, $payment_method_store) ){
-					$sts_largo = "Pendiente de pago en tienda"; // Tienda por conv
-				}else{
-					$sts_largo = "Estatus Pedido: {$sts_pedido}"; 
-				}
-*/
 			}
-			break;
+		break;
 		case 'confirmed':
 			$sts_corto = 'Confirmado';
 			$sts_largo = 'Confirmado';
 			$addTotal  = 1;
-			break;
+		break;
 		case 'paid':
 			$sts_corto = 'Pagado';
 			$sts_largo = 'Pagado';
-			break;
+		break;
 		case 'cancelled':
 			$sts_corto = 'Cancelado';
 			$sts_largo = 'Cancelado';
-			break;
+		break;
+		// Modificacion Ángel Veloz
+		case 'modified':
+			$por = get_post_meta( $id_reserva, 'reserva_modificada', true );
+			$sts_corto = 'Modificado';
+			$sts_largo = 'Modificado por la reserva: '.$por;
+		break;
 	}
 
 	return 	$result = [ 
@@ -143,27 +128,7 @@ function photo_exists($path=""){
 	return $photo;
 }
 
-function getEdad($fecha){
-	$fecha = str_replace("/","-",$fecha);
-	$hoy = date('Y/m/d');
 
-	$diff = abs(strtotime($hoy) - strtotime($fecha) );
-	$years = floor($diff / (365*60*60*24)); 
-	$desc = " Años";
-	$edad = $years;
-	if($edad==0){
-		$months  = floor(($diff - $years * 365*60*60*24) / (30*60*60*24)); 
-		$edad = $months;
-		$desc = ($edad > 1) ? " Meses" : " Mes";
-	}
-	if($edad==0){
-		$days  = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
-		$edad = $days;
-		$desc = " Días";
-	}
-
-	return $edad . $desc;
-}
 
 
 function getMascotas($user_id){
@@ -258,7 +223,7 @@ function getMetaCuidador( $user_id ){
 }
 
 function getMetaReserva( $post_id ){
-	$condicion = " AND meta_key IN ( '_booking_start', '_booking_end', '_booking_cost' )";
+	$condicion = " AND meta_key IN ( '_booking_start', '_booking_end', '_booking_cost', 'modificacion_de' )";
 	$result = get_metaPost($post_id, $condicion);
 
 	$data = [
@@ -336,7 +301,7 @@ function getReservas($desde="", $hasta=""){
 
 	if( !empty($desde) && !empty($hasta) ){
 		$filtro_adicional = " 
-			AND DATE_FORMAT(r.post_date, '%m-%d-%Y') between DATE_FORMAT('{$desde}','%m-%d-%Y') and DATE_FORMAT('{$hasta}','%m-%d-%Y')
+			AND ( r.post_date >= '{$desde} 00:00:00' and  r.post_date <= '{$hasta} 23:59:59' )
 		";
 	}else{
 		$filtro_adicional = " AND MONTH(r.post_date) = MONTH(NOW()) AND YEAR(r.post_date) = YEAR(NOW()) ";
@@ -351,6 +316,7 @@ function getReservas($desde="", $hasta=""){
  			p.ID as 'nro_pedido',
  			p.post_status as 'estatus_pago', 			
 			pr.post_title as 'producto_title',
+			pr.post_name as 'producto_name',			
  			(du.meta_value -1) as  'nro_noches',
  			(IFNULL(mpe.meta_value,0) + IFNULL(mme.meta_value,0) + IFNULL(mgr.meta_value,0) + IFNULL(mgi.meta_value,0)) as nro_mascotas,
  			((du.meta_value -1) * ( IFNULL(mpe.meta_value,0) + IFNULL(mme.meta_value,0) + IFNULL(mgr.meta_value,0) + IFNULL(mgi.meta_value,0) )) as 'total_noches',
@@ -366,8 +332,8 @@ function getReservas($desde="", $hasta=""){
 
 			LEFT JOIN wp_woocommerce_order_itemmeta as fe  ON (fe.order_item_id  = rm.meta_value and fe.meta_key  = 'Fecha de Reserva')
 			LEFT JOIN wp_woocommerce_order_itemmeta as du  ON (du.order_item_id  = rm.meta_value and du.meta_key  = 'Duración')
-			LEFT JOIN wp_woocommerce_order_itemmeta as mpe ON (mpe.order_item_id = rm.meta_value and mpe.meta_key = 'Mascotas Pequeños')
-			LEFT JOIN wp_woocommerce_order_itemmeta as mme ON (mme.order_item_id = rm.meta_value and mme.meta_key = 'Mascotas Medianos')
+			LEFT JOIN wp_woocommerce_order_itemmeta as mpe ON mpe.order_item_id = rm.meta_value and (mpe.meta_key = 'Mascotas Pequeños' or mpe.meta_key = 'Mascotas Pequeñas')
+			LEFT JOIN wp_woocommerce_order_itemmeta as mme ON mme.order_item_id = rm.meta_value and (mme.meta_key = 'Mascotas Medianos' or mme.meta_key = 'Mascotas Medianas')
 			LEFT JOIN wp_woocommerce_order_itemmeta as mgr ON (mgr.order_item_id = rm.meta_value and mgr.meta_key = 'Mascotas Grandes')
 			LEFT JOIN wp_woocommerce_order_itemmeta as mgi ON (mgi.order_item_id = rm.meta_value and mgi.meta_key = 'Mascotas Gigantes')
 			LEFT JOIN wp_woocommerce_order_itemmeta as pri ON (pri.order_item_id = rm.meta_value and pri.meta_key = '_product_id')

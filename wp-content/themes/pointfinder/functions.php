@@ -6,8 +6,15 @@
 * 
 * Author: Webbu Design
 *
+
 ***********************************************************************************************************************************/
 
+function hide_update_notice_to_all_but_admin_users(){
+    if (!current_user_can('update_core')) {
+        remove_action( 'admin_notices', 'update_nag', 3 );
+    }
+}
+add_action( 'admin_head', 'hide_update_notice_to_all_but_admin_users', 1 );
 
 add_filter( 'woocommerce_currencies', 'add_my_currency' );
 function add_my_currency( $currencies ) {
@@ -16,15 +23,14 @@ function add_my_currency( $currencies ) {
 }
 
 add_filter('woocommerce_currency_symbol', 'add_my_currency_symbol', 10, 2);
-
 function add_my_currency_symbol( $currency_symbol, $currency ) {
-     switch( $currency ) {
-          case 'PEX': $currency_symbol = 'S/.'; break;
-     }
-     return $currency_symbol;
+    switch( $currency ) {
+        case 'PEX': $currency_symbol = 'S/.'; break;
+    }
+    return $currency_symbol;
 }
 
-add_filter( 'woocommerce_checkout_fields' , 'set_input_attrs' );
+/*add_filter( 'woocommerce_checkout_fields' , 'set_input_attrs' );
 function set_input_attrs( $fields ) {
 	$fields['billing']['billing_first_name'] = array('required'  => false);
 	$fields['billing']['billing_last_name'] = array('required'  => false);
@@ -36,8 +42,24 @@ function set_input_attrs( $fields ) {
 	$fields['billing']['billing_state'] = array('required'  => false);
 	$fields['billing']['billing_postcode'] = array('required'  => false);
    	return $fields;
-}
+}*/
 
+// add_filter( 'show_admin_bar', '__return_false' );
+
+add_filter( 'woocommerce_checkout_fields' , 'set_input_attrs' );
+function set_input_attrs( $fields ) {
+	$fields['billing']['billing_address_2']['maxlength'] = 50;
+
+	$fields['billing']['billing_postcode']['maxlength'] = 12;
+
+	$fields['billing']['billing_country']['class'][] = "hide";
+/*
+	echo "<pre>";
+		print_r($fields);
+	echo "</pre>";*/
+
+   	return $fields;
+}
 
 load_theme_textdomain( 'pointfindert2d',get_template_directory() . '/languages');
 
@@ -68,6 +90,9 @@ function mycode_more_info_button() {
 add_filter( 'woocommerce_add_cart_item_data', '_empty_cart' );
 function _empty_cart( $cart_item_data ){
 	WC()->cart->empty_cart();
+	echo "<pre>";
+		print_r($cart_item_data);
+	echo "</pre>";
 	return $cart_item_data;
 }
 
@@ -83,7 +108,6 @@ function is_cuidador(){
 	if( $user->roles[0] == 'vendor' ){
 		return 1;
 	}
-
 	$user_id = $user->ID;
 	if( $user_id != 0 ){
 		$query_postulaciones = new WP_Query( 
@@ -100,7 +124,6 @@ function is_cuidador(){
 	}else{
 		return 0;
 	}
-
 	/*
 		0: No esta logeado
 		1: Es cuidador
@@ -906,7 +929,5 @@ add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10);
 
 
 add_filter( 'loop_shop_per_page', create_function( '$cols', 'return 12;' ), 20 );
-
-
 
 ?>
