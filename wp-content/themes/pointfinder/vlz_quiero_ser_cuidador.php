@@ -89,7 +89,7 @@
 								<div class="vlz_sub_titulo">Para registrarte como cuidador de Kmimos, llena este formulario y nos pondremos en contacto contigo.</div>
 							</div>
 							<div class="vlz_cell25 vlz_banner_cuidador_contenedor">
-								<img class="vlz_banner_cuidador" src="<?php echo get_home_url(); ?>/wp-content/themes/pointfinder/images/banner_cuidador.jpeg">
+								<img class="vlz_banner_cuidador" src="<?php echo get_home_url(); ?>/wp-content/themes/pointfinder/images/banner_cuidador.png">
 							</div>
 						</div>
 
@@ -599,7 +599,7 @@
 								</div>
 								<div class="vlz_cell75">
 									<span class='vlz_verde'>Tienes dudas sobre el registro? Tienes poco tiempo para registrarte?</span> Kmimos te ayuda!
-									Ponte en contacto con nosotros. Mándanos un mail a <span class='vlz_naranja'>a.vera@kmimos.la</span> o por Teléfono o Whatsapp al <span class='vlz_naranja'>(55) 6178 0320</span>.
+									Ponte en contacto con nosotros. Mándanos un mail a <span class='vlz_naranja'>s.cedeno@kmimos.la</span> o por Teléfono o Whatsapp al <span class='vlz_naranja'>(51) 963 585 100</span>.
 
 									<span class='vlz_gris_footer'>La familia Kmimos te espera!!</span>
 								</div>
