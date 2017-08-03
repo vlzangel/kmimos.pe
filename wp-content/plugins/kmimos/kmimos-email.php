@@ -108,16 +108,10 @@ if(!function_exists('kmimos_get_email_banners')){
                         <img style="width: 100%;" src="'.get_home_url().'/wp-content/uploads/2016/03/Banner-accesorios300x100.png" alt="Accesorios-Mascotas">                    
                 </li>
                 <li style="float:left; margin: 5px; width: 48%; list-style: none;">
-                    <a style="display: block;" href="https://www.volaris.com/">
                         <img style="width: 100%;" src="'.get_home_url().'/wp-content/uploads/2016/03/Banner-boletos-aereos300x100.png" alt="Boletos-aereos">
-                    </a>
-                    
-                </li>
+               </li>
                 <li style="float:left; margin: 5px; width: 48%; list-style: none;">
-                    <a style="display: block;" href="https://cabify.com/mexico/mexico-city">
                         <img style="width: 100%;" src="'.get_home_url().'/wp-content/uploads/2016/03/Banner-transporte-mascotas300x100.png" alt="Transporte-Mascotas">
-                    </a>
-                    
                 </li>
             </ul>
         </div>';
