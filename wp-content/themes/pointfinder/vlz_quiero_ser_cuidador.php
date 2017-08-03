@@ -129,7 +129,7 @@
 											</div>
 											
 											<div class="vlz_cell50">
-												<input data-title="Debes ingresar tu número telefónico<br>Este debe tener al menos 10 dígitos." type='number' id='telefono' name='telefono' min="7" class='vlz_input' placeholder='Tel&eacute;fono' required pattern="[0-9]">
+												<input data-title="Debes ingresar tu número telefónico<br>Este debe tener al menos 7 dígitos." type='number' id='telefono' name='telefono' min="7" class='vlz_input' placeholder='Tel&eacute;fono' required pattern="[0-9]">
 											</div>
 										</div>
 
@@ -222,10 +222,10 @@
 									<div class="vlz_sub_seccion" style="margin: 0 !important;">
 										<div class="vlz_contenedor_listados">
 											<select id="estado" name="estado" class="vlz_input" data-title="Debe seleccionar un Estado" required>
-												<option value="">Seleccione un estado</option>
+												<option value="">Seleccione una provincia</option>
 												<?php
 													global $wpdb;
-												    $estados = $wpdb->get_results("SELECT * FROM states WHERE country_id = 1 ORDER BY name ASC");
+												    $estados = $wpdb->get_results("SELECT * FROM states WHERE country_id = '0' ORDER BY name ASC");
 												    $str_estados = "";
 												    foreach($estados as $estado) { 
 												        $str_estados .= "<option value='".$estado->id."'>".$estado->name."</option>";
@@ -236,7 +236,7 @@
 										</div>
 										<div class="vlz_contenedor_listados">
 											<select id="municipio" name="municipio" class="vlz_input" data-title="Debe seleccionar un Municipio">
-												<option value="">Seleccione un municipio</option>
+												<option value="">Seleccione un distrito</option>
 											</select>
 										</div>
 										<div class="vlz_contenedor_dir">
