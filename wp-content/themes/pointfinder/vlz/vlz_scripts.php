@@ -51,7 +51,7 @@
 		}
 
 		jQuery("#estados").on("change", function(e){
-			var estado_id = jQuery("#estados").val();       
+			var estado_id = jQuery("#estados").val();
 		    if( estado_id != "" ){
 		    	jQuery.getJSON( 
 					"'.get_bloginfo( 'template_directory', 'display' ).'/vlz/ajax_municipios.php", 
