@@ -20,28 +20,16 @@
 	add_action('pre_get_posts', 'kmimos_filter_bookings_when_petsitters_login');
 
     /**
-     *  Devuelve la cantidad de sobreprecio aplicada a los servicios de los cuidadores.
+     *  Devuelve array de info sobre como nos conocen los cuidadores.
      * */
     if(!function_exists('get_referred_list_options')){
         function get_referred_list_options(){
             $opciones = array(
-                'Volaris'       =>  'Volaris',
                 'Facebook'      =>  'Facebook',
                 'Adwords'       =>  'Buscador de Google',
-                'Instagram'     =>  'Instagram',
                 'Twitter'       =>  'Twitter',
-                'Booking.com'   =>  'Booking.com',
-                'Cabify'        =>  'Cabify',
-                'Bancomer'      =>  'Bancomer',
-                'Mexcovery'     =>  'Mexcovery',
-                'Totems'        =>  'Totems',
-                'Groupon'       =>  'Groupon',
-                'Agencia IQPR'  =>  'Agencia IQPR',
-                'Revistas o periodicos' =>  'Revistas o periodicos',
-                'Vintermex'             =>  'Viajes Intermex',
                 'Amigo/Familiar'        =>  'Recomendación de amigo o familiar',
                 'Youtube'               =>  'Youtube',
-                'COW'                   =>  'COW',
                 'Otros'                 =>  'Otros'
             );
             return $opciones;
