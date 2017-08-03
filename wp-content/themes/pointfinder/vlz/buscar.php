@@ -2,22 +2,25 @@
 	include("../../../../vlz_config.php");
 	include("admin/funciones/kmimos_funciones_db.php");
 
+
 	$conn = new mysqli($host, $user, $pass, $db);
 	$db = new db($conn);
 
 	extract($_POST);
 
 	$condiciones = "";
-
-    /* Filtros por fechas */
-	    if( isset($checkin)  && $checkin  != '' && isset($checkout) && $checkout != '' ){ 
-	    	$condiciones .= " AND ( SELECT count(*) FROM cupos WHERE cupos.cuidador = cuidadores.user_id AND cupos.fecha >= '{$checkin}' AND cupos.fecha <= '{$checkout}' AND (cupos.full = 1 OR cupos.no_disponible = 1) ) = 0"; 
-	   	}
-    /* Fin Filtros por fechas */
+	$servicios_buscados = "";
 
     /* Filtros por servicios y tamaños */
 	    if( isset($servicios) ){
+	    	$servicios_buscados .= "(";
 			foreach ($servicios as $key => $value) {
+				if( $servicios_buscados == "(" ){
+					$servicios_buscados .= "cupos.tipo LIKE '%{$value}%' ";
+				}else{
+					$servicios_buscados .= " OR cupos.tipo LIKE '%{$value}%' ";
+				}
+				
 				if( $value != "hospedaje" ){
 					$condiciones .= " AND adicionales LIKE '%".$value."%'";
 
@@ -25,16 +28,42 @@
 						$condiciones .= ' AND adicionales LIKE \'%status_'.$value.'";s:1:"1%\'';
 
 					}else{
-						$condiciones .= ' AND adicionales REGEXP  \'status_'.$value.'_(basico|intermedio|avanzado)";s:1:"1\'';
+
+						$condiciones .= 'AND (';
+						$condiciones .= ' 	adicionales LIKE \'%status_adiestramiento_basico";s:1:"1%\' 		OR ';
+						$condiciones .= ' 	adicionales LIKE \'%status_adiestramiento_intermedio";s:1:"1%\' 	OR ';
+						$condiciones .= ' 	adicionales LIKE \'%status_adiestramiento_avanzado";s:1:"1%\' 			';
+						$condiciones .= ')';
 
 					}
 				}
 			}
+	    	$servicios_buscados .= " ) AND";
 		}
 
 
 	    if( isset($tamanos) ){ foreach ($tamanos as $key => $value) { $condiciones .= " AND ( tamanos_aceptados LIKE '%\"".$value."\";i:1%' || tamanos_aceptados LIKE '%\"".$value."\";s:1:\"1\"%' ) "; } }
     /* Fin Filtros por servicios y tamaños */
+
+    /* Filtros por fechas */
+	    if( isset($checkin)  && $checkin  != '' && isset($checkout) && $checkout != '' ){ 
+	    	$condiciones .= "
+	    		AND ( 
+	    			SELECT 
+	    				count(*) 
+	    			FROM 
+	    				cupos 
+	    			WHERE 
+	    				cupos.cuidador = cuidadores.user_id AND 
+	    				{$servicios_buscados} 
+	    				cupos.fecha >= '{$checkin}' AND 
+	    				cupos.fecha <= '{$checkout}' AND (
+	    					cupos.full = 1 OR 
+	    					cupos.no_disponible = 1
+	    				) 
+	    		) = 0"; 
+	   	}
+    /* Fin Filtros por fechas */
 
     /* Filtros por rangos */
 	    if( isset($n) ){ if( $n != "" ){ $condiciones .= " AND nombre LIKE '".$n."%' "; } }
@@ -118,6 +147,7 @@
         cuidadores.longitud,
         cuidadores.latitud,
         cuidadores.adicionales,
+        cuidadores.atributos,
         (cuidadores.hospedaje_desde*1.2) AS precio,
         cuidadores.experiencia,
         post_cuidador.post_name AS slug,
@@ -137,12 +167,11 @@
 
     $cuidadores = $db->get_results($sql);
 
-    $home = $db->get_var("SELECT option_value FROM wp_options WHERE option_name = 'siteurl'", "option_value");
-
     $pines = array();
     if( $cuidadores != false ){
 		foreach ($cuidadores as $key => $cuidador) {
-			$url = $_SERVER["HTTP_ORIGIN"] . "/petsitters/" . $cuidador->slug;		
+			$url = $_SERVER["HTTP_ORIGIN"] . "/petsitters/" . $cuidador->slug;
+			$img = kmimos_get_foto_cuidador($cuidador->id);		
 			$pines[] = array(
 				"ID"   => $cuidador->id,
 				"user" => $cuidador->user_id,
@@ -150,7 +179,7 @@
 				"lng"  => $cuidador->longitud,
 				"nom"  => utf8_encode($cuidador->titulo),
 				"url"  => $url,
-				"img"  => kmimos_get_foto_cuidador($cuidador->user_id, $home)
+				"img"  => kmimos_get_foto_cuidador($cuidador->id)
 			);
 		}
     }
@@ -171,15 +200,26 @@
 	    return ( 6371 * acos( cos( toRadian($norte->lat) ) * cos( toRadian($sur->lat) ) * cos( toRadian($sur->lng) - toRadian($norte->lng) ) + sin( toRadian($norte->lat) ) * sin( toRadian($sur->lat) ) ) );
 	}
 
-	function kmimos_get_foto_cuidador($user_id, $home){
+	function kmimos_get_foto_cuidador($id){
         global $db;
-        $name_photo = $db->get_var("SELECT meta_value FROM wp_usermeta WHERE user_id = {$user_id} AND meta_key = 'name_photo'", "meta_value");
-        if( !empty($name_photo)  ){ 
-        	$img = $home."/wp-content/uploads/cuidadores/avatares/{$user_id}/{$name_photo}"; 
-       	}
+        $cuidador = $db->get_row("SELECT * FROM cuidadores WHERE id = ".$id);
+        $home = $db->get_var("SELECT option_value FROM wp_options WHERE option_name = 'siteurl'", "option_value");
+        $name_photo = $db->get_var("SELECT meta_value FROM wp_usermeta WHERE user_id = {$cuidador->user_id} AND meta_key = '{name_photo}'", "meta_value");
+        if( empty($name_photo)  ){ $name_photo = "0"; }
+        if( file_exists("../../../uploads/cuidadores/avatares/{$id}/{$name_photo}") ){
+            $img = $home."/wp-content/uploads/cuidadores/avatares/{$id}/{$name_photo}";
+        }else{
+            if( file_exists("../../../uploads/cuidadores/avatares/{$id}/0.jpg") ){
+                $img = $home."/wp-content/uploads/cuidadores/avatares/{$id}/0.jpg";
+            }else{
+                $img = $home.'/wp-content/themes/pointfinder/images/noimg.png';
+            }
+        }
         return $img;
     }
-    
+       
+    $home = $db->get_var("SELECT option_value FROM wp_options WHERE option_name = 'siteurl'", "option_value");
+
 	header("location: {$home}/busqueda/");
 
 ?>
