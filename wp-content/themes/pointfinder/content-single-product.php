@@ -22,11 +22,11 @@
     if( $DS ){ ?>
 		<div class="theme_button" style="padding: 10px; margin-bottom: 20px;">
 			<?php if( $DS["saldo_temporal"] > 0 ){ ?>
-				<strong><?php echo kmimos_saldo_titulo(); ?>:</strong> MXN $<?php echo $DS["saldo"]; ?>
+				<strong><?php echo kmimos_saldo_titulo(); ?>:</strong> S/. $<?php echo $DS["saldo"]; ?>
 			<?php }else{ 
 					$kmisaldo = kmimos_get_kmisaldo();
 					if( $kmisaldo > 0 ){ ?>
-						<strong><?php echo kmimos_saldo_titulo(); ?>:</strong> MXN $<?php echo $kmisaldo; ?><br>
+						<strong><?php echo kmimos_saldo_titulo(); ?>:</strong> S/. $<?php echo $kmisaldo; ?><br>
 			<?php 	}
 				  } ?>
 		</div> <?php
@@ -41,7 +41,7 @@
     	$kmisaldo = kmimos_get_kmisaldo();
     	if( $kmisaldo > 0 ){ ?>
     		<div class="theme_button" style="padding: 10px; margin-bottom: 20px;">
-    			<strong><?php echo kmimos_saldo_titulo(); ?>:</strong> MXN $<?php echo $kmisaldo; ?><br>
+    			<strong><?php echo kmimos_saldo_titulo(); ?>:</strong> S/. $<?php echo $kmisaldo; ?><br>
     		</div>
     	<?php }
     }
@@ -204,7 +204,7 @@
 												<div class='vlz_destacados_img'>
 													<div class='vlz_descado_img_fondo' style='background-image: url({$img_url});'></div>
 													<div class='vlz_descado_img_normal' style='background-image: url({$img_url});'></div>
-													<div class='vlz_destacados_precio'><sub style='bottom: 0px;'>Hospedaje desde</sub><br>MXN $".($cuidador->hospedaje_desde*1.2)."</div>
+													<div class='vlz_destacados_precio'><sub style='bottom: 0px;'>Hospedaje desde</sub><br>S/. $".($cuidador->hospedaje_desde*1.2)."</div>
 												</div>
 												<div class='vlz_destacados_data' >
 													<div class='vlz_destacados_nombre'>{$nombre}</div>

@@ -447,7 +447,7 @@
 	/* DIRECCIONES */
 
 		jQuery("#estado").on("change", function(e){
-			var estado_id = jQuery("#estado").val(); 
+			var estado_id = jQuery("#estado").val();
 		    if( estado_id != "" ){
 		        var html = "<option value=''>Seleccione un municipio</option>";
 		        jQuery.each(estados_municipios[estado_id]['municipios'], function(i, val) {

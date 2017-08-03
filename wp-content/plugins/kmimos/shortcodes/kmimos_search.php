@@ -4,41 +4,19 @@
 
     $HOY = date("Y-m-d");
 
-    $ESTADOS = "
-        <option value=''>Seleccione un estado</option>
-        <option value='7'>Aguascalientes</option>
-        <option value='8'>Baja California</option>
-        <option value='9'>Baja California Sur</option>
-        <option value='10'>Campeche</option>
-        <option value='13'>Chiapas</option>
-        <option value='14'>Chihuahua</option>
-        <option value='1'>Ciudad de México</option>
-        <option value='11'>Coahuila de Zaragoza</option>
-        <option value='12'>Colima</option>
-        <option value='15'>Durango</option>
-        <option value='2'>Estado de México</option>
-        <option value='16'>Guanajuato</option>
-        <option value='17'>Guerrero</option>
-        <option value='18'>Hidalgo</option>
-        <option value='3'>Jalisco</option>
-        <option value='19'>Michoac&aacute;n de Ocampo</option>
-        <option value='20'>Morelos</option>
-        <option value='21'>Nayarit</option>
-        <option value='4'>Nuevo León</option>
-        <option value='22'>Oaxaca</option>
-        <option value='23'>Puebla</option>
-        <option value='24'>Queretaro</option>
-        <option value='25'>Quintana Roo</option>
-        <option value='26'>San Luis Potosi</option>
-        <option value='27'>Sinaloa</option>
-        <option value='28'>Sonora</option>
-        <option value='29'>Tabasco</option>
-        <option value='30'>Tamaulipas</option>
-        <option value='31'>Tlaxcala</option>
-        <option value='32'>Veracruz de Ignacio de la Llave</option>
-        <option value='33'>Yucatan</option>
-        <option value='34'>Zacatecas</option>
-    ";
+    $ESTADOS = '
+        <option value="">Seleccione una provincia</option>
+		<option value="9">AREQUIPA</option>
+        <option value="5">CAJAMARCA</option>
+        <option value="2">CALLAO</option>
+        <option value="8">CUZCO</option>
+        <option value="7">HUANCAYO</option>
+        <option value="1">LIMA</option>
+        <option value="3">PIURA</option>
+        <option value="6">PUNO</option>
+        <option value="4">TRUJILLO</option>
+    ';
+
     $servicios = array(
         'hospedaje'      => '<p>Hospedaje<br><sup>cuidado día y noche</sup></p>', 
         'guarderia'      => '<p>Guardería<br><sup>cuidado durante el día</sup></p>', 
@@ -205,7 +183,7 @@
                             <div class='grupo_selector'>
                                 <div class='marco'>
                                     <div class='icono'><i class='icon-mapa embebed'></i></div>
-                                    <sub>Estado:</sub><br>
+                                    <sub>Provincias:</sub><br>
                                     <select id='estado_cuidador' name='estados' data-location='mx'>
                                         $ESTADOS
                                     </select>
@@ -214,9 +192,9 @@
                             <div class='grupo_selector'>
                                 <div class='marco'>
                                     <div class='icono'><i class='icon-mapa embebed'></i></div>
-                                    <sub>Municipio:</sub><br>
+                                    <sub>Distritos:</sub><br>
                                     <select id='municipio_cuidador' name='municipios'>
-                                        <option value=''>Seleccione primero un estado</option>
+                                        <option value=''>Seleccione primero una provincia</option>
                                     </select>
                                     <input type='hidden' id='municipio_cache' name='municipio_cache'>
                                 </div>
@@ -311,14 +289,14 @@
                     $('#selector_locacion').addClass('hide');
                 });
                 function cargar_municipios(CB){
-                    var estado_id = jQuery('#estado_cuidador').val();       
+                    var estado_id = jQuery('#estado_cuidador').val();
                     if( estado_id != '' ){
                         jQuery.getJSON( 
                             '".get_bloginfo( 'template_directory', 'display' )."/vlz/ajax_municipios.php', 
                             {estado: estado_id} 
                         ).done(
                             function( data, textStatus, jqXHR ) {
-                                var html = \"<option value=''>Seleccione un municipio</option>\";
+                                var html = \"<option value=''>Seleccione un distrito</option>\";
                                 jQuery.each(data, function(i, val) {
                                     html += '<option value='+val.id+'>'+val.name+'</option>';
                                 });
