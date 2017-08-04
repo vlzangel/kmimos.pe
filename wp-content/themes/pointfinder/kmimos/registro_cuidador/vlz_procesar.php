@@ -107,11 +107,11 @@
 	        "limpieza_dental",
 	        "bano",
 	        "corte",
-            "paseos",
 	        "guarderia",
 	        "adiestramiento_basico",
 	        "adiestramiento_intermedio",	        
-	        "adiestramiento_avanzado"
+	        "adiestramiento_avanzado",
+            "paseos"
 	    );
 
         $adicionales = array();
@@ -336,7 +336,8 @@
                     $path_destino = $dir.$vlz_img_perfil;
 
                     if( file_exists($path_origen) ){
-                        copy($path_origen, $path_destino);
+                        //copy($path_origen, $path_destino);
+                        move_uploaded_file($path_origen, $path_destino);
                         unlink($path_origen);
                     }
                 }

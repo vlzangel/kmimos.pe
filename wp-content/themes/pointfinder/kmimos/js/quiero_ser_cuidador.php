@@ -279,7 +279,7 @@
 		    jQuery("#error_"+event.target.id).removeClass("no_error");
 		    jQuery("#error_"+event.target.id).addClass("error");
 		    jQuery("#"+event.target.id).addClass("vlz_input_error");
-		    console.log(event.target.id);
+		    //console.log(event.target.id);
 		}, true);
 
 		form.addEventListener( 'keyup', function(event){
@@ -540,7 +540,7 @@
 			  		jQuery("#vlz_titulo_registro").html("Registrando, por favor espere...");
 			     	
 					jQuery.post( a, jQuery("#vlz_form_nuevo_cuidador").serialize(), function( data ) {
-						console.log(data);
+						//console.log(data);
 			      		data = eval(data);
 
 			      		if( data.error == "SI" ){
@@ -559,7 +559,7 @@
 							//	jQuery("#vlz_titulo_registro").html("Registro Completado!");
 							//	jQuery("#vlz_cargando").html(data.msg);
 							//	jQuery("#vlz_registro_cuidador_cerrar").css("display", "inline-block");
-							console.log('registro compeltado2');
+							//console.log('registro compeltado2');
 						  	jQuery("#vlz_cargando")
 						  		.html(data.msg);
 						  	jQuery("#vlz_cargando")

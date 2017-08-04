@@ -9,5 +9,5 @@
 		max="<?php echo ( isset( $max ) ) ? $max : ''; ?>"
 		name="<?php echo $name; ?>"
 		id="<?php echo $name; ?>"
-		/> <?php echo ( ! empty( $after ) ) ? $after : ''; ?>
+		/> <?php echo ( ! empty( $after ) ) ? str_replace('$','S./',$after) : ''; ?>
 </p>
