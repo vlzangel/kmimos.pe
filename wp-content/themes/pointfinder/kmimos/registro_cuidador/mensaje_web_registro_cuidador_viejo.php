@@ -64,7 +64,7 @@ $mensaje_web = '
 ';//'.get_home_url().'/?a=inicio
 */
 
- $mensaje_web = '
+ /*$mensaje_web = '
 <style>
     p{
         text-align: justify;
@@ -133,4 +133,36 @@ $mensaje_web = '
         "
     >CONTINUAR</a>
 </p>
-';
+';*/
+$mensaje_web = '
+                <style>
+                    p{
+                        text-align: justify;
+                    }
+                    a:hover{
+                        background: #038063;
+                    }
+                    .vlz_modal_ventana{max-width: 800px;}
+                    .vlz_modal_contenido{padding: 20px !important;}
+                </style>
+                <h1>¡Gracias por unirte a nuestra familia Kmimos!</h1>
+                <p>Hola <strong>'.$nombres.' '.$apellidos.'</strong>,</p>
+                <p style="text-align: justify;">
+                    Estimado Kmiamigo, tu perfil ha sido creado con éxito.  El mismo permanecerá inactivo en la página hasta que completes los siguientes pasos listados abajo"
+                </p>
+                <p style="text-align: justify;">
+                    "Dichos pasos han sido diseñados para cumplir con un estricto perfil de seguridad, que garantice que cualquier persona que se convierta en Cuidador asociado Kmimos presente un perfil apto para cuidar y engreir a nuestros peludos amigos"
+                </p>
+                <p style="text-align: justify;">
+                    <strong>Siguientes Pasos para activar tu perfil</strong>
+                </p>
+                <p style="text-align: justify;">
+                    <ul>
+                        <li style="text-align: justify;">Compártenos por Mensaje Directo a nuestro Facebook @'.$info_syte["facebook"].' tu nombre y apellido completo, email, teléfono de casa y celular</li>
+                        <li style="text-align: justify;">Una vez que nos envíes dichos datos, en menos de 24 horas recibirás en el correo que registraste las Pruebas Psicométricas y Pruebas de Conceptos Veterinarios básicos.  Por favor respóndelas, y nos llegará a nosotros un mensaje de completadas.</li>
+                        <li style="text-align: justify;">En menos de 24 horas después de completadas las pruebas recibirás un correo por parte de Certificación Kmimos, notificando tus resultados.  NO TE OLVIDES DE REVISAR SIEMPRE LA BANDEJA DE ENTRADA O EL CORREO NO DESEADO, ya que a veces llegan allí los correos.</li>
+                        <li style="text-align: justify;">En caso de haber aprobado, lee el archivo adjunto al correo que te muestra las políticas operativas.</li>
+                        <li style="text-align: justify;">Por último, recibirás una llamada para entrevista telefónica y notificación para la auditoría a tu hogar.</li>
+                    </ul>
+                </p>
+            ';
