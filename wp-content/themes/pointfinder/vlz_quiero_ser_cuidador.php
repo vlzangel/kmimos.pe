@@ -125,7 +125,7 @@
 
 										<div class="vlz_sub_seccion">
 											<div class="vlz_cell50">
-												<input data-title="El IFE debe ser de 13 dígitos." data-help="Coloca los 13 Números que se encuentran en la parte trasera de tu IFE o INE" type='number' id='ife' name='ife' class='vlz_input' placeholder='IFE' min=13 pattern="^\d{13}$" >
+												<input data-title="Ingresar el DNI." data-help="El DNI debe ser de al menos 7" type='number' id='ife' name='ife' class='vlz_input' placeholder='DNI' min=7 pattern="^\d{7}$" >
 											</div>
 											
 											<div class="vlz_cell50">
@@ -484,10 +484,10 @@
 								<div class="vlz_seccion">
 									<?php
 										$txts = array(
-											"pequenos" => "Te sugerimos un precio entre $100 a $200 pesos.",
-											"medianos" => "Te sugerimos un precio entre $180 a $250 Pesos.",
-											"grandes"  => "Te sugerimos un precio entre $220 a $300 pesos.",
-											"gigantes" => "Te sugerimos un precio entre $250 a $350 pesos"
+											"pequenos" => "Te sugerimos un precio entre 20 a 30 Soles.",
+											"medianos" => "Te sugerimos un precio entre 25 a 35 Soles.",
+											"grandes"  => "Te sugerimos un precio entre 30 a 40 Soles.",
+											"gigantes" => "Te sugerimos un precio entre 35 a 50 Soles"
 										);
 										foreach ($tam as $key => $value) {
 											echo '

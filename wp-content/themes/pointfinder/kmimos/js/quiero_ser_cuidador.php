@@ -158,7 +158,7 @@
 			switch(id){
 				case "ife":
 		      		var ife = jQuery( "#ife" ).val();
-		      		if( ife.length == 13 ){
+		      		if( ife.length == 7 ){
 		      			return true;
 		      		}else{
 		      			ver_error(id);
@@ -566,13 +566,12 @@
 						  		.css('padding', '0px')
 						  		.css('padding-top', '10px');
 			      			jQuery("#vlz_titulo_registro")
-			      				.html("¡Registro completado!");
+			      				.html("Registro completado!");
 			      			jQuery("#vlz_titulo_registro")
-			      				.css('font-size', '36px');
+			      				.css('font-size', '15px');
 			      			jQuery("#vlz_titulo_registro")
-			      				.css('background', '#00d8b5')
-			      				.css('color','#fff')
- 			      				.css('font-weight', 'bold');
+			      				.css('background', '#fff')
+			      				.css('color','#52c8b6');
  			      			jQuery(".vlz_modal_ventana")
  			      				.css('width', 'auto');
 
