@@ -6837,6 +6837,10 @@ input#place_order{
 	display: none;
 }
 
+.wpf-header .pf-logo-container {
+	display: block !important;
+}
+
 @media (max-width: 992px) {
 	.wpf-container {margin: 104px 0 0 0 !important;}
 	.instrucciones-items{
