@@ -139,6 +139,12 @@
 		    font-size: 25px;
 		    margin-left: 3px;
 		}
+
+
+ 		.vlz_sub_seccion_interno sub {
+ 		    bottom: 0;
+ 		    font-size: 11px;
+ 		}
 	</style>
 	<div id='filtros'></div>
 	<form action='".get_home_url()."/wp-content/themes/pointfinder/vlz/buscar.php' method='POST' class='vlz_form' id='vlz_form_buscar' style='margin-top: 20px;'>
@@ -189,7 +195,7 @@
 
 				<sub>Hasta:</sub><br>
 				<div class='icono'><i class='icon-calendario embebed'></i></div>
-				<input type='date' id='checkout' value='".$_POST['checkout']."' min='".date("Y-m-d")."' name='checkout' class='fechas vlz_input' placeholder='Check Out'>
+				<input type='date' id='checkout' value='".$_POST['checkout']."' min='".$_POST['checkin']."' name='checkout' class='fechas vlz_input' placeholder='Check Out'>
 
 			</div>
 		</div>

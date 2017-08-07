@@ -94,7 +94,11 @@
             margin-top: 3px;
         }
         html.iOS .fecha_hasta, html.iOS .fecha_desde { width: 118px !important}
-
+        input[type='date'] {
+             line-height: 1.42857143;
+             margin-top: -10px;
+             height: 25px !important;
+         }
 
         .grupo_selector .marco {
             display: inline-block;
