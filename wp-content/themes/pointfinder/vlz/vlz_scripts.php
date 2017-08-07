@@ -201,4 +201,5 @@
 
 	</script>';
 
-	$SCRIPTS = comprimir_styles($scripts);
+	//$SCRIPTS = comprimir_styles($scripts);
+	$SCRIPTS = $scripts;
