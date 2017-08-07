@@ -252,7 +252,7 @@ function pf_styleandscripts(){
 		wp_register_style('theme-prettyphotocss', get_home_url()."/wp-content/themes/pointfinder" . '/css/prettyPhoto.css', array(), '1.0', 'all',true);
 		wp_enqueue_style('theme-prettyphotocss'); 
 		
-		wp_register_style('theme-style', get_home_url()."/wp-content/themes/pointfinder" . '/style.css', array(), '1.0', 'all');
+		wp_register_style('theme-style', get_home_url()."/wp-content/themes/pointfinder" . '/style.css', array(), '1.0.1', 'all');
 		wp_enqueue_style('theme-style');
 
 		if ($general_rtlsupport == 1) {
