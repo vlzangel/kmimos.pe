@@ -1,4 +1,5 @@
 <?php
+
     if(!function_exists('angel_log')){
         function angel_log($salida){
             global $wpdb;
@@ -31,6 +32,7 @@
             );
         }
     }
+    
     if(!function_exists('update_cupos')){
         function update_cupos($id, $accion){
             global $wpdb;
@@ -49,12 +51,26 @@
                     $wpdb->query("UPDATE cupos SET full = 0 WHERE servicio = '{$servicio}' AND ( fecha = '{$fecha}' AND cupos < acepta )");
                 }else{
 
+                    $tipo = $wpdb->get_var(
+                        "
+                            SELECT
+                                tipo_servicio.slug AS tipo
+                            FROM 
+                                wp_term_relationships AS relacion
+                            LEFT JOIN wp_terms as tipo_servicio ON ( tipo_servicio.term_id = relacion.term_taxonomy_id )
+                            WHERE 
+                                relacion.object_id = '{$servicio}' AND
+                                relacion.term_taxonomy_id != 28
+                        "
+                    );
+
                     if( $mascotas >= $acepta ){ $full = 1; }
                     $sql = "
                         INSERT INTO cupos VALUES (
                             NULL,
                             '{$autor}',
                             '{$servicio}',
+                            '{$tipo}',
                             '{$fecha}',
                             '{$mascotas}',
                             '{$acepta}',
@@ -110,7 +126,7 @@
                             <div class='vlz_destacados_img'>
                                 <div class='vlz_descado_img_fondo' style='background-image: url({$img_url});'></div>
                                 <div class='vlz_descado_img_normal' style='background-image: url({$img_url});'></div>
-                                <div class='vlz_destacados_precio'><sub style='bottom: 0px;'>Hospedaje desde</sub><br>S/. $".($cuidador->hospedaje_desde*1.2)."</div>
+                                <div class='vlz_destacados_precio'><sub style='bottom: 0px;'>Hospedaje desde</sub><br>MXN $".($cuidador->hospedaje_desde*1.2)."</div>
                             </div>
                             <div class='vlz_destacados_data' >
                                 <div class='vlz_destacados_nombre'>{$nombre}</div>
@@ -213,6 +229,11 @@
                             "url"   => get_home_url()."/perfil-usuario/?ua=myservices",
                             "name"  => "Mis Servicios",
                             "icono" => "453"
+                        ),
+                        array(
+                            "url"   => get_home_url()."/perfil-usuario/?ua=disponibilidad",
+                            "name"  => "Disponibilidad",
+                            "icono" => "28"
                         ),
                         array(
                             "url"   => get_home_url()."/perfil-usuario/?ua=mypictures",

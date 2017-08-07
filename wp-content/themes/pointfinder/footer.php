@@ -1,3 +1,15 @@
+<link rel="stylesheet" href="<?php echo get_bloginfo( 'template_directory', 'display' )."/css/CaviarDreams.css"; ?>" type="text/css" charset="utf-8" />
+
+<style type="text/css">
+.gm-style * {
+        font-family: caviar_dreamsregular !important;
+        font-size: 9px  !important;
+}
+
+.gm-style > div > div > div > div {
+      padding-top: 1px !important;
+}
+</style>
 <?php
 $datos = kmimos_get_info_syte();
 $HTML = "</div></div>
