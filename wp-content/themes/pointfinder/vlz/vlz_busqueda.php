@@ -89,6 +89,7 @@
 		</script>';
 
 		echo comprimir_styles($HTML);
+		//echo ($HTML);
 
         //$depuracion[] = $resultados;
 
