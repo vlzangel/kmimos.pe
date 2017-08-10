@@ -41,22 +41,10 @@ function set_input_attrs( $fields ) {
 	$fields['billing']['billing_city'] = array('required'  => false);
 	$fields['billing']['billing_state'] = array('required'  => false);
 	$fields['billing']['billing_postcode'] = array('required'  => false);
-   	return $fields;
-}
 
-// add_filter( 'show_admin_bar', '__return_false' );
-
-add_filter( 'woocommerce_checkout_fields' , 'set_input_attrs' );
-function set_input_attrs( $fields ) {
-	$fields['billing']['billing_address_2']['maxlength'] = 50;
-
+/*	$fields['billing']['billing_address_2']['maxlength'] = 50;
 	$fields['billing']['billing_postcode']['maxlength'] = 12;
-
-	$fields['billing']['billing_country']['class'][] = "hide";
-/*
-	echo "<pre>";
-		print_r($fields);
-	echo "</pre>";*/
+	$fields['billing']['billing_country']['class'][] = "hide";*/
 
    	return $fields;
 }
