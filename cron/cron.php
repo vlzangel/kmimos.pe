@@ -169,7 +169,7 @@
                                 border: solid 1px #CCC;
                                 border-top: 0;">
                                 Hospedaje desde<br>
-                                MXN $'.$cuidador->hospedaje_desde.'
+                               S./ $'.$cuidador->hospedaje_desde.'
                             </div>
                         </a>
                     </div>
