@@ -25,6 +25,7 @@ html,body{
 }
 .container-fluid{
 	overflow: hidden;
+	height: 100%;
 }
 
 /***************************************/
@@ -51,6 +52,7 @@ header{
 	background-image: url(../img/fondo-section01.jpg);
 	background-position: bottom;
     background-size:  100% 170%;
+    background-size: cover;
     background-repeat: no-repeat;
     position: relative;
 	overflow: hidden;
@@ -66,7 +68,7 @@ header{
 }
 #section-1 > a > img{
 	position: absolute;
-	bottom: 80px;
+	bottom: 130px;
 	width: 90%;
 	max-width: 400px;
 	left: 0;
@@ -100,7 +102,7 @@ header{
 	display: block;
 	width: 100%;
 	height: 50%;
-	margin-top: 5%;
+	margin-top: 3%;
 	margin-left: 15%;	
 }
 #section-2 > article:first{
@@ -114,14 +116,14 @@ header{
 	font-size: 1em;
 }
 iframe {
-    max-width: 80%;
+    max-width: 70%;
     max-height: 80%;
     height: auto;
 }
 
 .video-container {
 	position:relative;
-	padding-bottom:5%;
+	padding-bottom:0%;
 	padding-top:45%;
 	height:0;
 	overflow:hidden;
@@ -130,7 +132,7 @@ iframe {
 .video-container object, 
 .video-container embed {position:absolute; top:0; left:0; width:100%; height:100%;}
 
-.contain_window{height: 80%; margin: 0; overflow: hidden; }
+.contain_window{height: 65%; margin: 0; overflow: hidden; }
 .color-fondo{background-color: #C90235;}
 .header{padding: 20px 0; color: #FFF; font-size: 40px; text-align:center; background:#C90235; font-family: Poetsen One;}
 
@@ -144,7 +146,7 @@ iframe {
 	padding-top:45px;
 	padding-bottom: 45px;
 	background: #fff;
-	height: 80%;
+	height: 65%;
 	margin: 0 auto;
 	overflow: hidden;
 }
@@ -253,6 +255,7 @@ iframe {
 #section-5{
 	font-family: Poetsen One;
 	width: 100%;
+	height: 100%;
 	color: #fff;
 	background-color: #49c9b0;
 	font-weight: lighter;
@@ -264,13 +267,23 @@ iframe {
     margin: 0 auto;
     padding: 5px;
     margin-bottom: 10px;
+    margin-left: 80px;
+}
+.img-req{
+	width: 180px;
+    height: 180px;
+    margin: 0 auto;
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-left: 30px;
 }
 .conte-requ-ind{
-	padding: 30px;
-	margin:0 auto;
-	width: 100%;
-    height: 65%;
+	padding: 5px;
+    margin: 0 auto;
+    width: 100%;
+    height: 50%;
     margin-bottom: 15px;
+    margin-left: 60px;
 }
 .content-color{
 	background-color: #fff;
@@ -282,7 +295,7 @@ iframe {
 	color: #49c9b0;
 	margin-bottom: 30px;
 }
-.letra{color: #867d7d;}
+.letra{color: #867d7d; text-align: center;}
 .centrate{
 	margin:0 auto;
 	margin-left: 155px;
@@ -437,31 +450,64 @@ footer{
 /***************************************/
 
 @media (max-width: 766px){ 
-	#section-1 h1{font-size: 20px;}
+	#section-1 h1{font-size: 25px; margin-top: 40%;}
 	.btn-kmimos{font-size: 13px;}
 	.logo{width: 40%;}
-	.img-kmimos{
-		width: 80%;
-		padding:20px;
-	}
+	.img-kmimos{width: 80%; padding:20px;}
+	.container-fluid {overflow: hidden;height: 100%;}
+	#section-2{margin-bottom: 15px; height: 40%;}
 	.header{
 	    padding: 10px 0;
     	color: #FFF;
-    	font-size: 85%; 
+    	font-size: 1.5em; 
 		text-align:center; 
 		background:#C90235; 
 		font-family: Poetsen One;
 	}
-	.contain_window{height: 30%; margin: 0; overflow: hidden; }
+	.contain_window{height: auto; margin: 0; overflow: hidden; }
 	.img-galeria {
 		display: block;
 	    margin: 0 auto;
-	    width: 100px;
-	    height: 120px;
+	    width: 45%;
+	    height: 140px;
 	    max-width: 300px;
-	    padding-bottom: 25px;
-	    margin-left: -6px;
+	    padding-bottom: 30px;
+	    margin-left: 30%;
+	    margin-top: 5%;
 	}
+	#section-2  article {
+		display: block;
+		width: 100%;
+		height: 50%;
+		margin-top: 15%;
+    	margin-left: 20%;	
+	}
+	#section-2 h2{
+		margin-top:0px!important;
+		margin-bottom:0px!important;
+		color: #fff;
+		font-size: 1em;
+	}
+	.video-container {
+		position:relative;
+		padding-bottom: 20%;
+		padding-top:45%;
+		height:0;
+		overflow:hidden;
+	}
+	.video-container iframe, 
+	.video-container object, 
+	.video-container embed {position:absolute; top:0; left:0; width:100%; height:100%;}
+
+	.img-req{
+		width: 180px;
+	    height: 180px;
+	    margin: 0 auto;
+	    padding: 5px;
+	    margin-bottom: 10px;
+	    margin-left: 68px;
+	}
+
 	#section-3{height: 55%;}
 	.lista-3{
 		color:#fff!important;
@@ -597,7 +643,7 @@ footer{
 	    margin-left: 2%;
 	    height: 10%;
 	}
-	#section-2,
+	
 	#section-4,
 	#section-5,
 	#section-6,
