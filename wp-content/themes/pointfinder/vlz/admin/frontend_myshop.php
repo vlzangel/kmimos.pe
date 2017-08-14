@@ -144,6 +144,7 @@ if($mi_delegacion != ""){
 
 
 
+
 //COORDENADAS
 $result_coord = $wpdb->get_results("
 						SELECT

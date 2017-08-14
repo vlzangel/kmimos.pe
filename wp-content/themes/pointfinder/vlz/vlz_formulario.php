@@ -79,7 +79,7 @@
 	$tamanos_mascotas_form .= '</div>';
 
 	global $wpdb;
-	$estados_array = $wpdb->get_results("SELECT * FROM states WHERE country_id = 0 ORDER BY name ASC"); 
+	$estados_array = $wpdb->get_results("SELECT * FROM states WHERE country_id = 0 ORDER BY name ASC");
 
     $estados = "<option value=''>Seleccione un estado</option>";
     foreach($estados_array as $estado) { 
