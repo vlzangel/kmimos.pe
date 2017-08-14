@@ -328,7 +328,8 @@
                 $conn->query( "UPDATE cuidadores SET user_id = '".$user_id."' WHERE id = ".$cuidador_id);
 
                 if($vlz_img_perfil != ""){
-                    $dir = "../../../../uploads/cuidadores/avatares/".$cuidador_id."/";
+                    //$dir = "../../../../uploads/cuidadores/avatares/".$cuidador_id."/";
+                    $dir = "../../../../uploads/avatares/".$user_id."/";
 
                     @mkdir($dir);
 
@@ -336,8 +337,7 @@
                     $path_destino = $dir.$vlz_img_perfil;
 
                     if( file_exists($path_origen) ){
-                        //copy($path_origen, $path_destino);
-                        move_uploaded_file($path_origen, $path_destino);
+                        copy($path_origen, $path_destino);
                         unlink($path_origen);
                     }
                 }

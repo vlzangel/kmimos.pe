@@ -87,10 +87,10 @@ if( !$DS ){
 	    ?>
 
 	    jQuery('#billing_state > option[value="Distrito Federal"]').attr('selected', 'selected');
-	    jQuery('#billing_address_1').attr('value', 'México');
-	    jQuery('#billing_address_2').attr('value', 'México');
-	    jQuery('#billing_city').attr('value', 'Distrito Federal');
-	    jQuery('#billing_postcode').attr('value', '10110');
+	    jQuery('#billing_address_1').attr('value', 'Pe&uacute;');
+	    jQuery('#billing_address_2').attr('value', 'Pe&uacute;');
+	    jQuery('#billing_city').attr('value', 'Lima');
+	    jQuery('#billing_postcode').attr('value', '');
 
 	    <?php if(  $_SESSION['admin_sub_login'] == 'YES' ){ ?>
 		    jQuery("#payment_method_wcvendors_test_gateway").attr("checked", "checked");
