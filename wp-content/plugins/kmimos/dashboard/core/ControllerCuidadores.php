@@ -32,7 +32,7 @@ function getEstadoMunicipio($estados, $municipios){
 		$estado = '';
 		foreach ($e as $value) {
 			if( $value > 0 ){
-				$sql_e = 'select * from states where country_id = 1 and id = '.$value;
+				$sql_e = 'select * from states where country_id = 0 and id = '.$value;
 				$result = get_fetch_assoc($sql_e);
 				$resultado['estado'] = (isset($result['rows'][0]['name'])) ? $result['rows'][0]['name'] : '';
 				break;
