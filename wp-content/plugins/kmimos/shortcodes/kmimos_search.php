@@ -362,6 +362,9 @@
                                 console.log( 'Error: ' +  errorThrown );
                             }
                         );
+                    }else{
+                        var html = \"<option value=''>Seleccione un distrito</option>\";
+                        jQuery('#municipio_cuidador').html(html);
                     }
                 }
                 jQuery('#estado_cuidador').on('change', function(e){
