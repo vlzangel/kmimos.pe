@@ -10,12 +10,13 @@ function all_contain_window(element){
     });
 }
 
-jQuery(document).ready(function(e){
-    all_contain_window();
-    jQuery(window).resize(function(){
-        all_contain_window();
-    });
-});
+// jQuery(document).ready(function(e){
+//     all_contain_window();
+//     jQuery(window).resize(function(){
+//         all_contain_window();
+//     });
+// });
+
 
 
 jQuery(document).on('click','section .down',function(e){
