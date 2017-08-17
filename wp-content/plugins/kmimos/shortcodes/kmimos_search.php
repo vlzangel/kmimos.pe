@@ -1,7 +1,6 @@
 <?php
 
     //[kmimos_search]
-
     $HOY = date("Y-m-d");
 
     $ESTADOS = '
