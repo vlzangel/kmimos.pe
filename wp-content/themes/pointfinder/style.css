@@ -6816,6 +6816,7 @@ input#place_order{
 	margin-top: 8px!important;
 	z-index:9999;
 	margin-bottom:12px;
+	display: none;
 }
 
 .instrucciones-items{

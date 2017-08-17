@@ -82,7 +82,8 @@
 									    font-size: 20px;
 									    font-weight: bold;
 									    padding: 9px 30px 9px 30px;
-									    margin-top: 20px;"
+									    margin-top: 20px;
+									    display:none;"
 		    							onclick="jQuery('#modal_instrucciones').css('display', 'block');">
 		    							 Instrucciones </a>
     							</h1>
