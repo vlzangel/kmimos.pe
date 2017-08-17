@@ -1,30 +1,11 @@
 @font-face { font-family: Poetsen One; src: url(../fonts/PoetsenOne-Regular.ttf);}
 @import url('https://fonts.googleapis.com/css?family=Bree+Serif');
 @import url('https://fonts.googleapis.com/css?family=Lato:700');
-body{
-	background: #49C9B0;
-	color: #3a3a3a;
-	/*font-family: 'Lato', sans-serif;*/
-	font-family: Poetsen One;
-}
-strong{
-	font-weight: 900;
-}
+body{background: #49C9B0; 	color: #3a3a3a; font-family: Poetsen One;}
+strong{font-weight: 900;}
 
-html,body{
-	margin:0px;
-	height:100%;
-}
-.naranja {
-    color: #ffa500;
-}
-.verde {
-    color: #2d9a7a;
-}
-.container-fluid{
-	overflow: hidden;
-	height: 100%;
-}
+html,body{margin:0px; 	height:100%; }
+.container-fluid{ overflow: hidden; height: 100%;}
 
 /***************************************/
 /*  CABECERA Y Section-1               */
