@@ -59,7 +59,7 @@
 								<div class="pflist-pricecontainer">
 									
 									<div class="pflistingitem-subelement pf-price"> 
-										<sub style="bottom: 0px;">Hospedaje desde</sub><br>MXN $'.$cuidador->precio.'
+										<sub style="bottom: 0px;">Hospedaje desde</sub><br>S./ $'.$cuidador->precio.'
 									</div>
 								</div>
 							</div>

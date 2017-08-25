@@ -87,8 +87,8 @@ if( !$DS ){
 	    ?>
 
 	    jQuery('#billing_state > option[value="Distrito Federal"]').attr('selected', 'selected');
-	    jQuery('#billing_address_1').attr('value', 'Pe&uacute;');
-	    jQuery('#billing_address_2').attr('value', 'Pe&uacute;');
+	    jQuery('#billing_address_1').attr('value', 'Perú');
+	    jQuery('#billing_address_2').attr('value', 'Perú');
 	    jQuery('#billing_city').attr('value', 'Lima');
 	    jQuery('#billing_postcode').attr('value', '');
 
