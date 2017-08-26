@@ -10,7 +10,6 @@
         height: 100%;
         vertical-align: middle;
     }
-
     #mas_servicios {
         display: inline-block;
         position: relative;
