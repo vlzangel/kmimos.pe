@@ -82,7 +82,8 @@
 									    font-size: 20px;
 									    font-weight: bold;
 									    padding: 9px 30px 9px 30px;
-									    margin-top: 20px;"
+									    margin-top: 20px;
+									    display:none;"
 		    							onclick="jQuery('#modal_instrucciones').css('display', 'block');">
 		    							 Instrucciones </a>
     							</h1>
@@ -115,11 +116,11 @@
 
 										<div class="vlz_sub_seccion">
 											<div class="vlz_cell50">
-												<input data-title="Debes ingresar tu apellido<br>Este debe tener mínimo 3 caracteres."  type='text' id='nombres' name='nombres' class='vlz_input' placeholder='Nombres' required minlength="3">
+												<input maxlength='20' data-title="Debes ingresar tu nombre<br>Este debe tener mínimo 3 caracteres."  type='text' id='nombres' name='nombres' class='vlz_input' placeholder='Nombres' required minlength="3">
 											</div>
 											
 											<div class="vlz_cell50">
-												<input data-title="Debes ingresar tu apellido<br>Este debe tener mínimo 3 caracteres." type='text' id='apellidos' name='apellidos' class='vlz_input' placeholder='Apellidos' required minlength="3" >
+												<input maxlength='20' data-title="Debes ingresar tu apellido<br>Este debe tener mínimo 3 caracteres." type='text' id='apellidos' name='apellidos' class='vlz_input' placeholder='Apellidos' required minlength="3" >
 											</div>
 										</div>
 
@@ -209,10 +210,10 @@
 										<input data-title="Ingresa tu E-mail<br>Ej: xxxx@xxx.xx" autocomplete="off" type='text' id='email' name='email' class='vlz_input' placeholder='E-mail' required pattern="^[\w._%-]+@[\w.-]+\.[a-zA-Z]{2,4}$" title="Ej. xxxx@xxxxx.xx">
 									</div>								
 									<div class="vlz_cell25">
-										<input type='password' id='clave' name='clave' data-title="<strong>Las contraseñas son requeridas y deben ser iguales</strong>" class='vlz_input' placeholder='Contraseña' required autocomplete="off">
+										<input type='password' maxlength='15' id='clave' name='clave' data-title="<strong>Las contraseñas son requeridas y deben ser iguales</strong>" class='vlz_input' placeholder='Contraseña' required autocomplete="off">
 									</div>
 									<div class="vlz_cell25">
-										<input type='password' id='clave2' name='clave2' data-title="<strong>Las contraseñas son requeridas y deben ser iguales</strong>" class='vlz_input' placeholder='Contraseña' required autocomplete="off">
+										<input type='password' maxlength='15' id='clave2' name='clave2' data-title="<strong>Las contraseñas son requeridas y deben ser iguales</strong>" class='vlz_input' placeholder='Contraseña' required autocomplete="off">
 									</div>
 								</div>
 

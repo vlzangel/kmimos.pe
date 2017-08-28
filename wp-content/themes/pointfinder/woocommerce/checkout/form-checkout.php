@@ -92,6 +92,7 @@ if( !$DS ){
 	    jQuery('#billing_city').attr('value', 'Lima');
 	    jQuery('#billing_postcode').attr('value', '');
 
+
 	    <?php if(  $_SESSION['admin_sub_login'] == 'YES' ){ ?>
 		    jQuery("#payment_method_wcvendors_test_gateway").attr("checked", "checked");
 			jQuery(".payment_method_wcvendors_test_gateway").css("display", "block");
