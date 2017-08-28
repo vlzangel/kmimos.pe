@@ -36,7 +36,7 @@
 			<header class="text-center">
 	       	 	<img src="img/LogoKmimos.png" class="logo">
 	       	</header>
-
+ 
 	       	<article class="col-sm-5 hidden-xs">
 	       		<img src="img/Character_section1.png" class=" img-kmimos img-responsive">
 	       	</article>
