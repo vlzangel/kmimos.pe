@@ -21,7 +21,7 @@
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-		  ga('create', 'UA-99427723-1', 'auto');
+		  ga('create', 'UA-103343585-1', 'auto');
 		  ga('send', 'pageview');
 
 		</script>
@@ -36,7 +36,7 @@
 			<header class="text-center">
 	       	 	<img src="img/LogoKmimos.png" class="logo">
 	       	</header>
-
+ 
 	       	<article class="col-sm-5 hidden-xs">
 	       		<img src="img/Character_section1.png" class=" img-kmimos img-responsive">
 	       	</article>
@@ -386,7 +386,7 @@
 			<article class="col-xs-12">
 				<p class="help-subtitle">
 					Ponte en contacto con nosotros. 
-					<span class="resaltar"> s.cedeno@kmimos.la </span> 
+					<span class="resaltar"> S.cedeno@kmimos.la </span> 
 					ó   
 					<span class="resaltar"> (+51) 963 585 100   </span>
 				</p>

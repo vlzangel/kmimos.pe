@@ -49,11 +49,11 @@
 	    $user = new WP_User( $user_id );
 	    $user->set_role( 'subscriber' );
 
-		add_filter( 'wp_mail_from_name', function( $name ) { return 'Kmimos Mexico'; });
+		add_filter( 'wp_mail_from_name', function( $name ) { return 'Kmimos Perú'; });
 	    add_filter( 'wp_mail_from', function( $email ) { return 'kmimos@kmimos.la'; });
 		require_once('email_template/user-registro.php');
 	    $message = kmimos_get_email_html("Registro de Nuevo Usuario.", $mensaje_mail, '', true, true);
-	    if(wp_mail( $email, "Kmimos Mexico – Gracias por registrarte! Kmimos la NUEVA forma de cuidar a tu perro!", $message)){
+	    if(wp_mail( $email, "Kmimos Perú – Gracias por registrarte! Kmimos la NUEVA forma de cuidar a tu perro!", $message)){
 	    	#echo 'enviado';
 	    }else{
 	    	#echo 'no enviado';
