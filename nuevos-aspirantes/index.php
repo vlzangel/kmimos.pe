@@ -386,7 +386,7 @@
 			<article class="col-xs-12">
 				<p class="help-subtitle">
 					Ponte en contacto con nosotros. 
-					<span class="resaltar"> s.cedeno@kmimos.la </span> 
+					<span class="resaltar"> S.cedeno@kmimos.la </span> 
 					ó   
 					<span class="resaltar"> (+51) 963 585 100   </span>
 				</p>

@@ -120,43 +120,6 @@
 		  	verificar_cache_form();
 		});
 
-		/*jQuery( document ).ready(function() {
-		  	cambiar_img();
-
-		  	verificar_cache_form();
-		});
-
-		jQuery( window ).resize(function() {
-	  		cambiar_img();
-		});
-
-		function cambiar_img(){
-		  	var w = jQuery( window ).width();
-	  		if( w < 992 ){
-	  			var img = jQuery("#cargar_imagen_1").html();
-	  			if( img != "" ){
-		  			jQuery("#cargar_imagen_1").html("");
-		  			jQuery("#cargar_imagen_2").html(img);
-		  			document.getElementById("portada").addEventListener("change", vista_previa, false);
-		  			jQuery("#cargar_imagen_2").css("display", "block");
-		  			jQuery("#kmimos_datos_personales").removeClass("vlz_cell50");
-	  			}else{
-		  			jQuery("#cargar_imagen_1").css("display", "none");
-	  			}
-	  		}else{
-	  			var img = jQuery("#cargar_imagen_2").html();
-	  			jQuery("#cargar_imagen_1").css("display", "inline-block");
-	  			if( img != "" ){
-		  			jQuery("#cargar_imagen_2").html("");
-		  			jQuery("#cargar_imagen_1").html(img);
-		  			document.getElementById("portada").addEventListener("change", vista_previa, false);
-		  			jQuery("#kmimos_datos_personales").addClass("vlz_cell50");
-	  			}else{
-		  			jQuery("#cargar_imagen_2").css("display", "none");
-	  			}
-	  		}
-		}*/
-
 		function vista_previa(evt) {
 		  	var files = evt.target.files;
 		  	for (var i = 0, f; f = files[i]; i++) {  
@@ -195,7 +158,7 @@
 			switch(id){
 				case "ife":
 		      		var ife = jQuery( "#ife" ).val();
-		      		if( ife.length >= 10 ){
+		      		if( ife.length >= 7 ){
 		      			return true;
 		      		}else{
 		      			ver_error(id);
@@ -316,7 +279,7 @@
 		    jQuery("#error_"+event.target.id).removeClass("no_error");
 		    jQuery("#error_"+event.target.id).addClass("error");
 		    jQuery("#"+event.target.id).addClass("vlz_input_error");
-		    console.log(event.target.id);
+		    //console.log(event.target.id);
 		}, true);
 
 		form.addEventListener( 'keyup', function(event){
@@ -484,18 +447,18 @@
 	/* DIRECCIONES */
 
 		jQuery("#estado").on("change", function(e){
-			var estado_id = jQuery("#estado").val(); 
+			var estado_id = jQuery("#estado").val();
 		    if( estado_id != "" ){
-		        var html = "<option value=''>Seleccione un distrito</option>";
+		        var html = "<option value=''>Seleccione un municipio</option>";
 		        jQuery.each(estados_municipios[estado_id]['municipios'], function(i, val) {
 		            html += "<option value="+val.id+" data-id='"+i+"'>"+val.nombre+"</option>";
 		        });
 		        jQuery("#municipio").html(html);
-		        var location    = estados_municipios[estado_id]['coordenadas']['referencia'];
+		        /*var location    = estados_municipios[estado_id]['coordenadas']['referencia'];
 		        var norte       = estados_municipios[estado_id]['coordenadas']['norte'];
 		        var sur         = estados_municipios[estado_id]['coordenadas']['sur'];
 		        jQuery("#latitud").attr("value", location.lat);
-		        jQuery("#longitud").attr("value", location.lng);
+		        jQuery("#longitud").attr("value", location.lng);*/
 		    }
 		});
 
@@ -506,20 +469,20 @@
 		function vlz_coordenadas(){
 			var estado_id = jQuery("#estado").val();            
 		    var municipio_id = jQuery('#municipio > option[value="'+jQuery("#municipio").val()+'"]').attr('data-id');   
-		    if( estado_id != "" ){
+		    /*if( estado_id != "" ){
 		        var location    = estados_municipios[estado_id]['municipios'][municipio_id]['coordenadas']['referencia'];
 		        var norte       = estados_municipios[estado_id]['municipios'][municipio_id]['coordenadas']['norte'];
 		        var sur         = estados_municipios[estado_id]['municipios'][municipio_id]['coordenadas']['sur'];
 		        jQuery("#latitud").attr("value", location.lat);
 		        jQuery("#longitud").attr("value", location.lng);
-		    }
+		    }*/
 		}
 
 	// Generales
 
 		function GoToHomePage(){
-			// location = 'http://kmimos.ilernus.com';  
-			location = "<?php echo get_home_url().'/perfil-usuario/?ua=profile'; ?>";  
+			// location = 'http://kmimos.ilernus.com';
+			location = "<?php echo get_home_url().'/perfil-usuario/?ua=profile'; ?>";
 		}
 			
 		function vlz_modal(tipo, titulo, contenido){
@@ -577,7 +540,9 @@
 			  		jQuery("#vlz_titulo_registro").html("Registrando, por favor espere...");
 			     	
 					jQuery.post( a, jQuery("#vlz_form_nuevo_cuidador").serialize(), function( data ) {
-						data = eval(data);
+						//console.log(data);
+			      		data = eval(data);
+
 			      		if( data.error == "SI" ){
 			      			jQuery('html, body').animate({ scrollTop: jQuery("#email").offset().top-75 }, 2000);
 			      			alert(data.msg);
@@ -591,10 +556,26 @@
 				      		jQuery("#vlz_titulo_registro").html('Términos y Condiciones');
 			  				jQuery("#boton_registrar_modal").css("display", "inline-block");
 			      		}else{
-			      			jQuery("#vlz_titulo_registro").html("Registro Completado!");
-						  	jQuery("#vlz_cargando").html(data.msg);
-				      		jQuery("#vlz_registro_cuidador_cerrar").css("display", "inline-block");
+							//	jQuery("#vlz_titulo_registro").html("Registro Completado!");
+							//	jQuery("#vlz_cargando").html(data.msg);
+							//	jQuery("#vlz_registro_cuidador_cerrar").css("display", "inline-block");
+							//console.log('registro compeltado2');
+						  	jQuery("#vlz_cargando")
+						  		.html(data.msg);
+						  	jQuery("#vlz_cargando")
+						  		.css('padding', '0px')
+						  		.css('padding-top', '10px');
+			      			jQuery("#vlz_titulo_registro")
+			      				.html("Registro completado!");
+			      			jQuery("#vlz_titulo_registro")
+			      				.css('font-size', '15px');
+			      			jQuery("#vlz_titulo_registro")
+			      				.css('background', '#fff')
+			      				.css('color','#52c8b6');
+ 			      			jQuery(".vlz_modal_ventana")
+ 			      				.css('width', 'auto');
 
+							jQuery("#vlz_registro_cuidador_cerrar").css("display", "inline-block");
 				      		<?php
 				      			if( substr($_SERVER["HTTP_REFERER"], -18) == "nuevos-aspirantes/" ){
 				      				$_SESSION['nuevosAspirantes'] = "SI";
@@ -610,6 +591,7 @@
 			  				});
 			      		}
 			      	});
+
 				}else{
 			  		alert("Debe aceptar los términos y condiciones.");
 					vlz_modal('terminos', 'Términos y Condiciones');
