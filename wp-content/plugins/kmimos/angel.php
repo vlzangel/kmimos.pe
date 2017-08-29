@@ -235,11 +235,12 @@ if(!function_exists('kmimos_mails_administradores_new')){
 
     if(!function_exists('kmimos_get_foto_cuidador')){
         function kmimos_get_foto_cuidador($id){
-            global $wpdb;
+            global $wpdb, $home;
             $cuidador = $wpdb->get_row("SELECT * FROM cuidadores WHERE id = ".$id);
             $name_photo = $wpdb->get_var("SELECT meta_value FROM wp_usermeta WHERE user_id = {$cuidador->user_id} AND meta_key = 'name_photo'");
-            if( !empty($name_photo)  ){ 
-                $img = $home."/wp-content/uploads/cuidadores/avatares/{$cuidador->user_id}/{$name_photo}"; 
+            if( !empty($name_photo)  ){
+                //$img = $home."/wp-content/uploads/cuidadores/avatares/{$cuidador->user_id}/{$name_photo}";
+                $img = $home."/wp-content/uploads/avatares/{$cuidador->user_id}/{$name_photo}";
             }
             return $img;
         }
