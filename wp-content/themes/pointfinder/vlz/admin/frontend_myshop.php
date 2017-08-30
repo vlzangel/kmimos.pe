@@ -424,7 +424,7 @@ echo get_estados_municipios();
                 </div>
 
 				<div id="messageDirection" class="message"></div>
-			    <div id="map"></div>
+			    <div id="map" style="display:none;"></div>
                 <div class="clearfix" style="margin-bottom:10px"></div>
             </section>
 

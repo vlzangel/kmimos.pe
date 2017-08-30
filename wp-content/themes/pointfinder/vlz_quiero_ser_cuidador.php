@@ -247,7 +247,7 @@
 										<input type="hidden" class="geolocation" id="latitud" name="latitud" placeholder="Latitud" step="any" value="" />
 										<input type="hidden" class="geolocation" id="longitud" name="longitud" placeholder="Longitud" step="any" value="" />
 									</div>
-									<div id="map"></div>
+									<div id="map" style="display:none;"></div>
 
 								</div>
 
