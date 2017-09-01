@@ -195,15 +195,15 @@
         		'0',
         		'$nombres',
         		'$apellidos',
-                '$ife',
-                '$email',
-                '$telefono',
-                '$descripcion',
-                '$foto',
-                '$experiencia',
-                '0',
-                '$latitud',
-                '$longitud',
+        		'$ife',
+        		'$email',
+        		'$telefono',
+        		'$descripcion',
+        		'$foto',
+        		'$experiencia',
+        		'0',
+        		'$latitud',
+        		'$longitud',
         		'$direccion',
         		'$num_mascotas_casa',
         		'$num_mascotas_aceptadas',
@@ -217,8 +217,8 @@
         		'$hospedaje_desde',
         		'$adicionales',
         		'$atributos',
-                '0',
-                '0'
+            '0',
+            '0'
         	);
         ";
 
