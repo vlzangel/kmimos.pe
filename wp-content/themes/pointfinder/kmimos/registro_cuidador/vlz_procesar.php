@@ -217,8 +217,8 @@
         		'$hospedaje_desde',
         		'$adicionales',
         		'$atributos',
-                '0',
-                '0'
+            '0',
+            '0'
         	);
         ";
 

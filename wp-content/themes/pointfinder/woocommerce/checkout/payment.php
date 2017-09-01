@@ -37,12 +37,10 @@ if( !$DS ){
 			<?php
 				if ( ! empty( $available_gateways ) ) {
 					foreach ( $available_gateways as $gateway ) {
-						if( $pagar == "NO"){
-							if( $gateway->method_title == "Contra reembolso" ){
-								wc_get_template( 'checkout/payment-method.php', array( 'gateway' => $gateway ) );
-							}
+						if( $gateway->method_title == "WC Vendors Test Gateway" && (  $_SESSION['admin_sub_login'] == 'YES' ) ){
+							wc_get_template( 'checkout/payment-method.php', array( 'gateway' => $gateway ) );
 						}else{
-							if( $gateway->method_title != "Contra reembolso" ){
+							if( $gateway->method_title != "WC Vendors Test Gateway" ){
 								wc_get_template( 'checkout/payment-method.php', array( 'gateway' => $gateway ) );
 							}
 						}
