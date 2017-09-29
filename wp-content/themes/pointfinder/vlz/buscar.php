@@ -41,11 +41,10 @@
 	    	$servicios_buscados .= " ) AND";
 		}
 
-
 	    if( isset($tamanos) ){ foreach ($tamanos as $key => $value) { $condiciones .= " AND ( tamanos_aceptados LIKE '%\"".$value."\";i:1%' || tamanos_aceptados LIKE '%\"".$value."\";s:1:\"1\"%' ) "; } }
     /* Fin Filtros por servicios y tamaños */
 
-    /* Filtros por fechas */
+    /* Filtros por fechas*/
 	    if( isset($checkin)  && $checkin  != '' && isset($checkout) && $checkout != '' ){ 
 	    	$condiciones .= "
 	    		AND ( 
@@ -63,7 +62,7 @@
 	    				) 
 	    		) = 0"; 
 	   	}
-    /* Fin Filtros por fechas */
+/* Fin Filtros por fechas */
 
     /* Filtros por rangos */
 	    if( isset($n) ){ if( $n != "" ){ $condiciones .= " AND nombre LIKE '".$n."%' "; } }
