@@ -84,7 +84,7 @@ $HTML = "</div></div>
                     <h2>Navega</h2>
                     <ul>
                         <li><a href='#'>Nosotros</a></li>
-                        <li><a href='".get_home_url()."/blog/'>Blog</a></li>
+                        <!--li><a href='".get_home_url()."/blog/'>Blog</a></li-->
                         <li><a href='#'>Preguntas y Respuestas</a></li>
                         <li><a href='#'>Cobertura Veterinaria</a></li>
                         <li><a href='#'>Comunicados de prensa</a></li>
@@ -99,7 +99,7 @@ $HTML = "</div></div>
                     <div class='socialBtns'>
                         <a href='https://www.facebook.com/".$datos['facebook']."/' target='_blank' class='facebookBtn socialBtn' title='".$datos['facebook']."'></a>
                         <a href='https://twitter.com/".$datos['twitter']."/' target='_blank' class='twitterBtn socialBtn' title='@".$datos['twitter']."'></a>
-                        <a href='#' target='_blank' class='instagramBtn socialBtn' title='@".$datos['instagram']."'></a>
+                        <a href='https://instagram.com/".$datos['instagram']."/' target='_blank' class='instagramBtn socialBtn' title='@".$datos['instagram']."'></a>
                         <img src='".get_bloginfo( 'template_directory', 'display' )."/images/dog.png' alt=''>
                     </div>
                 </div>
