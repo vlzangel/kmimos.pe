@@ -43,7 +43,7 @@
         clearTimeout(SubscribeTime);
         
         var CampaignMonitor = '<div id="subForm">'+
-        '<input id="fieldEmail" name="cm-vcgl-vcgl" type="email" placeholder="Introduce tu correo aqu&iacute" required />'+
+        '<input id="fieldEmail" name="cm-vydlhk-vydlhk" type="email" placeholder="Introduce tu correo aqu&iacute" required />'+
         '<button onclick="register()" id="btn-envio"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></div>'+
         '<div id="msg" class="span-email-hide">Datos guardados</div>'+
         '<div id="msg-vacio" class="span-email-hide">Debe completar los datos</div>'+
@@ -70,7 +70,7 @@
             return;
         }else{
             var mail= jQuery('#fieldEmail').val();
-            var email = {'cm-vcgl-vcgl': mail}
+            var email = {'cm-vydlhk-vydlhk': mail}
             var datos = {'source': 'home', 'email': mail}
             var result = getGlobalData("../../../landing/newsletter.php",'POST', datos);
                 console.log(result);
@@ -83,7 +83,7 @@
                 jQuery('#msg-register').addClass('span-email-hide');
                 jQuery('#msg').removeClass('span-email-hide');
                 jQuery('#msg').addClass('span-email-show');
-                result = getGlobalData("http://kmimos.intaface.com/t/j/s/vcgr/",'POST', email);
+                result = getGlobalData("http://kmimos.intaface.com/t/j/s/vydlhk/",'POST', email);
             }else if (result == 2){
                 jQuery("#msg-vacio").removeClass('span-email-show');
                 jQuery('#msg-error').removeClass('span-email-show');
