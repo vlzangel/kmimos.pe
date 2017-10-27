@@ -245,7 +245,7 @@
             exit;
         }else{
 
-            $temp = array( "token" => $token );
+           $temp = array( "token" => $token );
 
             include('Requests.php');
 
