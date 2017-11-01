@@ -279,7 +279,8 @@
             );
 
             $request = Requests::post('http://kmimos.ilernus.com/webservice/rest/server.php', array(), $options );
-
+            print_r($options);
+            print_r($request);
             if( $conn->query( utf8_decode( $sql ) ) ){
 
                 $cuidador_id = $conn->insert_id;
