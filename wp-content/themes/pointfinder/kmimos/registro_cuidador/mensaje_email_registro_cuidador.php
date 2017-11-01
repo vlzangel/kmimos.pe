@@ -65,7 +65,7 @@ $mensaje_mail = '<style>
 
 */
 
-/*$mensaje_mail = '
+$mensaje_mail = '
 <style>
     p{
         text-align: justify;
@@ -86,17 +86,20 @@ $mensaje_mail = '<style>
     <ul style="text-align: justify;">
         <li><strong>Pruebas de conocimiento veterinario.</strong></li>
         <li><strong>Pruebas Psicométricas.</strong></li>
-        <li><strong>Documentación (IFE, Comprobante de domicilio y Datos Bancarios).</strong></li>
+        <li><strong>Documentación (documento de identidad (DNI o cedula de ciudadania), Comprobante de domicilio).</strong></li>
     </ul>
-</p>
-<p style="text-align: justify;">
-   <strong>Link para continuar es: http://kmimos.ilernus.com</strong>
 </p>
 <p style="text-align: justify;">
     Dicho proceso ha sido diseñado por expertos veterinarios para seleccionar a las personas más adecuadas para recibir, cuidar y apapachar a nuestros peludos amigos.
 </p>
 <p style="text-align: justify;">
-    Guarda el siguiente link, ahí puedes continuar con las pruebas en caso de no terminarlas por algún imprevisto y/o para cargar documentos.
+   Ahora serás dirigido a hacia el paso 1, PRUEBAS DE CONOCIMIENTO VETERINARIO.
+</p>
+<p style="text-align: justify;">
+    Guarda el siguiente link, ahí puedes continuar con las pruebas en caso de no terminarlas por algún imprevisto y/o para cargar documentos
+</p>
+<p style="text-align: justify;">
+   <strong>Link para continuar es: http://kmimos.ilernus.com</strong>
 </p>
 <p style="text-align: justify; color: #f00;">
     <strong>INGRESA CON EL NOMBRE DE USUARIO Y CONTRASEÑA:</strong>
@@ -108,9 +111,6 @@ $mensaje_mail = '<style>
     </table>
 </p>
 
-<p>
-    Revisa tu correo, ahí te llegarán las segundas pruebas, PRUEBAS PSICOMETRICAS.
-</p>
 <p>
     ¡EXITO!
 </p>
@@ -134,9 +134,9 @@ $mensaje_mail = '<style>
         "
     >CONTINUAR</a>
 </p>
-';*/
+';
 
-$mensaje_mail = '
+/*$mensaje_mail = '
                 <style>
                     p{
                         text-align: justify;
@@ -151,7 +151,14 @@ $mensaje_mail = '
                 <p>Hola <strong>'.$nombres.' '.$apellidos.'</strong>,</p> 
 
                 <p style="text-align: justify;">
-                    Estimado Kmiamigo, tu perfil ha sido creado con éxito.  El mismo permanecerá inactivo en la página hasta que completes los siguientes pasos listados abajo"
+                    Estimado Kmiamigo, tu perfil ha sido creado con éxito.  El mismo permanecerá INACTIVO  en la página hasta que completes  tu proceso de certificación que consta:"
+                </p>
+                <p style="text-align: justify;">
+                    <ul>
+                        <li style="text-align: justify;"> Pruebas de conocimiento veterinario.</li>
+                        <li style="text-align: justify;"> Pruebas Psicométricas.</li>
+                        <li style="text-align: justify;"> Documentación (documento de identidad (DNI o cedula de ciudadania), Comprobante de domicilio).</li>
+                    </ul>
                 </p>
                 <p style="text-align: justify;">
                     "Dichos pasos han sido diseñados para cumplir con un estricto perfil de seguridad, que garantice que cualquier persona que se convierta en Cuidador asociado Kmimos presente un perfil apto para cuidar y engreir a nuestros peludos amigos"
@@ -159,15 +166,7 @@ $mensaje_mail = '
                 <p style="text-align: justify;">
                     <strong>Siguientes Pasos para activar tu perfil</strong>
                 </p>
-                <p style="text-align: justify;">
-                    <ul>
-                        <li style="text-align: justify;">Compártenos por Mensaje Directo a nuestro Facebook @Kmimospe tu nombre y apellido completo, email, teléfono de casa y celular</li>
-                        <li style="text-align: justify;">Una vez que nos envíes dichos datos, en menos de 24 horas recibirás en el correo que registraste las Pruebas Psicométricas y Pruebas de Conceptos Veterinarios básicos.  Por favor respóndelas, y nos llegará a nosotros un mensaje de completadas.</li>
-                        <li style="text-align: justify;">En menos de 24 horas después de completadas las pruebas recibirás un correo por parte de Certificación Kmimos, notificando tus resultados.  NO TE OLVIDES DE REVISAR SIEMPRE LA BANDEJA DE ENTRADA O EL CORREO NO DESEADO, ya que a veces llegan allí los correos.</li>
-                        <li style="text-align: justify;">En caso de haber aprobado, lee el archivo adjunto al correo que te muestra las políticas operativas.</li>
-                        <li style="text-align: justify;">Por último, recibirás una llamada para entrevista telefónica y notificación para la auditoría a tu hogar.</li>
-                    </ul>
-                </p>
+                
 <p style="text-align: justify;">
     Abajo encontrarás tus credenciales para que tengas acceso como cuidador a Kmimos, estos mismos los deberas usar en la plataforma de certificación.
 </p>
@@ -198,4 +197,4 @@ $mensaje_mail = '
         "
     >Iniciar sesión</a>
 </p>
-';
+';*/
