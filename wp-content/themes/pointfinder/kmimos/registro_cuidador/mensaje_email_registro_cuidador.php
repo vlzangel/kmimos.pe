@@ -93,7 +93,7 @@ $mensaje_mail = '
     Dicho proceso ha sido diseñado por expertos veterinarios para seleccionar a las personas más adecuadas para recibir, cuidar y apapachar a nuestros peludos amigos.
 </p>
 <p style="text-align: justify;">
-   Ahora serás dirigido a hacia el paso 1, PRUEBAS DE CONOCIMIENTO VETERINARIO.
+   Ahora serás dirigido hacia el paso 1, PRUEBAS DE CONOCIMIENTO VETERINARIO.
 </p>
 <p style="text-align: justify;">
     Guarda el siguiente link, ahí puedes continuar con las pruebas en caso de no terminarlas por algún imprevisto y/o para cargar documentos
