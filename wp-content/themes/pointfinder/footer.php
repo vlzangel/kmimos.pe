@@ -38,7 +38,6 @@
 </style>
 
 <script type='text/javascript'>
-    //Subscribe
     function SubscribeSite(){
         clearTimeout(SubscribeTime);
         
@@ -539,7 +538,7 @@ $HTML = "</div></div>
                     ";
                 }
 
-        $HTML .= "}); </script>
+        $HTML .= "}); </script><!-- Dajan -->
             <!--[if lt IE 9]>
                 <script src='".get_home_url()."/wp-content/themes/pointfinder/js/html5shiv.js'></script>
             <![endif]-->
@@ -551,7 +550,7 @@ $HTML = "</div></div>
 
                 ga('create', 'UA-103343585-1', 'auto');
                 ga('send', 'pageview');
-            </script>
+            </script><!-- Dajan -->
         ";
 
         if(  $_SESSION['admin_sub_login'] == 'YES' ){
