@@ -166,7 +166,7 @@ $mensaje_web = '
                     </ul>
                 </p>
                 <p style="text-align: justify;">
-                    Ahora serás dirigido a hacia el paso 1, PRUEBAS DE CONOCIMIENTO VETERINARIO.
+                    Ahora serás dirigido hacia el paso 1, PRUEBAS DE CONOCIMIENTO VETERINARIO.
                 </p>
                 <p style="text-align: justify;">
                     Guarda el siguiente link, ahí puedes continuar con las pruebas en caso de no terminarlas por algún imprevisto y/o para cargar documentos.
@@ -179,7 +179,7 @@ $mensaje_web = '
                 </p>
                 <p>
                     <table>
-                        <tr> <td> <strong>Usuario:</strong> </td><td>'.$username.'</td> </tr>
+                        <tr> <td> <strong>Usuario:</strong> </td><td>'.$email.'</td> </tr>
                         <tr> <td> <strong>Contraseña:</strong> </td><td>'.$clave.'</td> </tr>
                     </table>
                 </p>

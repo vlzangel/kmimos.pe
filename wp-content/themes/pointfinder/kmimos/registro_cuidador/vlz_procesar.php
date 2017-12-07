@@ -257,7 +257,7 @@
                 'moodlewsrestformat'    =>  "json",
                 'users' => array(
                     0 => array(
-                        'username'      => $username,
+                        'username'      => $email,
                         'password'      => $clave,
                         'firstname'     => $nombres,
                         "lastname"      => $apellidos,
